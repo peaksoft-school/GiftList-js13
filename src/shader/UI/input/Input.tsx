@@ -1,4 +1,3 @@
-import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import {
   InputAdornment,
   TextField,
@@ -6,6 +5,7 @@ import {
   styled,
 } from "@mui/material";
 import { ChangeEvent, Ref, forwardRef } from "react";
+import { V } from "../../../assets/icon/voscklicat";
 
 type InputProps = Omit<TextFieldProps, "variant"> & {
   value?: string;
@@ -30,8 +30,18 @@ export const Input = forwardRef(
     } = props;
 
     return (
-      <div>
-        <label htmlFor={id} style={{ color: error ? "red" : "#5f6267" }}>
+      <div
+        style={{
+          fontFamily: "sans-serif",
+        }}
+      >
+        <label
+          htmlFor={id}
+          style={{
+            color: error ? "red" : "#818386",
+            fontSize: "22px",
+          }}
+        >
           {label}
         </label>
         <StyledInput
@@ -46,7 +56,7 @@ export const Input = forwardRef(
           InputProps={{
             endAdornment: error && (
               <InputAdornment position="end">
-                <ErrorOutlineIcon sx={{ color: "red" }} />
+                <V />
               </InputAdornment>
             ),
           }}
@@ -61,7 +71,12 @@ export const Input = forwardRef(
 
 const StyledInput = styled(TextField)(() => ({
   "& .MuiOutlinedInput-root": {
+    fontSize: "27px",
+    borderRadius: "12px",
+    padding: "0px 15px",
+
     "& fieldset": {
+      margin: "6px 0",
       borderWidth: "2px",
     },
     "&:hover fieldset": {
