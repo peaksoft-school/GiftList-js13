@@ -1,16 +1,16 @@
 import React from "react";
-import Checkbox from "@mui/material/Checkbox";
+import { Checkbox as MuiCheckbox } from "@mui/material";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import { styled } from "@mui/material/styles";
 
-interface CustomCheckboxProps {
-  checked: boolean;
-  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  label: string;
+interface CheckboxProps {
+  checked?: boolean;
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  label?: string;
   disabled?: boolean;
 }
 
-const StyledCheckbox = styled(Checkbox)(() => ({
+const StyledCheckbox = styled(MuiCheckbox)(() => ({
   "&.Mui-checked": {
     color: "rgba(134, 57, 181, 1)",
   },
@@ -24,7 +24,7 @@ const StyledCheckbox = styled(Checkbox)(() => ({
   },
 }));
 
-const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
+const Checkbox: React.FC<CheckboxProps> = ({
   checked,
   onChange,
   label,
@@ -45,4 +45,4 @@ const CustomCheckbox: React.FC<CustomCheckboxProps> = ({
   );
 };
 
-export default CustomCheckbox;
+export default Checkbox;
