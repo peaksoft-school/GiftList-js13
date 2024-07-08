@@ -10,20 +10,6 @@ interface CheckboxProps {
   disabled?: boolean;
 }
 
-const StyledCheckbox = styled(MuiCheckbox)(() => ({
-  "&.Mui-checked": {
-    color: "rgba(134, 57, 181, 1)",
-  },
-  "&:hover": {
-    "& .MuiSvgIcon-root": {
-      color: "rgba(134, 57, 181, 1)",
-    },
-  },
-  "& .Mui-disabled": {
-    color: "rgba(0, 0, 0, 0.12)",
-  },
-}));
-
 const Checkbox: React.FC<CheckboxProps> = ({
   checked,
   onChange,
@@ -44,5 +30,19 @@ const Checkbox: React.FC<CheckboxProps> = ({
     />
   );
 };
+
+const StyledCheckbox = styled(MuiCheckbox)(() => ({
+  "&.Mui-checked": {
+    color: "rgba(134, 57, 181, 1)",
+  },
+  "&:hover": {
+    "& .MuiSvgIcon-root": {
+      color: "rgba(134, 57, 181, 1)",
+    },
+  },
+  "& .Mui-disabled": {
+    color: "rgba(0, 0, 0, 0.12)",
+  },
+}));
 
 export default Checkbox;
