@@ -29,3 +29,4 @@ const ModalProps = ({ open, onClose, children }: TypeModal) => {
 };
 
 export default ModalProps;
+  
