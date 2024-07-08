@@ -2,8 +2,6 @@ import { Box, Modal, styled } from "@mui/material";
 import React from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CloseIcon from "@mui/icons-material/Close";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 const style = {
 	position: "absolute",
@@ -12,6 +10,8 @@ const style = {
 	transform: "translate(-50%, -50%)",
 	width: 400,
 	bgcolor: "background.paper",
+	border: "none ",
+
 	boxShadow: 24,
 	p: 4,
 };
@@ -37,9 +37,7 @@ const DatePick = () => {
 							onClick={handleClose}
 						/>
 					</CloseModal>
-					<LocalizationProvider dateAdapter={AdapterDayjs}>
-						<DateCalendar />
-					</LocalizationProvider>
+					<DateCalendar />
 				</Box>
 			</Modal>
 		</div>
