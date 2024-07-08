@@ -20,7 +20,7 @@ const style = {
 };
 const ModalProps = ({ open, onClose, children }: TypeModal) => {
 	return (
-		<div>
+		<div>	
 			<Modal open={open} onClose={onClose}>
 				<Box sx={style}>{children}</Box>
 			</Modal>
