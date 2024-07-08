@@ -1,10 +1,10 @@
 import React from "react";
-import CalendarModal from "../shader/UI/date/DatePick";
+import ResponsiveDatePickers from "../shader/UI/date/DatePick";
 
 const App: React.FC = () => {
 	return (
 		<>
-			<CalendarModal />
+		<ResponsiveDatePickers/>
 		</>
 	);
 };

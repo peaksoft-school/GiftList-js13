@@ -1,51 +1,64 @@
-import React, { useState } from "react";
-import Dialog from "@mui/material/Dialog";
-import DialogTitle from "@mui/material/DialogTitle";
-import DialogContent from "@mui/material/DialogContent";
-import DialogActions from "@mui/material/DialogActions";
-import Button from "@mui/material/Button";
-import { styled } from "@mui/material/styles";
-import { FcCalendar } from "react-icons/fc";
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Modal, styled } from "@mui/material";
+import React from "react";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import CloseIcon from "@mui/icons-material/Close";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+const style = {
+	position: "absolute",
+	top: "50%",
+	left: "50%",
+	transform: "translate(-50%, -50%)",
+	width: 400,
+	bgcolor: "background.paper",
+	boxShadow: 24,
+	p: 4,
+};
 
-const StyledDialog = styled(Dialog)`
-	.MuiDialog-paper {
-		width: 400px;
-	}
-`;
+const DatePick = () => {
+	const [open, setOpen] = React.useState(false);
 
-const CalendarModal: React.FC = () => {
-	const [open, setOpen] = useState(false);
-
-	const handleOpen = () => {
-		setOpen(true);
-	};
-
-	const handleClose = () => {
-		setOpen(false);
-	};
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 
 	return (
 		<div>
-			<Box>
-				<Typography>Выберите календарь</Typography>
-				<FcCalendar
-					onClick={handleOpen}
-					style={{ fontSize: "3rem", cursor: "pointer" }}
-				/>
-			</Box>
-
-			<StyledDialog open={open} onClose={handleClose}>
-				<DialogTitle>Выберите дату</DialogTitle>
-				<DialogContent>
-					<TextField type="date" variant="filled" />
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleClose}>Закрыть</Button>
-				</DialogActions>
-			</StyledDialog>
+			<CalendarStyled onClick={handleOpen} />
+			<Modal open={open} onClose={handleClose}>
+				<Box sx={style}>
+					<CloseModal>
+						<CloseIcon
+							style={{
+								backgroundColor: "red",
+								borderRadius: "50%",
+								color: "white",
+							}}
+							onClick={handleClose}
+						/>
+					</CloseModal>
+					<LocalizationProvider dateAdapter={AdapterDayjs}>
+						<DateCalendar />
+					</LocalizationProvider>
+				</Box>
+			</Modal>
 		</div>
 	);
 };
 
-export default CalendarModal;
+export default DatePick;
+
+const CloseModal = styled(Box)`
+	text-align: end;
+	margin-top: -15px;
+`;
+
+const CalendarStyled = styled(CalendarMonthIcon)`
+	width: 50px;
+	height: 50px;
+	cursor: pointer;
+	&:active {
+		background-color: gray;
+		border-radius: 15px;
+	}
+`;
