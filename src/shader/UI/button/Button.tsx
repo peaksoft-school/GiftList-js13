@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from "@mui/material";
+import { Button as MUIButton, ButtonProps } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
 
@@ -7,7 +7,28 @@ interface MyButtonProps extends Omit<ButtonProps, "variant"> {
   children: React.ReactNode;
 }
 
-const StyledButton = styled(Button)<{ variant?: MyButtonProps["variant"] }>(
+const Button: React.FC<MyButtonProps> = ({
+  type,
+  variant = "text",
+  onClick,
+  children,
+  disabled,
+  ...rest
+}) => {
+  return (
+    <StyledButton
+      type={type}
+      variant={variant}
+      onClick={onClick}
+      disabled={disabled}
+      {...rest}
+    >
+      {children}
+    </StyledButton>
+  );
+};
+
+const StyledButton = styled(MUIButton)<{ variant?: MyButtonProps["variant"] }>(
   ({ variant }) => ({
     ...(variant === "text" && {
       backgroundColor: "rgba(250, 43, 86, 1)",
@@ -40,7 +61,7 @@ const StyledButton = styled(Button)<{ variant?: MyButtonProps["variant"] }>(
       color: "rgba(33, 150, 243, 1)",
       "&:hover": {
         backgroundColor: "rgba(97, 35, 134, 1)",
-        color: "white  ",
+        color: "white",
       },
       "&:active": {
         backgroundColor: "rgba(171, 98, 216, 1)",
@@ -52,23 +73,4 @@ const StyledButton = styled(Button)<{ variant?: MyButtonProps["variant"] }>(
   })
 );
 
-export const MyButton: React.FC<MyButtonProps> = ({
-  type,
-  variant = "text",
-  onClick,
-  children,
-  disabled,
-  ...rest
-}) => {
-  return (
-    <StyledButton
-      type={type}
-      variant={variant}
-      onClick={onClick}
-      disabled={disabled}
-      {...rest}
-    >
-      {children}
-    </StyledButton>
-  );
-};
+export default Button;
