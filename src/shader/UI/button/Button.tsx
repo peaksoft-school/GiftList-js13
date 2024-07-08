@@ -36,7 +36,7 @@ const StyledButton = styled(MuiButton)<{
 }>(({ variant }) => ({
   ...(variant === "text" && {
     backgroundColor: "rgba(250, 43, 86, 1)",
-    color: "white",
+    color: "grey",
     "&:hover": {
       backgroundColor: "rgba(221, 11, 55, 1)",
     },
@@ -49,7 +49,7 @@ const StyledButton = styled(MuiButton)<{
   }),
   ...(variant === "contained" && {
     backgroundColor: "rgba(151, 71, 255, 1)",
-    color: "white",
+    color: "grey",
     "&:hover": {
       backgroundColor: "rgba(97, 35, 134, 1)",
     },
@@ -62,7 +62,7 @@ const StyledButton = styled(MuiButton)<{
   }),
   ...(variant === "outlined" && {
     borderColor: "rgba(141, 148, 158, 1)",
-    color: "rgba(33, 150, 243, 1)",
+    color: "grey",
     "&:hover": {
       backgroundColor: "rgba(97, 35, 134, 1)",
       color: "white",
