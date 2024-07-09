@@ -1,7 +1,9 @@
-function App() {
-  return <>
-  </>;
 
+function App() {
+	return (
+		<>
+		</>
+	);
 }
 
 export default App;
