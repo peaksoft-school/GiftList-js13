@@ -1,9 +1,6 @@
-import MenuItem from "../shader/menu/MenuItem";
 
 function App() {
-	return <>
-	<MenuItem/>
-	</>;
+	return <></>;
 }
 
 export default App;
