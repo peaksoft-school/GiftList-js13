@@ -1,7 +1,5 @@
-import React from "react";
-
-const App: React.FC = () => {
-  return <div></div>;
-};
+function App() {
+  return <></>;
+}
 
 export default App;
