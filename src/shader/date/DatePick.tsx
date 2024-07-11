@@ -11,10 +11,10 @@ function DatePick() {
 	const handleDateChange = (newDate: Dayjs | null) => {
 		if (newDate) {
 			setSelectedDate(newDate);
-			console.log("Selected Date: ", newDate.format("YYYY-MM-DD"));
-			console.log("Year: ", newDate.year());
-			console.log("Month: ", newDate.month() + 1);
-			console.log("Day: ", newDate.date());
+			console.log(
+				"Selected Date: ",
+				newDate ? newDate.format("YYYY-MM-DD") : ""
+			);
 		}
 	};
 
