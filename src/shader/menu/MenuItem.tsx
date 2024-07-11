@@ -7,23 +7,9 @@ import {
 	Typography,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import icons1 from "../../assets/icon/Vector.png";
-import icons2 from "../../assets/icon/Vector (1).png";
-import icons3 from "../../assets/icon/Vector (2).png";
-import icons4 from "../../assets/icon/Frame.png";
-import icons5 from "../../assets/icon/Frame (1).png";
-import icons6 from "../../assets/icon/Frame (2).png";
+import { menuItems } from "../../features/lib/constants";
 
 const MenuItem = () => {
-	const menuItems = [
-		{ icon: icons1, text: "Лента" },
-		{ icon: icons2, text: "Друзья" },
-		{ icon: icons3, text: "Список желаний" },
-		{ icon: icons4, text: "Забронированные" },
-		{ icon: icons5, text: "Мои праздники" },
-		{ icon: icons6, text: "Благотворительность" },
-	];
-
 	return (
 		<StyledDrawer variant="permanent">
 			<Title variant="h6">GIFT LIST</Title>
@@ -55,6 +41,7 @@ const StyledDrawer = styled(Drawer)({
 });
 
 const StyledListItem = styled(ListItem)({
+	cursor: "pointer",
 	borderRadius: "10px",
 	color: "#fff",
 	"&:hover": {
@@ -71,6 +58,7 @@ const StyledListItemText = styled(ListItemText)({
 });
 
 const Title = styled(Typography)({
+	cursor: "pointer",
 	textAlign: "center",
 	margin: "1rem 0",
 	color: "#fff",
