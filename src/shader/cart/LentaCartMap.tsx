@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import { CartMapProps } from "../lib/helpers/LentaCart";
 import { FC } from "react";
+import { CartMapProps } from "../lib/helpers/LentaCart";
+import { Button } from "@mui/material";
+import threeDots from "../../assets/icon/threeDots.svg";
 
 const CartMap: FC<CartMapProps> = ({ arrow, mapType }) => (
   <>
@@ -50,7 +52,9 @@ const CartMap: FC<CartMapProps> = ({ arrow, mapType }) => (
                     {profileBlockState}
                   </StyledProfileBlockState>
                 </StyledAva>
-                <p>...</p>
+                <Button>
+                  <img src={threeDots} />
+                </Button>
               </StyledAva>
             </StyledAvaContainerTwo>
           </StyledContainerData>
