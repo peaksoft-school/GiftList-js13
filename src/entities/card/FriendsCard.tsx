@@ -1,24 +1,24 @@
 import React from "react";
-import { FriendsCardProps } from "../lib/helpers/CartType";
 import { styled } from "@mui/material/styles";
+import { FriendsCardProps } from "../lib/helpers/CartType";
 
-const FriendsCard: React.FC<FriendsCardProps> = ({ arrow }) => {
+const FriendsCard: React.FC<FriendsCardProps> = ({ friends }) => {
   return (
     <FriendsContainer>
-      {arrow?.map((item) => (
-        <FriendCard key={item.id}>
+      {friends?.map((friend) => (
+        <FriendCard key={friend.id}>
           <FriendImageContainer>
-            <FriendImage src={item.imageUrl} alt={item.name} />
-            <FriendName>{item.name}</FriendName>
+            <FriendImage src={friend.imageUrl} alt={friend.name} />
+            <FriendName>{friend.name}</FriendName>
           </FriendImageContainer>
           <FriendInfo>
             <InfoItem>
-              <p>{item.counter}</p>
-              <p>Желаний</p>
+              <p>{friend.counter}</p>
+              <p>{friend.wish}</p>
             </InfoItem>
             <InfoItem>
-              <p>{item.counterTwo}</p>
-              <p>Праздников</p>
+              <p>{friend.counterTwo}</p>
+              <p>{friend.holiday}</p>
             </InfoItem>
           </FriendInfo>
         </FriendCard>
@@ -29,8 +29,7 @@ const FriendsCard: React.FC<FriendsCardProps> = ({ arrow }) => {
 
 const FriendsContainer = styled("div")({
   display: "flex",
-  width: "1086px",
-  height: "1024px",
+  flexWrap: "wrap",
   gap: "16px",
   justifyContent: "space-around",
   padding: "16px",
