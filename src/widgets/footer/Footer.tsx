@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import GroupImage from "../../assets/photo.svg";
 
-const CharityComponent: React.FC = () => {
+const FooterList : React.FC = () => {
 	return (
 		<Container>
 			<ImageContainer>
@@ -22,7 +22,7 @@ const CharityComponent: React.FC = () => {
 	);
 };
 
-export default CharityComponent;
+export default FooterList;
 
 const Container = styled.div`
 	display: flex;

@@ -1,9 +1,9 @@
-import SideBar from "../shader/menu/SideBar";
+import FooterList from "../widgets/footer/Footer";
 
 function App() {
 	return (
 		<>
-			<SideBar />
+			<FooterList />
 		</>
 	);
 }
