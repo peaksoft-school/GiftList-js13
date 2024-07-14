@@ -1,11 +1,5 @@
-import FooterList from "../widgets/footer/Footer";
-
 function App() {
-	return (
-		<>
-			<FooterList />
-		</>
-	);
+	return <></>;
 }
 
 export default App;
