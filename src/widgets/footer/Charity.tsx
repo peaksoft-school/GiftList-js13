@@ -1,12 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import GroupImage from "../../assets/photo.svg";
+import GroupImage from "../../assets/photo/photo.png";
 
-const CharityComponent: React.FC = () => {
+const Charity: React.FC = () => {
 	return (
 		<Container>
 			<ImageContainer>
 				<Image src={GroupImage} />
+				<WhiteLine />
 			</ImageContainer>
 			<TextContainer>
 				<Title>Благотворительность</Title>
@@ -22,34 +23,49 @@ const CharityComponent: React.FC = () => {
 	);
 };
 
-export default CharityComponent;
+export default Charity;
 
 const Container = styled.div`
 	display: flex;
+	gap: 100px;
 	align-items: center;
 	background-color: #8639b5;
 	color: white;
 	padding: 40px;
-	border-radius: 8px;
 `;
 
 const ImageContainer = styled.div`
 	flex: 1;
 	padding: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
 `;
 
 const Image = styled.img`
-	border: solid 1px;
-	border-radius: 0px, 120px, 0px, 0px;
-	width: 70%;
+	width: 100%;
+	max-width: 400px;
 	height: auto;
-	border-radius: 8px;
+	z-index: 1;
+	margin-top: 20px;
+`;
+
+const WhiteLine = styled.div`
+	position: absolute;
+	margin-top: -15px;
+	top: 0;
+	right: -10%;
+	width: 99%;
+	height: 100%;
+	border: 1px solid white;
+	border-radius: 0 120px 0 0;
+	z-index: 0;
 `;
 
 const TextContainer = styled.div`
-	flex: 1;
-	padding: 10px;
-	text-align: left;
+	flex: 2;
+	padding: 50px;
 `;
 
 const Title = styled.h1`
@@ -58,6 +74,13 @@ const Title = styled.h1`
 `;
 
 const Text = styled.p`
-	font-size: 1.2em;
-	line-height: 1.5;
+	width: 700px;
+	height: 192px;
+	top: 1851px;
+	left: 735px;
+	gap: 0px;
+	opacity: 0px;
+
+	font-size: 19px;
+	line-height: 1.6;
 `;
