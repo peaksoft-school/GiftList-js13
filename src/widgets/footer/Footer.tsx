@@ -41,7 +41,7 @@ const ImageContainer = styled.div`
 const Image = styled.img`
 	border: solid 1px;
 	border-radius: 0px, 120px, 0px, 0px;
-	width: 60%;
+	width: 70%;
 	height: auto;
 	border-radius: 8px;
 `;
