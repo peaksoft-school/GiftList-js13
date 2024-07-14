@@ -1,5 +1,11 @@
+import SideBar from "../shader/menu/SideBar";
+
 function App() {
-	return <></>;
+	return (
+		<>
+			<SideBar />
+		</>
+	);
 }
 
 export default App;

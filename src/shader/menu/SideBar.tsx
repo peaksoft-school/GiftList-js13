@@ -9,7 +9,7 @@ import {
 import { styled } from "@mui/material/styles";
 import { menuItems } from "../../features/lib/constants";
 
-const MenuItem = () => {
+const SideBar = () => {
 	return (
 		<StyledDrawer variant="permanent">
 			<Title variant="h6">GIFT LIST</Title>
@@ -27,7 +27,7 @@ const MenuItem = () => {
 	);
 };
 
-export default MenuItem;
+export default SideBar;
 
 const StyledDrawer = styled(Drawer)({
 	width: 250,
