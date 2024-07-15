@@ -16,10 +16,8 @@ export default NestedModal;
 const ModalBox = styled(Box)`
   width: 320px;
   padding: 10px;
-  position: absolute;
   border-radius: 7px;
   background-color: white;
   box-shadow: 24px;
-  bottom: 50%;
-  right: 50%;
+  margin: 20% auto;
 `;
