@@ -1,57 +1,9 @@
 import { Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Button } from "../../shader/UI/button/Button";
+import { features, stats } from "../../entities/lib/helpers/constans";
 
-export const Main = () => {
-  const stats = [
-    {
-      value: "100 k+",
-      label: "Пользователей",
-    },
-    {
-      value: "10 k +",
-      label: "Размещенных подарков",
-    },
-    {
-      value: "15 k +",
-      label: "Подаренных подарков",
-    },
-    {
-      value: "9 k +",
-      label: "Реализованной благотворительной помощи",
-    },
-  ];
-
-  const features = [
-    {
-      icon: "src/assets/icon/Dogood.svg",
-      title: "Дари то, что необходимо",
-      points: [
-        "Находи своих близких",
-        "Просматривай их списки желаний",
-        "Узнавай о ближайших мероприятиях",
-      ],
-    },
-    {
-      icon: "src/assets/icon/like.svg",
-      title: "Удобство в использовании",
-      points: [
-        "Создавай неограниченное количество желаний",
-        "Добавляй подарки, которые ты действительно хочешь",
-        "Делись своими желаниями с другими",
-      ],
-    },
-    {
-      icon: "src/assets/icon/love.svg",
-      title: "Твори добро",
-      points: [
-        "Дари благотворительные подарки",
-        "Делись своими вещами",
-        "Помогай другим приобрести необходимое",
-      ],
-    },
-  ];
-
+export const LendingMain = () => {
   return (
     <Container sx={{ maxWidth: 1440 }}>
       <StatsContainer>
