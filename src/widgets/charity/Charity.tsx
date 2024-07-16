@@ -1,27 +1,24 @@
-import React from "react";
 import styled from "styled-components";
 import GroupImage from "../../assets/photo/photo.png";
 
-const Charity: React.FC = () => {
-	return (
-		<Container>
-			<ImageContainer>
-				<Image src={GroupImage} />
-				<WhiteLine />
-			</ImageContainer>
-			<TextContainer>
-				<Title>Благотворительность</Title>
-				<Text>
-					Найти удачный подарок, который принесёт радость, не всегда простая
-					задача. Благодаря нашему сервису у вас есть возможность не только
-					обрадовать подарком, но и помочь другим приобрести необходимые им
-					вещи. В разделе благотворительность вы можете найти список
-					опубликованных вещей, забронировав, вы связываетесь с их обладателем.
-				</Text>
-			</TextContainer>
-		</Container>
-	);
-};
+const Charity: React.FC = () => (
+	<Container>
+		<ImageContainer>
+			<Image src={GroupImage} />
+			<WhiteLine />
+		</ImageContainer>
+		<TextContainer>
+			<Title>Благотворительность</Title>
+			<Text>
+				Найти удачный подарок, который принесёт радость, не всегда простая
+				задача. Благодаря нашему сервису у вас есть возможность не только
+				обрадовать подарком, но и помочь другим приобрести необходимые им вещи.
+				В разделе благотворительность вы можете найти список опубликованных
+				вещей, забронировав, вы связываетесь с их обладателем.
+			</Text>
+		</TextContainer>
+	</Container>
+);
 
 export default Charity;
 
