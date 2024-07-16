@@ -28,11 +28,13 @@ const FriendsCard: React.FC<FriendsCardProps> = ({ friends }) => {
 };
 
 const FriendsContainer = styled("div")({
-  display: "flex",
-  flexWrap: "wrap",
+  display: "grid",
+  gridTemplateColumns: "repeat(4, 1fr)",
   gap: "16px",
   justifyContent: "space-around",
   padding: "16px",
+  maxWidth: "1086px", 
+  margin: "0 auto",
 });
 
 const FriendCard = styled("div")({
@@ -48,7 +50,6 @@ const FriendCard = styled("div")({
 
 const FriendImageContainer = styled("div")({
   borderRadius: "50%",
-  marginBottom: "16px",
   position: "relative",
 });
 
