@@ -1,4 +1,10 @@
+import Charity from "../widgets/charity/Charity";
+
 function App() {
-	return <></>;
+	return (
+		<>
+			<Charity />
+		</>
+	);
 }
 export default App;
