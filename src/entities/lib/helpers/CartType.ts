@@ -9,8 +9,5 @@ export type Friend = {
 };
 
 export type FriendsCardProps = {
-  friends?: Friend[];
+  friend: Friend;
 };
-
-
-
