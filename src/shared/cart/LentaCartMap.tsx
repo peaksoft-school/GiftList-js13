@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { FC } from "react";
-import { CartMapProps } from "../lib/helpers/LentaCart";
+import { CartMapProps } from "../lib/types/LentaCart";
 import { Button } from "@mui/material";
 import threeDots from "../../assets/icon/threeDots.svg";
 

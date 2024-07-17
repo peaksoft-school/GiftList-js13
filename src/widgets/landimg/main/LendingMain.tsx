@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Button } from "../../shader/UI/button/Button";
+import { Button } from "../../shared/UI/button/Button";
 import { features, stats } from "../../entities/lib/helpers/constans";
 
 export const LendingMain = () => {
