@@ -1,10 +1,10 @@
-import Charity from "../widgets/charity/Charity";
 
 function App() {
-	return (
-		<>
-			<Charity />
-		</>
-	);
+  return (
+    <>
+      HelloJS-13
+    </>
+  );
+  return <></>;
 }
 export default App;
