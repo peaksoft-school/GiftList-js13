@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { SearchProps } from "../../../lib/helper/helper";
+import { SearchProps } from "../../../lib/types/helper";
 import {
   Button,
   FormControl,

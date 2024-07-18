@@ -79,15 +79,15 @@ const TextContainer = styled(Box)(() => ({
 
 const Text = styled(Typography)(() => ({
 	fontSize: "16px",
-	marginLeft:"50px",
+	marginLeft: "50px",
 	lineHeight: "1.6",
 	maxWidth: "600px",
 	margin: "0 auto",
 }));
 
 const StyledTitle = styled(Box)(() => ({
-	width:"570px",
-	height:"55px",
+	width: "570px",
+	height: "55px",
 	fontSize: "40px",
-	marginLeft:"40px"
+	marginLeft: "40px",
 }));

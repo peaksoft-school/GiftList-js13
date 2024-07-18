@@ -1,10 +1,5 @@
+import { FC } from "react";
 
-function App() {
-  return (
-    <>
-      HelloJS-13
-    </>
-  );
-  return <></>;
-}
+const App: FC = () => <h1>GIFT LIST_13</h1>;
+
 export default App;
