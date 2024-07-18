@@ -1,22 +1,23 @@
-import { styled } from "@mui/material/styles";
-import { FriendsCardProps } from "../lib/helpers/CartType";
 import { FC } from "react";
+import { styled } from "@mui/system";
+import { FriendsCardProps } from "../../modal/CardType";
+import { Typography } from "@mui/material";
 
 const FriendsCard: FC<FriendsCardProps> = ({ friend }) => (
   <FriendsContainer>
-    <FriendCard key={friend?.id}>
+    <FriendCard key={friend.id}>
       <FriendImageContainer>
-        <FriendImage src={friend?.imageUrl} alt={friend?.name} />
-        <FriendName>{friend?.name}</FriendName>
+        <FriendImage src={friend.imageUrl} alt={friend.name} />
       </FriendImageContainer>
+      <FriendName>{friend.name}</FriendName>
       <FriendInfo>
         <InfoItem>
-          <p>{friend?.counter}</p>
-          <p>{friend?.wish}</p>
+          <Body1 variant="body1">{friend.counter}</Body1>
+          <Body2 variant="body2">{friend.wish}</Body2>
         </InfoItem>
         <InfoItem>
-          <p>{friend?.counterTwo}</p>
-          <p>{friend?.holiday}</p>
+          <Body1 variant="body1">{friend.counterTwo}</Body1>
+          <Body2 variant="body2">{friend.holiday}</Body2>
         </InfoItem>
       </FriendInfo>
     </FriendCard>
@@ -54,14 +55,27 @@ const FriendImage = styled("img")(() => ({
   borderRadius: "50%",
 }));
 
-const FriendName = styled("p")(() => ({
-  fontWeight: "400",
+const FriendName = styled(Typography)(() => ({
+  fontWeight: 400,
+  fontSize: "18px",
+  marginTop: "8px",
+  lineHeight: "19.36px",
+  color: "rgba(2, 2, 1, 1)",
+}));
+const Body1 = styled(Typography)(() => ({
+  fontWeight: 400,
   fontSize: "16px",
   marginTop: "8px",
   lineHeight: "19.36px",
   color: "rgba(2, 2, 2, 1)",
 }));
-
+const Body2 = styled(Typography)(() => ({
+  fontWeight: 400,
+  fontSize: "12px",
+  marginTop: "8px",
+  lineHeight: "14.52px",
+  color: "rgba(96, 96, 96, 1)",
+}));
 const FriendInfo = styled("div")(() => ({
   display: "flex",
   justifyContent: "space-between",
