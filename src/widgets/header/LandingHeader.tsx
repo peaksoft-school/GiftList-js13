@@ -6,9 +6,9 @@ import foto2 from "../../assets/foto/lendingHeader2foto.jpg";
 import arrow from "../../assets/icon/arrowLending.svg";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import { Button } from "../../shader/UI/button/Button";
+import { Button } from "../../shared/UI/button/Button";
 
-const LendingHeader = () => (
+const LandingHeader = () => (
   <HeaderContainer>
     <Container>
       <Header>
@@ -16,51 +16,44 @@ const LendingHeader = () => (
         <HeaderName variant="h1">GIFT LIST</HeaderName>
         <HeaderBl variant="body1">Благотворительность</HeaderBl>
       </Header>
+
       <Main>
         <Box>
           <Icon src={facebook} alt="facebook" />
-
           <Icon src={vkontakte} alt="VK" />
-
           <Icon src={instagram} alt="Instagram" />
         </Box>
+
         <Box>
           <BorImg />
-          <Img src={foto1} alt="1foto" />
+          <Img src={foto1} alt="foto1" />
         </Box>
+
         <Box>
           <BorImgTwo />
           <ImgTwo src={foto2} alt="foto2" />
         </Box>
+
         <ListDiv>
           <Typography variant="body1">
-            <img
-              style={{
-                transform: "rotate(90deg)",
-                padding: "0 30px",
-              }}
-              src={arrow}
-              alt=""
-            />{" "}
+            <ArrowStyled src={arrow} />
             Листайте вниз
           </Typography>
         </ListDiv>
+
         <Descript>
-          <Typography variant="h1">Социальная сеть нового поколения</Typography>
+          <DescriptStyled variant="body1">
+            Социальная сеть нового поколения
+          </DescriptStyled>
           <SmalText>
             Всегда подскажет, что подарить близким и осуществит твои желания{" "}
           </SmalText>
+
           <ButtonContainer>
-            <Button fullWidth sx={{ color: "white" }}>
-              Войти
-            </Button>
-            <Button
-              fullWidth
-              variant="outlined"
-              sx={{ color: "white", borderColor: "white" }}
-            >
+            <MyButton fullWidth>Войти</MyButton>
+            <MyButton fullWidth variant="outlined">
               Регистрация
-            </Button>
+            </MyButton>
           </ButtonContainer>
         </Descript>
       </Main>
@@ -68,7 +61,8 @@ const LendingHeader = () => (
   </HeaderContainer>
 );
 
-export default LendingHeader;
+export default LandingHeader;
+
 const HeaderContainer = styled(Box)(() => ({
   paddingTop: "3vh",
   backgroundColor: "#8639b5",
@@ -87,9 +81,12 @@ const Header = styled(Box)(() => ({
   display: "grid",
   gridTemplateColumns: "1fr 1fr 1fr",
   marginBottom: "6vh",
+  alignItems: "center",
 }));
+
 const HeaderName = styled(Typography)(() => ({
   textAlign: "center",
+  fontSize: "28px",
 }));
 const HeaderBl = styled(Typography)(() => ({
   textAlign: "end",
@@ -103,6 +100,7 @@ const Main = styled(Box)(() => ({
 const Icon = styled("img")(() => ({
   display: "block",
   marginBottom: "20px",
+  cursor: "pointer",
 }));
 
 const BorImg = styled(Box)(() => ({
@@ -152,14 +150,26 @@ const ListDiv = styled(Box)(() => ({
   cursor: "pointer",
 }));
 
+const ArrowStyled = styled("img")(() => ({
+  transform: "rotate(90deg)",
+  padding: "0 30px",
+}));
+
 const Descript = styled(Box)(() => ({
   width: "37vw",
   height: "35vw",
   textAlign: "center",
   fontSize: "54px",
   position: "absolute",
-  top: "30%",
+  top: "27%",
   left: "26%",
+}));
+
+const DescriptStyled = styled(Typography)(() => ({
+  fontSize: "54px",
+  fontWeight: "500",
+  padding: "0",
+  lineHeight: "65px",
 }));
 
 const SmalText = styled(Typography)(() => ({
@@ -171,4 +181,9 @@ const SmalText = styled(Typography)(() => ({
 const ButtonContainer = styled(Box)(() => ({
   width: "20vw",
   margin: "0 auto",
+}));
+
+const MyButton = styled(Button)(() => ({
+  color: "white",
+  borderColor: "white",
 }));
