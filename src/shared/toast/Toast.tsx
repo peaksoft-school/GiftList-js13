@@ -49,7 +49,7 @@ const StyledToastContainer = styled(ToastContainer)`
       line-height: 16px;
       text-align: left;
     }
-    p{
+    p {
       padding: 10px 0;
       color: rgba(50, 50, 77, 1);
       font-size: 14px;
@@ -57,11 +57,11 @@ const StyledToastContainer = styled(ToastContainer)`
       text-align: left;
     }
   }
-  .toast-title{
+  .toast-title {
     display: flex;
     align-items: center;
 
-    img{
+    img {
       position: absolute;
       left: 10px;
       top: 18px;
@@ -76,7 +76,3 @@ const StyledToastContainer = styled(ToastContainer)`
 `;
 
 export default Toast;
-
-
-
-
