@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import { FC } from "react";
-import { CartMapProps } from "../lib/helpers/LentaCart";
 import { Button } from "@mui/material";
 import threeDots from "../../assets/icon/threeDots.svg";
+import { CartMapProps } from "../lib/types/LentaCart";
 
 const CartMap: FC<CartMapProps> = ({ arrow, mapType }) => (
   <>
