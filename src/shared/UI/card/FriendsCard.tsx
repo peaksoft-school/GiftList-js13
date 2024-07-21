@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { styled } from "@mui/system";
-import { FriendsCardProps } from "../../modal/CardType";
 import { Typography } from "@mui/material";
+import { FriendsCardProps } from "../../modal/CardType";
 
 const FriendsCard: FC<FriendsCardProps> = ({ friend }) => (
   <FriendsContainer>
