@@ -1,10 +1,5 @@
 import { FC } from "react";
-import { Input } from "../shared/UI/input/Input";
 
-const App: FC = () => (
-  <>
-    <Input />
-  </>
-);
+const App: FC = () => <h1>GIFT LIST_13</h1>;
 
 export default App;
