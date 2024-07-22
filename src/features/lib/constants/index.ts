@@ -1,15 +1,15 @@
-import lentaIcon from "../../../assets/icon/Lenta.svg";
-import wishListIcon from "../../../assets/icon/WishList.svg";
-import bookedIcon from "../../../assets/icon/Booked.svg";
-import MyholidaysIcon from "../../../assets/icon/Myholidays.svg";
-import CharityIcon from "../../../assets/icon/Charity.svg";
-import FriendsIcon from "../../../assets/icon/Friends.svg";
+import lentaIcon from "../../../assets/icon/lenta.svg";
+import wishListIcon from "../../../assets/icon/wishList.svg";
+import bookedIcon from "../../../assets/icon/booked.svg";
+import myholidaysIcon from "../../../assets/icon/myholidays.svg";
+import charityIcon from "../../../assets/icon/charity.svg";
+import friendsIcon from "../../../assets/icon/friends.svg";
 
 export const menuItems = [
-	{ icon: lentaIcon, text: "Лента" },
-	{ icon: FriendsIcon, text: "Друзья" },
-	{ icon: wishListIcon, text: "Список желаний" },
-	{ icon: bookedIcon, text: "Забронированные" },
-	{ icon: MyholidaysIcon, text: "Мои праздники" },
-	{ icon: CharityIcon, text: "Благотворительность" },
+  { icon: lentaIcon, text: "Лента" },
+  { icon: friendsIcon, text: "Друзья" },
+  { icon: wishListIcon, text: "Список желаний" },
+  { icon: bookedIcon, text: "Забронированные" },
+  { icon: myholidaysIcon, text: "Мои праздники" },
+  { icon: charityIcon, text: "Благотворительность" },
 ];
