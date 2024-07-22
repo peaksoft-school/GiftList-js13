@@ -1,5 +1,11 @@
-import { FC } from "react";
+import Header from "../widgets/landimg/header/Header";
 
-const App: FC = () => <h1>GIFT LIST_13</h1>;
+const App = () => {
+	return (
+		<div>
+			<Header />
+		</div>
+	);
+};
 
 export default App;
