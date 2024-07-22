@@ -6,7 +6,6 @@ import {
 } from "@mui/material";
 import { ChangeEvent, Ref, forwardRef } from "react";
 
-import { V } from "../../../assets/icon/voscklicat";
 
 import V  from "../../../assets/icon/voscklicat.svg";
 

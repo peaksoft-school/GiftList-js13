@@ -1,8 +1,10 @@
 import { FC } from "react";
-import { Typography, Box, TextField } from "@mui/material";
+import { Typography, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import macbook from "../../../assets/images/macbook Pro.png";
 import { profiles } from "../../../shared/lib/types/projectProfiles";
+import { Button } from "../../../shared/UI/button/Button";
+import { Input } from "../../../shared/UI/input/Input";
 
 const LandingAboutProject: FC = () => {
   return (
@@ -67,8 +69,10 @@ const LandingAboutProject: FC = () => {
             </TypografyBody3>
             <Box>
               <SubscriptionForm component="form">
-                <StyledInput label="Введите ваш Email"/>
-                <NextIcon src="src/assets/icon/next.svg" alt="next" />
+                <StyledInput placeholder="Введите ваш Email" />
+                <StyledButton>
+                  <NextIcon src="src/assets/icon/next.svg" alt="next" />
+                </StyledButton>
               </SubscriptionForm>
             </Box>
           </SubscriptionBox>
@@ -78,47 +82,50 @@ const LandingAboutProject: FC = () => {
   );
 };
 
-const StyledBox = styled(Box)({
+const StyledBox = styled(Box)(() => ({
   margin: "0 auto",
   width: "1440px",
-});
+}));
 
-const BoxProject = styled(Box)({
+const BoxProject = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-around",
   alignItems: "center",
-});
+}));
 
-const BoxTitle = styled(Box)({
+const BoxTitle = styled(Box)(() => ({
   width: "600px",
   textAlign: "left",
-});
-const StyledH4 = styled(Typography)({
+}));
+
+const StyledH4 = styled(Typography)(() => ({
   color: "rgba(2, 2, 2, 1)",
   fontSize: "46px",
   fontWeight: "500",
   lineHeight: "46px",
-});
-const StyledTypography = styled(Typography)({
+}));
+
+const StyledTypography = styled(Typography)(() => ({
   color: "rgba(2, 2, 2, 1)",
   fontSize: "16px",
   lineHeight: "1.5",
   marginBottom: "1rem",
-});
-const Macbook = styled("img")({
+}));
+
+const Macbook = styled("img")(() => ({
   width: "542px",
   height: "318px",
-});
+}));
 
-const ProfilesContainer = styled(Box)({
+const ProfilesContainer = styled(Box)(() => ({
   display: "flex",
   flexWrap: "wrap",
   justifyContent: "space-around",
   gap: "16px",
   margin: "50px 0",
-});
+}));
 
-const StyledProfileCard = styled(Box)({
+const StyledProfileCard = styled(Box)(() => ({
   textAlign: "center",
   width: "150px",
   height: "200px",
@@ -134,37 +141,49 @@ const StyledProfileCard = styled(Box)({
     fontWeight: "400",
     lineHeight: "19px",
   },
-});
+}));
 
-const GridContainer = styled(Box)({
+const GridContainer = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-around",
   alignItems: "center",
   width: "100%",
-});
+}));
 
-const SubscriptionForm = styled(Box)({
+const SubscriptionForm = styled(Box)(() => ({
   position: "relative",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   marginTop: "1rem",
-});
-const StyledInput = styled(TextField)(() => ({
+}));
+
+const StyledInput = styled(Input)(() => ({
   width: "322px",
   height: "39px",
 }));
-const NextIcon = styled("img")({
+
+const StyledButton = styled(Button)(() => ({
   backgroundColor: "rgba(134, 57, 181, 1)",
-  width: "39px",
-  height: "39px",
+  width: "49px",
+  height: "49px",
   borderRadius: "50%",
   position: "absolute",
   right: "8px",
-  top:'8px',
-});
+  top: "12px",
+  minWidth: "49px",
+  padding: "0",
+}));
 
-const StyledBox5 = styled(Box)({
+const NextIcon = styled("img")(() => ({
+  width:"40px",
+
+  "&:hover":{
+    color:'black',
+  }
+}));
+
+const StyledBox5 = styled(Box)(() => ({
   margin: "50px 0",
   display: "flex",
   justifyContent: "center",
@@ -173,7 +192,8 @@ const StyledBox5 = styled(Box)({
   borderBottom: "2px solid silver",
   borderTop: "2px solid silver",
   width: "100%",
-});
+  backgroundColor:"#FFF",
+}));
 
 const StyledLink = styled("a")(() => ({
   display: "block",
@@ -185,28 +205,29 @@ const StyledLink = styled("a")(() => ({
   },
 }));
 
-const Icon = styled("img")({
+const Icon = styled("img")(() => ({
   cursor: "pointer",
   margin: "0 10px",
   width: "22px",
   height: "22px",
   transition: "transform 0.3s ease, filter 0.3s ease",
-
   "&:hover": {
     transform: "scale(1.2)",
     filter: "contrast(150%)",
   },
-});
+}));
 
-const InfoBox = styled(Box)({
+const InfoBox = styled(Box)(() => ({
   marginRight: "50px",
-});
+}));
+
 const TypografyH6 = styled(Typography)(() => ({
   color: "rgba(2, 2, 2, 1)",
   fontSize: "24px",
   fontWeight: "700",
   lineHeight: "29px",
 }));
+
 const TypografyBody2 = styled(Typography)(() => ({
   color: "rgba(53, 58, 90, 1)",
   fontSize: "14px",
@@ -214,16 +235,18 @@ const TypografyBody2 = styled(Typography)(() => ({
   lineHeight: "18px",
   margin: "10px 0",
 }));
+
 const TypografyBody3 = styled(Typography)(() => ({
   color: "rgba(2, 2, 2, 1)",
   fontSize: "18px",
   fontWeight: "500",
   lineHeight: "18px",
 }));
-const LinksBox = styled(Box)({
-  marginRight: "50px",
-});
 
-const SubscriptionBox = styled(Box)({});
+const LinksBox = styled(Box)(() => ({
+  marginRight: "50px",
+}));
+
+const SubscriptionBox = styled(Box)(() => ({}));
 
 export default LandingAboutProject;
