@@ -29,7 +29,7 @@ export const Input = forwardRef(
       label,
       variant = "outlined",
       onChange,
-      error = true,
+      error = false,
       helperText,
       ...rest
     } = props;
