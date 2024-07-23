@@ -4,10 +4,9 @@ export type MenuItemType = {
   avatar: string;
   name: string;
   date: string;
-  onClick?: () => void;
+  read: boolean;
 };
 
 export type TypeNotifications = {
   menuItems: MenuItemType[];
-  onClickAllReads: () => void;
 };

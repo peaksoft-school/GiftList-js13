@@ -1,14 +1,11 @@
 import { useState, MouseEvent, FC } from "react";
 import { Box, Button, Menu, MenuItem, styled, Typography } from "@mui/material";
-import bell from "../../assets/icon/bell.svg";
-import Choice from "./Choice";
 import { TypeNotifications } from "../lib/types/NotificationsType";
+import Choice from "./Choice";
 
-const Notifications: FC<TypeNotifications> = ({
-  menuItems,
-  onClickAllReads,
-}) => {
+const Notifications: FC<TypeNotifications> = ({ menuItems }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [items, setItems] = useState(menuItems);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -18,6 +15,16 @@ const Notifications: FC<TypeNotifications> = ({
     setAnchorEl(null);
   };
 
+  const handleAllReads = () => {
+    setItems((prevItems) => prevItems.map((item) => ({ ...item, read: true })));
+  };
+
+  const handleItemClick = (id: number) => {
+    setItems((prevItems) =>
+      prevItems.map((item) => (item.id === id ? { ...item, read: true } : item))
+    );
+  };
+
   return (
     <Box>
       <Button
@@ -25,7 +32,7 @@ const Notifications: FC<TypeNotifications> = ({
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <img src={bell} />
+        <img src="src/assets/icon/bell.svg" alt="bell" />
       </Button>
       <Menu
         id="simple-menu"
@@ -36,29 +43,34 @@ const Notifications: FC<TypeNotifications> = ({
       >
         <HeaderStyle>
           <TextHeaderStyled>Уведомления</TextHeaderStyled>
-          <Choice clickAllReads={onClickAllReads} />
+          <Choice onClickAllReads={handleAllReads} />
         </HeaderStyle>
 
-        {menuItems?.map((item) => (
-          <MenuItem key={item.id} onClick={handleClose}>
+        {items.map((item) => (
+          <MenuItemStyled
+            key={item.id}
+            read={item.read}
+            onClick={() => handleItemClick(item.id)}
+          >
             <Box>
               <Uved>
                 <AvatarStyled src={item.avatar} alt="avatar" />
                 <Box>
-                  <Typography
+                  <Box
                     sx={{
                       textWrap: "wrap",
                       lineHeight: "0px",
                     }}
                   >
-                    <NameStyled>{item.name}</NameStyled>{" "}
+                    <NameStyled>{item.name}</NameStyled>
+                    {"  "}
                     <LabelStyled>{item.label}</LabelStyled>
-                  </Typography>
+                  </Box>
                   <DateStyled>{item.date}</DateStyled>
                 </Box>
               </Uved>
             </Box>
-          </MenuItem>
+          </MenuItemStyled>
         ))}
       </Menu>
     </Box>
@@ -71,7 +83,7 @@ const HeaderStyle = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-between",
   borderBottom: "1px solid #D9D9D9",
-  padding: "10px 20px ",
+  padding: "10px 20px",
   marginBottom: "15px",
 }));
 
@@ -109,4 +121,18 @@ const LabelStyled = styled(Typography)(() => ({
 const DateStyled = styled(Typography)(() => ({
   color: "#949494",
   fontSize: "15px",
+  paddingBottom: "0 ",
+}));
+
+interface MenuItemStyledProps {
+  read: boolean;
+}
+
+const MenuItemStyled = styled(MenuItem, {
+  shouldForwardProp: (prop) => prop !== "read",
+})<MenuItemStyledProps>(({ read }) => ({
+  backgroundColor: read ? "#fff" : "#f3ecf8",
+  "&:hover": {
+    backgroundColor: read ? "#fff" : "#f3ecf8",
+  },
 }));
