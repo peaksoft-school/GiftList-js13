@@ -7,7 +7,7 @@ interface NewsletterCardProps {
   title: string;
 }
 
-const RassylkaCard: FC<NewsletterCardProps> = ({ image, date, title }) => {
+const MailingCard: FC<NewsletterCardProps> = ({ image, date, title }) => {
   return (
     <StyledBox>
       <StyledCard>
@@ -72,4 +72,4 @@ const StyledDate = styled(Typography)(() => ({
   paddingTop: "8px",
 }));
 
-export default RassylkaCard;
+export default MailingCard;
