@@ -1,10 +1,10 @@
-export type MenuItemType = {
+export type DataType = {
   id: number;
   title: string;
-  img: string;
-  onClick?: () => void;
+  icon: string;
+  onClick?: any;
 };
 
 export type MeatballsType = {
-  menuItems: MenuItemType[];
+  data: DataType[];
 };

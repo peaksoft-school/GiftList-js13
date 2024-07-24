@@ -1,19 +1,15 @@
 import { useState, MouseEvent, FC } from "react";
 import { Box, Button, Menu, MenuItem } from "@mui/material";
-import threeDoys from "../../assets/icon/threeDots.svg";
 import styled from "styled-components";
 import { MeatballsType } from "../lib/types/MeatballType";
 
-const Meatballs: FC<MeatballsType> = ({ menuItems }) => {
+const Meatballs: FC<MeatballsType> = ({ data }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) =>
     setAnchorEl(event.currentTarget);
-  };
 
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const handleClose = () => setAnchorEl(null);
 
   return (
     <Box>
@@ -22,7 +18,7 @@ const Meatballs: FC<MeatballsType> = ({ menuItems }) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <img src={threeDoys} alt="menu icon" />
+        <img src="src/assets/icon/threeDots.svg" alt="menu icon" />
       </Button>
       <Menu
         id="simple-menu"
@@ -31,10 +27,10 @@ const Meatballs: FC<MeatballsType> = ({ menuItems }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {menuItems.map((item) => (
-          <MenuItem key={item.id} onClick={item.onClick || handleClose}>
-            <ImgStyled src={item.img} alt={item.title} />
-            {item.title}
+        {data.map(({ id, icon, title, onClick }) => (
+          <MenuItem key={id} onClick={onClick || handleClose}>
+            <ImgStyled src={icon} alt={title} />
+            {title}
           </MenuItem>
         ))}
       </Menu>
