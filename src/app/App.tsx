@@ -1,4 +1,3 @@
-import React from 'react'
 import Header from '../widgets/landimg/header/Header'
 
 const App = () => {
