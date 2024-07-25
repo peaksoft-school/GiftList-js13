@@ -1,106 +1,124 @@
-import React from "react";
+import { FC, useState } from "react";
 import { styled } from "@mui/material/styles";
-import { Box, IconButton, InputBase, Menu, MenuItem } from "@mui/material";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import SearchIcon from "@mui/icons-material/Search";
-import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import LogoutIcon from "@mui/icons-material/Logout";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { Box, Button, InputBase, Menu, MenuItem } from "@mui/material";
+import chevrons from "../../../assets/icon/Chevrons Icon.svg";
+import notification from "../../../assets/icon/notification.svg";
+import iconsProfile from "../../../assets/icon/Subtract.svg";
+import logout from "../../../assets/icon/Logout.svg";
+import searchIcons from "../../../assets/icon/Union.svg";
+import ProfileIcons from "../../../assets/icon/ProfileLogouts.svg";
 
-const Header: React.FC = () => {
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+const Header: FC = () => {
+	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handleMenuClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
+	const handleMenuClick = (event: React.MouseEvent<HTMLButtonElement>) =>
+		setAnchorEl(event.currentTarget);
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
+	const handleMenuClose = () => setAnchorEl(null);
 
-  return (
-    <StyledHeader>
-      <SearchContainer>
-        <StyledSearchBox>
-          <SearchIcon />
-          <InputBase
-            placeholder="Поиск"
-            style={{ marginLeft: 8, width: "100%" }}
-          />
-        </StyledSearchBox>
-      </SearchContainer>
-      <Box display="flex" alignItems="center">
-        <IconButton>
-          <NotificationsNoneIcon />
-        </IconButton>
-        <UserBox onClick={handleMenuClick}>
-          <MenuIcon />
-          <UserName>Mirlan Uzumaki</UserName>
-          <ArrowDropDownIcon />
-        </UserBox>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleMenuClose}>
-          <MenuItem onClick={handleMenuClose}>
-            Профиль
-            <AccountBoxIcon style={{ marginLeft: "10px" }} />
-          </MenuItem>
-          <MenuItem onClick={handleMenuClose}>
-            Выйти
-            <LogoutIcon style={{ marginLeft: "15px" }} />
-          </MenuItem>
-        </Menu>
-      </Box>
-    </StyledHeader>
-  );
+	return (
+		<StyledHeader>
+			<SearchContainer>
+				<StyledSearchBox>
+					<SearchStyled src={searchIcons} />
+					<StyledBaseInput placeholder="Поиск" />
+				</StyledSearchBox>
+			</SearchContainer>
+			<StyledContainer>
+				<ProfileNotfic>
+					<Button>
+						<img src={notification} />
+					</Button>
+
+					<Button onClick={handleMenuClick}>
+						<StyledUserName>
+							<img src={iconsProfile} />
+							<UserName>Mirlan Uzumaki</UserName>
+							<img src={chevrons} />
+						</StyledUserName>
+					</Button>
+				</ProfileNotfic>
+				<Menu
+					anchorEl={anchorEl}
+					open={Boolean(anchorEl)}
+					onClose={handleMenuClose}>
+					<MenuItem onClick={handleMenuClose}>
+						<StyledProfile src={ProfileIcons} />
+						Профиль
+					</MenuItem>
+					<MenuItem onClick={handleMenuClose}>
+						<StyledLogout src={logout} />
+						Выйти
+					</MenuItem>
+				</Menu>
+			</StyledContainer>
+		</StyledHeader>
+	);
 };
 
 export default Header;
 
+const StyledBaseInput = styled(InputBase)(() => ({
+	marginLeft: 8,
+	width: "100%",
+}));
+const StyledUserName = styled(Box)(() => ({
+	display: "flex",
+	gap: "10px",
+	marginTop: "-5px",
+}));
+const StyledProfile = styled("img")(() => ({
+	marginRight: "5px",
+}));
+const StyledLogout = styled("img")(() => ({
+	marginRight: "5px",
+}));
+
+const ProfileNotfic = styled(Box)(() => ({
+	display: "flex",
+	gap: "25px",
+}));
+
+const StyledContainer = styled(Box)(() => ({
+	display: "flex",
+	justifyContent: "center",
+}));
+
 const StyledHeader = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "60px",
-  padding: theme.spacing(1),
-  borderBottom: "1px solid #e0e0e0",
-  backgroundColor: "white",
-  height: "60px",
+	display: "flex",
+	alignItems: "center",
+	justifyContent: "center",
+	gap: "60px",
+	padding: theme.spacing(1),
+	borderBottom: "1px solid #F7F8FA",
+	backgroundColor: "white",
+	height: "70px",
 }));
 
 const SearchContainer = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  width: "50%",
+	display: "flex",
+	alignItems: "center",
+	width: "50%",
+	padding: theme.spacing(1),
 }));
 
 const StyledSearchBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(1),
-  borderRadius: "8px",
-  width: "100%",
-  backgroundColor: "#fff8f85c",
-  border: "1px solid #bdbdbd",
-  "&:focus-within": {
-    borderColor: "black",
-  },
-}));
-
-const UserBox = styled(Box)(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  marginLeft: theme.spacing(2),
-  cursor: "pointer",
+	display: "flex",
+	alignItems: "center",
+	padding: theme.spacing(1),
+	borderRadius: "8px",
+	width: "100%",
+	backgroundColor: "#fff8f85c",
+	border: "1px solid#BDBDBD",
+	"&:focus-within": {
+		borderColor: "#918d8d",
+	},
 }));
 
 const UserName = styled(Box)(({ theme }) => ({
-  marginLeft: theme.spacing(1),
+	marginLeft: theme.spacing(1),
 }));
 
-const MenuIcon = styled(AccountCircleIcon)(({ theme }) => ({
-  width: "60px",
-  height: "40px",
+const SearchStyled = styled("img")(() => ({
+	cursor: "pointer",
 }));
