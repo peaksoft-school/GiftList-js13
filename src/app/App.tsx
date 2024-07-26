@@ -1,8 +1,5 @@
 import { FC } from "react";
-import LandingAboutProject from "../widgets/landimg/landingAbout/LandingAboutProject";
 
-const App: FC = () => <>
-<LandingAboutProject/>
-</>;
+const App: FC = () => <h1>GIFT LIST_13</h1>;
 
 export default App;
