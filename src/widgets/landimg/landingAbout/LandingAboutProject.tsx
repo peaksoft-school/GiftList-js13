@@ -4,50 +4,54 @@ import macbook from "../../../assets/images/macbook Pro.png";
 import { profiles } from "../../../shared/lib/types/projectProfiles";
 import Footer from "../footer/Footer";
 
-const LandingAboutProject: FC = () => {
-  return (
-    <>
-      <BoxContainer>
-        <BoxProject>
-          <BoxTitle>
-            <StyledH4 variant="h4" gutterBottom>
-              О проекте
-            </StyledH4>
-            <StyledTypography variant="body1" paragraph>
-              Найти удачный подарок, который принесёт радость, не всегда простая
-              задача. Благодаря нашему сервису у вас есть возможность не только
-              обрадовать подарком, но и помочь другим приобрести необходимые им
-              вещи. В разделе благотворительность вы можете найти список
-              опубликованных вещей, забронировав, вы связываетесь с их
-              обладателем.
-            </StyledTypography>
-            <StyledTypography variant="body1" paragraph>
-              Найти удачный подарок, который принесёт радость, не всегда простая
-              задача. Благодаря нашему сервису у вас есть возможность не только
-              обрадовать подарком, но и помочь другим приобрести необходимые им
-              вещи.
-            </StyledTypography>
-            <StyledTypography variant="body1" paragraph>
-              В разделе благотворительность вы можете найти список
-              опубликованных вещей, забронировав, вы связываетесь с их
-              обладателем.
-            </StyledTypography>
-          </BoxTitle>
-          <Macbook src={macbook} alt="Macbook" />
-        </BoxProject>
-        <ProfilesContainer>
-          {profiles.map((profile, index) => (
-            <StyledProfileCard key={index}>
-              <img src={profile.img} alt={profile.name} />
-              <Typography variant="body1">{profile.name}</Typography>
-            </StyledProfileCard>
-          ))}
-        </ProfilesContainer>
-        <Footer />
-      </BoxContainer>
-    </>
-  );
-};
+const LandingAboutProject: FC = () => (
+  <>
+    <BoxContainer>
+      <BoxProject>
+        <BoxTitle>
+          <StyledH4 variant="h4" gutterBottom>
+            О проекте
+          </StyledH4>
+
+          <StyledTypography variant="body1" paragraph>
+            Найти удачный подарок, который принесёт радость, не всегда простая
+            задача. Благодаря нашему сервису у вас есть возможность не только
+            обрадовать подарком, но и помочь другим приобрести необходимые им
+            вещи. В разделе благотворительность вы можете найти список
+            опубликованных вещей, забронировав, вы связываетесь с их
+            обладателем.
+          </StyledTypography>
+
+          <StyledTypography variant="body1" paragraph>
+            Найти удачный подарок, который принесёт радость, не всегда простая
+            задача. Благодаря нашему сервису у вас есть возможность не только
+            обрадовать подарком, но и помочь другим приобрести необходимые им
+            вещи.
+          </StyledTypography>
+
+          <StyledTypography variant="body1" paragraph>
+            В разделе благотворительность вы можете найти список опубликованных
+            вещей, забронировав, вы связываетесь с их обладателем.
+          </StyledTypography>
+        </BoxTitle>
+
+        <Macbook src={macbook} alt="Macbook" />
+      </BoxProject>
+
+      <ProfilesContainer>
+        {profiles.map((profile, index) => (
+          <StyledProfileCard key={index}>
+            <img src={profile.img} alt={profile.name} />
+
+            <Typography variant="body1">{profile.name}</Typography>
+          </StyledProfileCard>
+        ))}
+      </ProfilesContainer>
+
+      <Footer />
+    </BoxContainer>
+  </>
+);
 
 const BoxContainer = styled(Box)(() => ({
   maxWidth: "1440px",
@@ -114,4 +118,3 @@ const StyledProfileCard = styled(Box)(() => ({
 }));
 
 export default LandingAboutProject;
-
