@@ -19,7 +19,7 @@ export const stats = [
 
 export const features = [
   {
-    icon: "src/assets/icon/Dogood.svg",
+    icon: "src/assets/icon/dogood.svg",
     title: "Дари то, что необходимо",
     points: [
       "Находи своих близких",

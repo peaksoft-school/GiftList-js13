@@ -1,63 +1,177 @@
-import React from "react";
-import styled from "styled-components";
-import GroupImage from "../../assets/photo.svg";
+import { FC } from "react";
+import { Typography, Box } from "@mui/material";
+import { styled } from "@mui/system";
+import { Button } from "../../../shared/UI/button/Button";
+import { Input } from "../../../shared/UI/input/Input";
+import vk from "../../../assets/icon/vkontacte.svg";
+import instagramm from "../../../assets/icon/instagramm.svg";
+import facebook from "../../../assets/icon/facebookNew.svg";
 
-const FooterList : React.FC = () => {
-	return (
-		<Container>
-			<ImageContainer>
-				<Image src={GroupImage} />
-			</ImageContainer>
-			<TextContainer>
-				<Title>Благотворительность</Title>
-				<Text>
-					Найти удачный подарок, который принесёт радость, не всегда простая
-					задача. Благодаря нашему сервису у вас есть возможность не только
-					обрадовать подарком, но и помочь другим приобрести необходимые им
-					вещи. В разделе благотворительность вы можете найти список
-					опубликованных вещей, забронировав, вы связываетесь с их обладателем.
-				</Text>
-			</TextContainer>
-		</Container>
-	);
+const Footer: FC = () => {
+  return (
+    <StyledBox>
+      <Box>
+        <StyledBox5>
+          <GridContainer>
+            <InfoBox>
+              <TypografyH6 variant="h6">GIFT LIST</TypografyH6>
+              <TypografyBody2 variant="body2">
+                Социальная сеть нового поколения
+              </TypografyBody2>
+              <Box mt={2}>
+                <Icon src={vk} alt="VK" />
+                <Icon src={instagramm} alt="Instagram" />
+                <Icon src={facebook} alt="Facebook" />
+              </Box>
+            </InfoBox>
+            <LinksBox>
+              <Box>
+                <StyledLink href="#navigation">Навигация</StyledLink>
+                <StyledLink href="#project">О проекте</StyledLink>
+                <StyledLink href="#charity">Благотворительность</StyledLink>
+              </Box>
+            </LinksBox>
+            <SubscriptionBox>
+              <TypografyBody3 variant="body2">
+                Подписаться на рассылку
+              </TypografyBody3>
+              <Box>
+                <SubscriptionForm component="form">
+                  <StyledInput
+                    autoComplete="off"
+                    placeholder="Введите ваш Email"
+                  />
+                  <StyledButton>
+                    <NextIcon src="src/assets/icon/next.svg" alt="next" />
+                  </StyledButton>
+                </SubscriptionForm>
+              </Box>
+            </SubscriptionBox>
+          </GridContainer>
+        </StyledBox5>
+        <TypographyLast variant="body1" paragraph>
+          Peaksoft © 2024 Все права защищены
+        </TypographyLast>
+      </Box>
+    </StyledBox>
+  );
 };
 
-export default FooterList;
+const StyledBox = styled(Box)(() => ({
+  width: "100%",
+}));
 
-const Container = styled.div`
-	display: flex;
-	align-items: center;
-	background-color: #8639b5;
-	color: white;
-	padding: 40px;
-	border-radius: 8px;
-`;
+const GridContainer = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  width: "100%",
+}));
 
-const ImageContainer = styled.div`
-	flex: 1;
-	padding: 10px;
-`;
+const SubscriptionForm = styled(Box)(() => ({
+  position: "relative",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  marginTop: "1rem",
+}));
 
-const Image = styled.img`
-	border: solid 1px;
-	border-radius: 0px, 120px, 0px, 0px;
-	width: 70%;
-	height: auto;
-	border-radius: 8px;
-`;
+const StyledInput = styled(Input)(() => ({
+  width: "322px",
+  height: "39px",
+}));
 
-const TextContainer = styled.div`
-	flex: 1;
-	padding: 10px;
-	text-align: left;
-`;
+const StyledButton = styled(Button)(() => ({
+  backgroundColor: "rgba(134, 57, 181, 1)",
+  width: "49px",
+  height: "49px",
+  borderRadius: "50%",
+  position: "absolute",
+  right: "8px",
+  top: "12px",
+  minWidth: "49px",
+  padding: "0",
+}));
 
-const Title = styled.h1`
-	font-size: 2em;
-	margin-bottom: 20px;
-`;
+const NextIcon = styled("img")(() => ({
+  width: "40px",
 
-const Text = styled.p`
-	font-size: 1.2em;
-	line-height: 1.5;
-`;
+  "&:hover": {
+    color: "black",
+  },
+}));
+
+const StyledBox5 = styled(Box)(() => ({
+  margin: "20px 0",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "2rem 0",
+  borderBottom: "2px solid silver",
+  borderTop: "2px solid silver",
+  width: "100%",
+  backgroundColor: "#FFF",
+}));
+
+const StyledLink = styled("a")(() => ({
+  display: "block",
+  color: "rgba(2, 2, 2, 1)",
+  textDecoration: "none",
+  margin: "0.5rem 0",
+  "&:hover": {
+    textDecoration: "underline",
+  },
+}));
+
+const Icon = styled("img")(() => ({
+  cursor: "pointer",
+  margin: "0 10px",
+  width: "22px",
+  height: "22px",
+  transition: "transform 0.3s ease, filter 0.3s ease",
+  "&:hover": {
+    transform: "scale(1.2)",
+    filter: "contrast(150%)",
+  },
+}));
+
+const InfoBox = styled(Box)(() => ({
+  marginRight: "50px",
+}));
+
+const TypografyH6 = styled(Typography)(() => ({
+  color: "rgba(2, 2, 2, 1)",
+  fontSize: "24px",
+  fontWeight: "700",
+  lineHeight: "29px",
+}));
+
+const TypografyBody2 = styled(Typography)(() => ({
+  color: "rgba(53, 58, 90, 1)",
+  fontSize: "14px",
+  fontWeight: "400",
+  lineHeight: "18px",
+  margin: "10px 0",
+}));
+
+const TypografyBody3 = styled(Typography)(() => ({
+  color: "rgba(2, 2, 2, 1)",
+  fontSize: "18px",
+  fontWeight: "500",
+  lineHeight: "18px",
+}));
+
+const LinksBox = styled(Box)(() => ({
+  marginRight: "50px",
+}));
+
+const TypographyLast = styled(Typography)(() => ({
+  textAlign: "center",
+  fontSize: "14px",
+  fontWeight: "400",
+  lineHeight: "14px",
+}));
+
+const SubscriptionBox = styled(Box)(() => ({}));
+
+export default Footer;
