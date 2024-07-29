@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import Notifications from "../../../shared/notifications/Notifications";
 
-const Header: FC = () => {
+const SearchHeader: FC = () => {
 	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
 	const handleClick = (event: MouseEvent<HTMLElement>) => {
@@ -61,7 +61,7 @@ const Header: FC = () => {
 	);
 };
 
-export default Header;
+export default SearchHeader;
 
 const UserName = styled("p")({
 	padding: "5px",
