@@ -1,12 +1,21 @@
+import { Breadcrumbs as MuiBreadcrumbs, Typography } from "@mui/material";
 import { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Breadcrumbs as MuiBreadcrumbs, Typography } from "@mui/material";
-import { TypeBreadcrumbs } from "../lib/types/TypeBreadcrumbs";
 
-const Breadcrumbs: FC<TypeBreadcrumbs> = ({ pathNamesMap }) => {
+interface BreadcrumbsProps {
+  data: { label: string; href: string }[];
+}
+
+const Breadcrumbs: FC<BreadcrumbsProps> = ({ data }) => {
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
+
   const truncatedPathnames = pathnames.slice(-2);
+
+  const findLabel = (href: string) => {
+    const match = data.find((item) => item.href === href);
+    return match ? match.label : href;
+  };
 
   return (
     <MuiBreadcrumbs aria-label="breadcrumb">
@@ -18,7 +27,7 @@ const Breadcrumbs: FC<TypeBreadcrumbs> = ({ pathNamesMap }) => {
 
         return isLast ? (
           <Typography color="text.primary" key={to}>
-            {pathNamesMap[value] || value}
+            {findLabel(value)}
           </Typography>
         ) : (
           <Link
@@ -26,7 +35,7 @@ const Breadcrumbs: FC<TypeBreadcrumbs> = ({ pathNamesMap }) => {
             key={to}
             style={{ textDecoration: "none", color: "inherit" }}
           >
-            {pathNamesMap[value] || value}
+            {findLabel(value)}
           </Link>
         );
       })}
