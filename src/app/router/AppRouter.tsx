@@ -1,5 +1,5 @@
 const AppRouter = () => {
-	return <></>;
+  return <></>;
 };
 
 export default AppRouter;
