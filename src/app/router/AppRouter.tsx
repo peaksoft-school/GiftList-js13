@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "../../pages/Landing";
-import User from "../../pages/User";
-import Administrator from "../../pages/Administrator";
+import Landing from "../../pages/landingPages/Landing";
+import User from "../../pages/userPages/User";
+import Administrator from "../../pages/adminPages/Administrator";
 import PrivateRoutes from "./PrivateRoutes";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
