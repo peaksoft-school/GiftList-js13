@@ -27,12 +27,11 @@ const FriendsCard: FC<FriendsCardProps> = ({ friend }) => (
 const FriendsContainer = styled("div")(() => ({
   display: "grid",
   gridTemplateColumns: "repeat(4, 1fr)",
-  gap: "16px",
+  gap: "6px",
   justifyContent: "space-around",
   padding: "16px",
   maxWidth: "1086px",
 }));
-
 const FriendCard = styled("div")(() => ({
   background: "linear-gradient(to bottom, #EADDFD 50%, white 50%)",
   border: "1px solid #E0E0E0",
