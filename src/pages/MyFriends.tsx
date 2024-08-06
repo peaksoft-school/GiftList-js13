@@ -66,26 +66,26 @@ export const MyFriends: FC = () => {
   );
 };
 
-const Container = styled("div")({
+const Container = styled("div")(() => ({
   display: "flex",
   width: "1440px",
   height: "1024px",
-});
+}));
 
-const SideBarWrapper = styled("div")({
+const SideBarWrapper = styled("div")(() => ({
   width: "300px",
   height: "100%",
   display: "flex",
   flexDirection: "column",
   gap: "10px",
-});
+}));
 
-const MainContent = styled("div")({
+const MainContent = styled("div")(() => ({
   flex: 1,
   display: "flex",
   flexDirection: "column",
-});
+}));
 
-const FriendsContainer = styled("div")({
+const FriendsContainer = styled("div")(() => ({
   display: "flex",
-});
+}));
