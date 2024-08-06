@@ -6,12 +6,6 @@ import {
 } from "@mui/material";
 import { ChangeEvent, Ref, forwardRef } from "react";
 
-
-
-import V  from "../../../assets/icon/voscklicat.svg";
-
-
-
 type InputProps = Omit<TextFieldProps, "variant"> & {
   value?: string;
   label?: string;
@@ -24,13 +18,13 @@ type InputProps = Omit<TextFieldProps, "variant"> & {
 export const Input = forwardRef(
   (props: InputProps, ref?: Ref<HTMLInputElement>) => {
     const {
+      variant = "outlined",
       value,
       id,
       label,
-      variant = "outlined",
       onChange,
-      error = false,
       helperText,
+      error = false,
       ...rest
     } = props;
 
@@ -79,12 +73,12 @@ export const Input = forwardRef(
 
 const StyledInput = styled(TextField)(() => ({
   "& .MuiOutlinedInput-root": {
-    fontSize: "27px",
+    fontSize: "22px",
     borderRadius: "12px",
     padding: "0px 15px",
 
     "& fieldset": {
-      margin: "6px 0",
+      margin: "8px 0",
       borderWidth: "2px",
     },
     "&:hover fieldset": {
