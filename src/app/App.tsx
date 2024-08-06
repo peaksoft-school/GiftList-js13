@@ -1,5 +1,11 @@
-import { FC } from "react";
+import MailingCard from "../shared/newsLetter/MailingCard";
 
-const App: FC = () => <h1>GIFT LIST_13</h1>;
+const App = () => {
+	return (
+		<div>
+			<MailingCard />
+		</div>
+	);
+};
 
 export default App;
