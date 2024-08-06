@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import dayjs, { Dayjs } from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers";
@@ -15,13 +17,15 @@ function DatePick({ label }: LabelTypes) {
 	};
 
 	return (
-		<DemoContainer components={["DatePicker"]}>
-			<DatePicker
-				label={label}
-				value={selectedDate}
-				onChange={handleDateChange}
-			/>
-		</DemoContainer>
+		<LocalizationProvider dateAdapter={AdapterDayjs}>
+			<DemoContainer components={["DatePicker"]}>
+				<DatePicker
+					label={label}
+					value={selectedDate}
+					onChange={handleDateChange}
+				/>
+			</DemoContainer>
+		</LocalizationProvider>
 	);
 }
 
