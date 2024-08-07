@@ -82,8 +82,9 @@ const StyleAccount = styled("img")({
 });
 
 const StyleContainer = styled(Box)({
+	marginLeft: "300px",
+	marginTop: "10px",
 	display: "flex",
-	margin: "20px",
 });
 
 const StyleSelect = styled("img")({
