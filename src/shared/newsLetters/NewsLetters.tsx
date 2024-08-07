@@ -1,17 +1,28 @@
+import React from "react";
 import { Box, Typography } from "@mui/material";
 import { styled as muiStyled } from "@mui/material/styles";
 import styled from "styled-components";
 import { Button } from "../UI/button/Button";
 import cardImage from "../../assets/foto/Rectangle 8.png";
+import SendEmailModal from "./NewLettersModal";
 
 const NewsLetters = () => {
+	const [openModal, setOpenModal] = React.useState(false);
+
+	const handleOpenModal = () => {
+		setOpenModal(true);
+	};
+
+	const handleCloseModal = () => {
+		setOpenModal(false);
+	};
+
 	return (
 		<StyledContainer>
 			<StyleddNewLetter>
 				<StyledLetters>Рассылка</StyledLetters>
-        
-				<StyledMailButton variant="contained">
-					<img src="src/assets/icon/mail.svg" />
+				<StyledMailButton variant="contained" onClick={handleOpenModal}>
+					<img src="src/assets/icon/mail.svg" alt="mail icon" />
 					<StyledTextMail>Отправить рассылку</StyledTextMail>
 				</StyledMailButton>
 			</StyleddNewLetter>
@@ -32,6 +43,7 @@ const NewsLetters = () => {
 					<StyledDate>12.04.22</StyledDate>
 				</StyledCard>
 			</StyledCards>
+			<SendEmailModal open={openModal} onClose={handleCloseModal} />
 		</StyledContainer>
 	);
 };
@@ -85,6 +97,7 @@ const StyledCard = styled(Box)(() => ({
 const StyledImage = styled("img")(() => ({
 	width: "100%",
 	borderRadius: "10px",
+	cursor: "pointer",
 }));
 
 const StyledText = styled(Typography)(() => ({
