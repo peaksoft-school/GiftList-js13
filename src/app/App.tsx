@@ -1,11 +1,5 @@
-import NewsLetters from "../shared/newsLetters/NewsLetters";
+import { FC } from "react";
 
-const App = () => {
-	return (
-		<>
-			<NewsLetters />
-		</>
-	);
-};
+const App: FC = () => <h1>GIFT LIST_13</h1>;
 
 export default App;
