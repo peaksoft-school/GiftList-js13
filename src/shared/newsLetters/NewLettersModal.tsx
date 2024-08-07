@@ -1,36 +1,50 @@
 import { Box, styled, TextField, Typography } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import { Button } from "../UI/button/Button";
+
 interface ModalType {
 	open: boolean;
 	onClose: () => void;
 }
+
 const SendEmailModal = ({ open, onClose }: ModalType) => {
+	const handleFileInputClick = () => {
+		const fileInput = document.getElementById("fileInputModal");
+		if (fileInput) {
+			fileInput.click();
+		}
+	};
+
 	return (
 		<Modal open={open} onClose={onClose}>
 			<ModalBox>
 				<Typography variant="h6" component="h2" gutterBottom>
 					Создание рассылки
 				</Typography>
-				<PhotoBox>
-					<Typography color="textSecondary">
-						Нажмите для добавления фотографии
-					</Typography>
+				<PhotoBox onClick={handleFileInputClick}>
+					<FilePhoto src="src/assets/icon/filePhoto.svg" />
+					<TextFile>Нажмите для добавления фотографии</TextFile>
+					<input type="file" id="fileInputModal" style={{ display: "none" }} />
 				</PhotoBox>
-				<TextField label="Тема" variant="outlined" fullWidth margin="normal" />
 				<TextField
-					label="Текст рассылки"
+					label="Тема"
+					placeholder="Введите тему рассылки"
 					variant="outlined"
 					fullWidth
-					multiline
-					rows={4}
+					margin="normal"
+				/>
+				<TextField
+					label="Текст рассылки"
+					placeholder="Введите текст рассылки"
+					variant="outlined"
+					fullWidth
 					margin="normal"
 				/>
 				<ButtonsContainer>
-					<CancelButton variant="contained" onClick={onClose}>
+					<CancelButton variant="outlined" onClick={onClose}>
 						Отмена
 					</CancelButton>
-					<SubmitButton variant="contained">Отправить</SubmitButton>
+					<NewLetteBtn variant="contained">Отправить</NewLetteBtn>
 				</ButtonsContainer>
 			</ModalBox>
 		</Modal>
@@ -44,7 +58,7 @@ const ModalBox = styled(Box)(() => ({
 	borderRadius: "8px",
 	boxShadow: "24",
 	padding: "34px",
-	width: "400px",
+	width: "500px",
 	position: "absolute",
 	top: "50%",
 	left: "50%",
@@ -53,15 +67,27 @@ const ModalBox = styled(Box)(() => ({
 	flexDirection: "column",
 	alignItems: "center",
 }));
+const TextFile = styled(Typography)(() => ({
+	color: "gray",
+	textAlign: "center",
+	marginTop: "10px",
+}));
 
+const FilePhoto = styled("img")(() => ({
+	width: "50px",
+	height: "50px",
+	marginLeft: "70px",
+	marginTop: "40px",
+}));
 const PhotoBox = styled(Box)(() => ({
-	width: "150px",
-	height: "150px",
-	border: "2px dashed gray",
-	display: "flex",
-	justifyContent: "center",
+	width: "210px",
+	backgroundColor: "#DCDCE4",
+	height: "200px",
+	border: "1px solid #c8c8c8",
+	borderRadius: "8px",
 	alignItems: "center",
-	marginBottom: "16px",
+	marginTop: "25px",
+	cursor: "pointer",
 }));
 
 const ButtonsContainer = styled(Box)(() => ({
@@ -72,20 +98,11 @@ const ButtonsContainer = styled(Box)(() => ({
 }));
 
 const CancelButton = styled(Button)(() => ({
-	backgroundColor: "#FFFFFF",
-	color: "#8C8C8C",
-	border: "1px solid #8C8C8C",
-	width: "48%",
-	"&:hover": {
-		backgroundColor: "#F5F5F5",
-	},
+	width: "47%",
+	borderRadius: "10px",
 }));
-
-const SubmitButton = styled(Button)(() => ({
-	backgroundColor: "#8C52FF",
-	color: "#FFFFFF",
-	width: "48%",
-	"&:hover": {
-		backgroundColor: "#7B4BFF",
-	},
+const NewLetteBtn = styled(Button)(() => ({
+	width: "47%",
+	color: "white",
+	borderRadius: "10px",
 }));
