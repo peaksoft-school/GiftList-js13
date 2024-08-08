@@ -6,13 +6,11 @@ export const routes = {
 
   USER: {
     index: "/user",
-
     profile: "profile",
   },
 
   ADMIN: {
     index: "/admin",
-
     users: "users",
   },
 };
