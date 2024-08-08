@@ -4,13 +4,15 @@ import {
   TextFieldProps,
   styled,
 } from "@mui/material";
-import { ChangeEvent, Ref, forwardRef } from "react";
+import { ChangeEvent, MouseEvent, Ref, forwardRef } from "react";
 
 type InputProps = Omit<TextFieldProps, "variant"> & {
   value?: string;
   label?: string;
   variant?: "outlined" | "standard" | "filled";
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClickEye?: (event: MouseEvent<HTMLButtonElement>) => void;
+  icon?: string;
   error?: boolean;
   helperText?: string;
 };
@@ -23,8 +25,10 @@ export const Input = forwardRef(
       id,
       label,
       onChange,
+      icon,
       helperText,
       error = false,
+      onClickEye,
       ...rest
     } = props;
 
@@ -53,12 +57,22 @@ export const Input = forwardRef(
           error={error}
           {...rest}
           InputProps={{
-            endAdornment: error && (
+            endAdornment: (
               <InputAdornment position="end">
-                <img
-                  style={{ width: "35px" }}
-                  src="src/assets/icon/voscklicat.svg"
-                />
+                {error && (
+                  <img
+                    style={{ width: "35px" }}
+                    src="src/assets/icon/voscklicat.svg"
+                    alt="Error icon"
+                  />
+                )}
+                <button
+                  type="button"
+                  onClick={onClickEye}
+                  style={{ backgroundColor: "white", border: "none" }}
+                >
+                  <img style={{ width: "25px" }} src={icon} />
+                </button>
               </InputAdornment>
             ),
           }}
