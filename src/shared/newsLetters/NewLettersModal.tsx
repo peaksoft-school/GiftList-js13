@@ -1,12 +1,10 @@
 import { Box, styled, TextField, Typography } from "@mui/material";
-import Modal from "@mui/material/Modal";
 import { Button } from "../UI/button/Button";
-
+import ModalProps from "../modal/ModalProps";
 interface ModalType {
 	open: boolean;
 	onClose: () => void;
 }
-
 const SendEmailModal = ({ open, onClose }: ModalType) => {
 	const handleFileInputClick = () => {
 		const fileInput = document.getElementById("fileInputModal");
@@ -16,7 +14,7 @@ const SendEmailModal = ({ open, onClose }: ModalType) => {
 	};
 
 	return (
-		<Modal open={open} onClose={onClose}>
+		<ModalProps open={open} onClose={onClose}>
 			<ModalBox>
 				<Typography variant="h6" component="h2" gutterBottom>
 					Создание рассылки
@@ -26,14 +24,14 @@ const SendEmailModal = ({ open, onClose }: ModalType) => {
 					<TextFile>Нажмите для добавления фотографии</TextFile>
 					<input type="file" id="fileInputModal" style={{ display: "none" }} />
 				</PhotoBox>
-				<TextField
+				<StyledTextField
 					label="Тема"
 					placeholder="Введите тему рассылки"
 					variant="outlined"
 					fullWidth
 					margin="normal"
 				/>
-				<TextField
+				<StyledTextField
 					label="Текст рассылки"
 					placeholder="Введите текст рассылки"
 					variant="outlined"
@@ -47,7 +45,7 @@ const SendEmailModal = ({ open, onClose }: ModalType) => {
 					<NewLetteBtn variant="contained">Отправить</NewLetteBtn>
 				</ButtonsContainer>
 			</ModalBox>
-		</Modal>
+		</ModalProps>
 	);
 };
 
@@ -67,6 +65,7 @@ const ModalBox = styled(Box)(() => ({
 	flexDirection: "column",
 	alignItems: "center",
 }));
+
 const TextFile = styled(Typography)(() => ({
 	color: "gray",
 	textAlign: "center",
@@ -79,6 +78,7 @@ const FilePhoto = styled("img")(() => ({
 	marginLeft: "70px",
 	marginTop: "40px",
 }));
+
 const PhotoBox = styled(Box)(() => ({
 	width: "210px",
 	backgroundColor: "#DCDCE4",
@@ -101,8 +101,21 @@ const CancelButton = styled(Button)(() => ({
 	width: "47%",
 	borderRadius: "10px",
 }));
+
 const NewLetteBtn = styled(Button)(() => ({
 	width: "47%",
 	color: "white",
 	borderRadius: "10px",
+}));
+const StyledTextField = styled(TextField)(() => ({
+	"& .MuiOutlinedInput-root": {
+		borderRadius: "6px",
+		height: "40px",
+	},
+	"& .MuiInputLabel-root": {
+		transform: "translate(14px, 12px) scale(1)",
+		"&.Mui-focused": {
+			transform: "translate(14px, -9px) scale(0.75)",
+		},	
+	},
 }));

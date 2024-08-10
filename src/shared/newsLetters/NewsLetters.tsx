@@ -1,22 +1,18 @@
-import React from "react";
 import { Box, Typography } from "@mui/material";
-import { styled as muiStyled } from "@mui/material/styles";
-import styled from "styled-components";
+import { styled } from "@mui/material/styles";
 import { Button } from "../UI/button/Button";
 import cardImage from "../../assets/foto/Rectangle 8.png";
 import SendEmailModal from "./NewLettersModal";
+import { useState } from "react";
 
 const NewsLetters = () => {
-	const [openModal, setOpenModal] = React.useState(false);
-
+	const [openModal, setOpenModal] = useState(false);
 	const handleOpenModal = () => {
 		setOpenModal(true);
 	};
-
 	const handleCloseModal = () => {
 		setOpenModal(false);
 	};
-
 	return (
 		<StyledContainer>
 			<StyleddNewLetter>
@@ -29,17 +25,23 @@ const NewsLetters = () => {
 			<StyledCards>
 				<StyledCard>
 					<StyledImage src={cardImage} />
-					<StyledText>Тема рассылки</StyledText>
+					<StyledTypography variant="body1" fontWeight={600}>
+							Тема рассылки
+					</StyledTypography>
 					<StyledDate>12.04.22</StyledDate>
 				</StyledCard>
 				<StyledCard>
 					<StyledImage src={cardImage} />
-					<StyledText>Тема рассылки</StyledText>
+					<StyledTypography variant="body1" fontWeight={600}>
+						Тема рассылки
+					</StyledTypography>
 					<StyledDate>12.04.22</StyledDate>
 				</StyledCard>
 				<StyledCard>
 					<StyledImage src={cardImage} />
-					<StyledText>Тема рассылки</StyledText>
+					<StyledTypography variant="body1" fontWeight={600}>
+						Тема рассылки
+					</StyledTypography>
 					<StyledDate>12.04.22</StyledDate>
 				</StyledCard>
 			</StyledCards>
@@ -47,10 +49,9 @@ const NewsLetters = () => {
 		</StyledContainer>
 	);
 };
-
 export default NewsLetters;
 
-const StyledLetters = muiStyled(Typography)({
+const StyledLetters = styled(Typography)({
 	fontSize: "20px",
 	fontWeight: "500",
 	textTransform: "none",
@@ -100,15 +101,17 @@ const StyledImage = styled("img")(() => ({
 	cursor: "pointer",
 }));
 
-const StyledText = styled(Typography)(() => ({
+const StyledTypography = styled(Typography)(() => ({
 	fontSize: "16px",
-	fontWeight: "600",
+	textAlign: "start",
+	fontWeight: "props.fontWeight",
 	marginTop: "16px",
 	textTransform: "none",
 }));
 
 const StyledDate = styled(Typography)(() => ({
 	fontSize: "14px",
+	textAlign: "start",
 	color: "#777",
 	marginTop: "5px",
 }));
