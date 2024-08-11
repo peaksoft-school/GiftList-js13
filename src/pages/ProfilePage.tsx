@@ -11,7 +11,6 @@ import kurbanAit from "../assets/images/kurban-ait.png";
 import kadyrTun from "../assets/images/kadyr-tun.png";
 import aida from "../assets/images/aida.png";
 import SearchHeader from "../widgets/landimg/searchHeader/SearchHeader";
-import { BorderBottom } from "@mui/icons-material";
 
 const gifts = [
   {
