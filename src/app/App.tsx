@@ -1,5 +1,15 @@
-import { FC } from "react";
+import SearchHeader from "../widgets/landimg/searchHeader/SearchHeader";
+import SideBar from "../shared/sideBar/SideBar";
+import NewsLetters from "../shared/newsLetters/NewsLetters";
 
-const App: FC = () => <h1>GIFT LIST_13</h1>;
+const App = () => {
+	return (
+		<div>
+			<SearchHeader />
+			<SideBar />
+			<NewsLetters />
+		</div>
+	);
+};
 
 export default App;
