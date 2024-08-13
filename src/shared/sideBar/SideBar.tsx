@@ -29,6 +29,8 @@ const SideBar = () => {
 
 export default SideBar;
 
+
+
 const StyledDrawer = styled(Drawer)({
 	width: 250,
 	flexShrink: 0,
@@ -62,4 +64,6 @@ const Title = styled(Typography)({
 	textAlign: "center",
 	margin: "1rem 0",
 	color: "#fff",
+	fontSize:"24px",
+	fontWeight:'700',
 });

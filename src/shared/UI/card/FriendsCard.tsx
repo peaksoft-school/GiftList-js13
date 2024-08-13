@@ -55,21 +55,21 @@ const FriendImage = styled("img")(() => ({
 }));
 
 const FriendName = styled(Typography)(() => ({
-  fontWeight: 400,
+  fontWeight: "400",
   fontSize: "18px",
   marginTop: "8px",
   lineHeight: "19.36px",
   color: "rgba(2, 2, 1, 1)",
 }));
 const Body1 = styled(Typography)(() => ({
-  fontWeight: 400,
+  fontWeight: "400",
   fontSize: "16px",
   marginTop: "8px",
   lineHeight: "19.36px",
   color: "rgba(2, 2, 2, 1)",
 }));
 const Body2 = styled(Typography)(() => ({
-  fontWeight: 400,
+  fontWeight: "400",
   fontSize: "12px",
   marginTop: "8px",
   lineHeight: "14.52px",

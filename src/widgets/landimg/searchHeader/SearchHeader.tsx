@@ -22,7 +22,7 @@ const SearchHeader: FC = () => {
 
 	return (
 		<StyleContainer>
-			<TextField
+			<StyledTextField
 				fullWidth
 				placeholder="Поиск"
 				InputProps={{
@@ -103,4 +103,12 @@ const ProfileAccount = styled(Box)({
 	display: "inline-flex",
 	alignItems: "center",
 	cursor: "pointer",
+});
+
+const StyledTextField = styled(TextField)({
+  width: "821px",
+  height: "40px",
+  "& .MuiInputBase-root": {
+    height: "100%", 
+  },
 });
