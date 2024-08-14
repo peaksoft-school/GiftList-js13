@@ -24,6 +24,7 @@ export const Button: React.FC<CustomButtonProps> = ({
       variant={variant}
       onClick={onClick}
       disabled={disabled}
+      fullWidth
       {...rest}
     >
       {children}
@@ -34,9 +35,13 @@ export const Button: React.FC<CustomButtonProps> = ({
 const StyledButton = styled(MuiButton)<{
   variant?: CustomButtonProps["variant"];
 }>(({ variant }) => ({
+  borderRadius: "10px",
+  textTransform: "none",
+
   ...(variant === "text" && {
     backgroundColor: "rgba(250, 43, 86, 1)",
-    color: "grey",
+    color: "white",
+
     "&:hover": {
       backgroundColor: "rgba(221, 11, 55, 1)",
     },
@@ -48,8 +53,9 @@ const StyledButton = styled(MuiButton)<{
     },
   }),
   ...(variant === "contained" && {
-    backgroundColor: "rgba(151, 71, 255, 1)",
-    color: "grey",
+    backgroundColor: "#8639b5",
+    color: "white",
+
     "&:hover": {
       backgroundColor: "rgba(97, 35, 134, 1)",
     },
@@ -62,7 +68,8 @@ const StyledButton = styled(MuiButton)<{
   }),
   ...(variant === "outlined" && {
     borderColor: "rgba(141, 148, 158, 1)",
-    color: "grey",
+    color: "black",
+
     "&:hover": {
       backgroundColor: "rgba(97, 35, 134, 1)",
       color: "white",
