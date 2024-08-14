@@ -1,13 +1,9 @@
-import SearchHeader from "../widgets/landimg/searchHeader/SearchHeader";
-import SideBar from "../shared/sideBar/SideBar";
-import NewsLetters from "../shared/newsLetters/NewsLetters";
+import NewsLetterSubject from "../shared/newLettersSubject/NewsLetterSubject";
 
 const App = () => {
 	return (
 		<div>
-			<SearchHeader />
-			<SideBar />
-			<NewsLetters />
+			<NewsLetterSubject />
 		</div>
 	);
 };
