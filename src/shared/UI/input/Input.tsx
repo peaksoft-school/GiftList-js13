@@ -4,19 +4,15 @@ import {
   TextFieldProps,
   styled,
 } from "@mui/material";
-import { ChangeEvent, Ref, forwardRef } from "react";
-
-
-
-import V  from "../../../assets/icon/voscklicat.svg";
-
-
+import { ChangeEvent, MouseEvent, Ref, forwardRef } from "react";
 
 type InputProps = Omit<TextFieldProps, "variant"> & {
   value?: string;
   label?: string;
   variant?: "outlined" | "standard" | "filled";
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onClickEye?: (event: MouseEvent<HTMLButtonElement>) => void;
+  icon?: string;
   error?: boolean;
   helperText?: string;
 };
@@ -24,13 +20,15 @@ type InputProps = Omit<TextFieldProps, "variant"> & {
 export const Input = forwardRef(
   (props: InputProps, ref?: Ref<HTMLInputElement>) => {
     const {
+      variant = "outlined",
       value,
       id,
       label,
-      variant = "outlined",
       onChange,
-      error = false,
+      icon,
       helperText,
+      error = false,
+      onClickEye,
       ...rest
     } = props;
 
@@ -59,12 +57,22 @@ export const Input = forwardRef(
           error={error}
           {...rest}
           InputProps={{
-            endAdornment: error && (
+            endAdornment: (
               <InputAdornment position="end">
-                <img
-                  style={{ width: "35px" }}
-                  src="src/assets/icon/voscklicat.svg"
-                />
+                {error && (
+                  <img
+                    style={{ width: "35px" }}
+                    src="src/assets/icon/voscklicat.svg"
+                    alt="Error icon"
+                  />
+                )}
+                <button
+                  type="button"
+                  onClick={onClickEye}
+                  style={{ backgroundColor: "white", border: "none" }}
+                >
+                  <img style={{ width: "25px" }} src={icon} />
+                </button>
               </InputAdornment>
             ),
           }}
@@ -79,12 +87,12 @@ export const Input = forwardRef(
 
 const StyledInput = styled(TextField)(() => ({
   "& .MuiOutlinedInput-root": {
-    fontSize: "27px",
+    fontSize: "22px",
     borderRadius: "12px",
     padding: "0px 15px",
 
     "& fieldset": {
-      margin: "6px 0",
+      margin: "8px 0",
       borderWidth: "2px",
     },
     "&:hover fieldset": {

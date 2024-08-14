@@ -1,5 +1,4 @@
 const AppRouter = () => {
-  
   return <></>;
 };
 
