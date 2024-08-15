@@ -3,33 +3,46 @@ import mothersDay from "../../../assets/images/mothers-day.png";
 import kurbanAit from "../../../assets/images/kurban-ait.png";
 import kadyrTun from "../../../assets/images/kadyr-tun.png";
 import aida from "../../../assets/images/aida.png";
+import axios from "axios";
 
-export const gifts = [
-  {
-    id: 1,
-    title: "Название подарка 1",
-    description: "День рождения",
-    imageUrl: desiredBook,
-    pending: "В ожидании",
-    date: "12.12.12",
-  },
-  {
-    id: 2,
-    title: "Название подарка 2",
-    description: "День рождения",
-    imageUrl: desiredBook,
-    pending: "В ожидании",
-    date: "13.13.13",
-  },
-  {
-    id: 3,
-    title: "Название подарка 3",
-    description: "День рождения",
-    imageUrl: desiredBook,
-    pending: "В ожидании",
-    date: "14.14.14",
-  },
-];
+const wishUrl = import.meta.env.VITE_BASE_CARD_URL;
+
+export const fetchWish = async () => {
+  try {
+    const response = await axios.get(`${wishUrl}/api/wish/getAll`);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+fetchWish();
+
+// export const gifts = [
+//   {
+//     id: 1,
+//     title: "Название подарка 1",
+//     description: "День рождения",
+//     imageUrl: desiredBook,
+//     pending: "В ожидании",
+//     date: "12.12.12",
+//   },
+//   {
+//     id: 2,
+//     title: "Название подарка 2",
+//     description: "День рождения",
+//     imageUrl: desiredBook,
+//     pending: "В ожидании",
+//     date: "13.13.13",
+//   },
+//   {
+//     id: 3,
+//     title: "Название подарка 3",
+//     description: "День рождения",
+//     imageUrl: desiredBook,
+//     pending: "В ожидании",
+//     date: "14.14.14",
+//   },
+// ];
 
 export const charity = [
   {
