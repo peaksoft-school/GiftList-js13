@@ -47,7 +47,7 @@ const WishSection: FC<GiftSectionProps> = ({
           {showAll ? "Скрыть" : "Смотреть все"}
         </TypographyWatch>
       </ProductsHeader>
-      <Grid container spacing={2}>
+      <BoxWish>
         {wish.map((item) => (
           <Grid item xs={12} sm={6} md={4} key={item.id}>
             <ProductCard>
@@ -74,7 +74,7 @@ const WishSection: FC<GiftSectionProps> = ({
             </ProductCard>
           </Grid>
         ))}
-      </Grid>
+      </BoxWish>
     </Section>
   );
 };
@@ -82,6 +82,12 @@ const WishSection: FC<GiftSectionProps> = ({
 const Section = styled(Box)(() => ({
   marginBottom: "20px",
 }));
+
+const BoxWish = styled(Box)(()=>({
+  display:'flex',
+  justifyContent:'space-between',
+  alignItems:'center',
+}))
 
 const ProductsHeader = styled(Box)(() => ({
   display: "flex",

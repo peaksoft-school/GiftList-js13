@@ -1,10 +1,17 @@
 import { FC } from "react";
 import { Box, Typography, styled } from "@mui/material";
+import { Button } from "../button/Button";
 import facebook from "../../../assets/icon/profile-facebook.svg";
 import instagram from "../../../assets/icon/profile-instagram.svg";
 import telegram from "../../../assets/icon/profile-telegram.svg";
 import vkontakte from "../../../assets/icon/profile-vk.svg";
-import { Button } from "../button/Button";
+
+const socialMediaIcons = [
+  { src: facebook, alt: "Facebook" },
+  { src: instagram, alt: "Instagram" },
+  { src: telegram, alt: "Telegram" },
+  { src: vkontakte, alt: "VK" },
+];
 
 const ProfileHeader: FC<{ name: string; profilePictureUrl: string }> = ({
   name,
@@ -17,10 +24,9 @@ const ProfileHeader: FC<{ name: string; profilePictureUrl: string }> = ({
         <ProfileName variant="h5">{name}</ProfileName>
         <ButtonProfile variant="contained">Добавить в друзья</ButtonProfile>
         <Box display="flex" alignItems="center" marginTop="10px">
-          <ProfileIcons src={facebook} alt="Facebook" />
-          <ProfileIcons src={instagram} alt="Instagram" />
-          <ProfileIcons src={telegram} alt="Telegram" />
-          <ProfileIcons src={vkontakte} alt="VK" />
+          {socialMediaIcons.map((icon, index) => (
+            <ProfileIcons key={index} src={icon.src} alt={icon.alt} />
+          ))}
         </Box>
       </ProfileInfo>
     </Box>
@@ -60,17 +66,10 @@ const ProfileName = styled(Typography)(() => ({
   textAlign: "center",
 }));
 
-const ButtonProfile = styled(Button)(()=>({
-  color:'white',
-  margin:'10px 0',
-  width:'90%',
-}))
+const ButtonProfile = styled(Button)(() => ({
+  color: "white",
+  margin: "10px 0",
+  width: "90%",
+}));
+
 export default ProfileHeader;
-
-
-
-
-
-
-
-

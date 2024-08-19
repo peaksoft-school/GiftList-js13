@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getUserAll } from "./userThunk";
 
-interface User {
+interface Gift {
   giftTitle: string;
   image: string;
   description: string;
@@ -11,8 +11,8 @@ interface User {
   booked: boolean;
 }
 
-interface UserState {
-  user: User[];
+export interface UserState {
+  user: Gift[];
   isLoading: boolean;
   error: string | null;
 }

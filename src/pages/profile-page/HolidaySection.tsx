@@ -20,7 +20,7 @@ const HolidaySection: React.FC<HolidaySectionProps> = ({
           {showAll ? "Скрыть" : "Смотреть все"}
         </TypographyWatch>
       </ProductsHeader>
-      <Grid container spacing={2}>
+      <BoxHoliday>
         {holidays.map((holiday) => (
           <Grid item xs={12} sm={6} md={4} key={holiday.id}>
             <ProductCard>
@@ -35,13 +35,19 @@ const HolidaySection: React.FC<HolidaySectionProps> = ({
             </ProductCard>
           </Grid>
         ))}
-      </Grid>
+      </BoxHoliday>
     </Section>
   );
 };
 
 const Section = styled(Box)(() => ({
   marginBottom: "20px",
+}));
+
+const BoxHoliday = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 }));
 
 const ProductsHeader = styled(Box)(() => ({

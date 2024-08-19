@@ -1,8 +1,7 @@
+import { FC, useEffect, useState } from "react";
 import { Box, styled } from "@mui/material";
 import SideBar from "../shared/sideBar/SideBar";
-import { useEffect, useState } from "react";
 import ProfileInfoSection from "../shared/UI/card/ProfileInfoSection";
-import { Button } from "../shared/UI/button/Button";
 import SearchHeader from "../widgets/landimg/searchHeader/SearchHeader";
 import ProfileHeader from "../shared/UI/card/ProfileHeader";
 import HolidaySection from "./profile-page/HolidaySection";
@@ -10,10 +9,16 @@ import CharitySection from "./profile-page/CharitySection";
 import WishSection from "./profile-page/WishSection";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../app/store/store";
-import { charity, wish as wishData, holidays, profileInfo } from "../shared/lib/types/userProfile";
+import {
+  charity,
+  wish as wishData,
+  holidays,
+  profileInfo,
+  Gift,
+} from "../shared/lib/types/userProfile";
 import { getUserAll } from "../app/store/slice/userThunk";
 
-const UserProfilePage: React.FC = () => {
+const UserProfilePage:FC = () => {
   const [wish, setWish] = useState<Gift[]>([]);
   const [showAllGifts, setShowAllGifts] = useState(false);
   const [showAllHolidays, setShowAllHolidays] = useState(false);
@@ -27,19 +32,16 @@ const UserProfilePage: React.FC = () => {
   const visibleHolidays = showAllHolidays ? holidays : holidays.slice(0, 3);
   const visibleCharity = showAllCharity ? charity : charity.slice(0, 3);
 
-  const { user, status, error } = useSelector((state: RootState) => state.user);
+  const { status, error } = useSelector((state: RootState) => state.user);
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
     if (status === "idle") {
       dispatch(getUserAll());
     }
-  }, [dispatch, status]);
-
-  useEffect(() => {
-    // Симулируем загрузку данных
+    
     setWish(wishData);
-  }, []);
+  }, [dispatch, status]);
 
   if (status === "loading") return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -58,10 +60,7 @@ const UserProfilePage: React.FC = () => {
             <ProfileInfoSection profileInfo={profileInfo} />
           </BoxHeader>
         </Box>
-        <ButtonBox>
-          <Button variant="outlined">Удалить</Button>
-          <ButtonProfile variant="contained">Заблокировать</ButtonProfile>
-        </ButtonBox>
+
         <WishSection
           wish={visibleGifts}
           handleShowAll={handleShowAllGifts}
@@ -94,17 +93,6 @@ const ContentBox = styled(Box)(() => ({
 const BoxHeader = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-between",
-}));
-
-const ButtonBox = styled(Box)(() => ({
-  display: "flex",
-  justifyContent: "flex-end",
-  marginTop: "20px",
-}));
-
-const ButtonProfile = styled(Button)(() => ({
-  color: "white",
-  marginLeft: "5px",
 }));
 
 export default UserProfilePage;

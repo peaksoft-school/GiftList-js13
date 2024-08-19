@@ -35,7 +35,7 @@ const CharitySection: React.FC<CharitySectionProps> = ({
           {showAll ? "Скрыть" : "Смотреть все"}
         </TypographyWatch>
       </ProductsHeader>
-      <Grid container spacing={2}>
+      <BoxCharity>
         {charity.map((charityItem) => (
           <Grid item xs={12} sm={6} md={4} key={charityItem.id}>
             <ProductCard>
@@ -60,13 +60,19 @@ const CharitySection: React.FC<CharitySectionProps> = ({
             </ProductCard>
           </Grid>
         ))}
-      </Grid>
+      </BoxCharity>
     </Section>
   );
 };
 
 const Section = styled(Box)(() => ({
   marginBottom: "20px",
+}));
+
+const BoxCharity = styled(Box)(() => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
 }));
 
 const ProductsHeader = styled(Box)(() => ({
