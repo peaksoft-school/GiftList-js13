@@ -45,7 +45,7 @@ const ProfileInfoSection: FC<{ profileInfo: ProfileInfo }> = ({
               {profileInfo.hobbies}
             </TypografyTitleInfo>
           </BoxData>
-          <StyledInfo variant="subtitle1">Доп. инфа</StyledInfo>
+          <StyledInfo variant="subtitle1">Доп. информация</StyledInfo>
           <BoxData>
             <TypografyTitle variant="body2" paragraph>
               Размер одежды:
@@ -106,9 +106,8 @@ const InfoSectionContainer = styled(Box)(() => ({
 const BoxRef = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-around",
-  alignItems:'center',
+  alignItems: 'center',
   width: "100%",
-
 }));
 
 const StyledInfo = styled(Typography)(() => ({
@@ -141,3 +140,11 @@ const TypografyTitleInfo = styled(Typography)(() => ({
 }));
 
 export default ProfileInfoSection;
+
+
+
+
+
+
+
+

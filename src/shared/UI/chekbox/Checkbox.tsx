@@ -18,6 +18,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
 }) => {
   return (
     <FormControlLabel
+      sx={{ color: "grey" }}
       control={
         <StyledCheckbox
           checked={checked}

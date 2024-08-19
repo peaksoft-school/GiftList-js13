@@ -1,23 +1,26 @@
 import { Box, Grid, styled, Typography } from "@mui/material";
-import { charity } from "../../shared/lib/types/userProfile";
-// import Meatballs from "../../shared/UI/Meatballs";
-// import { DataType } from "../../shared/lib/types/MeatballType";
+import { Charity } from "../../shared/lib/types/userProfile"; // Убедитесь, что этот путь правильный
+import Meatballs from "../../shared/UI/Meatballs";
 
 interface CharitySectionProps {
-  charity: typeof charity;
+  charity: Charity[];
   handleShowAll: () => void;
   showAll: boolean;
 }
-
-// const meatballsData: DataType[] = [
-//   {
-//     id: 1,
-//     title: "Option 1",
-//     icon: "",
-//     onClick: () => {},
-//   },
-//   { id: 2, title: "Option 2", icon: "" },
-// ];
+const menuData = [
+  {
+    id: 1,
+    icon: "src/assets/icon/edit.svg",
+    title: "Edit",
+    onClick: () => console.log("Edit clicked"),
+  },
+  {
+    id: 2,
+    icon: "src/assets/icon/delete.svg",
+    title: "Delete",
+    onClick: () => console.log("Delete clicked"),
+  },
+];
 
 const CharitySection: React.FC<CharitySectionProps> = ({
   charity,
@@ -38,19 +41,21 @@ const CharitySection: React.FC<CharitySectionProps> = ({
             <ProductCard>
               <ProductImage
                 src={charityItem.imageUrl}
-                alt={charityItem.title}
+                alt={charityItem.giftTitle}
               />
               <BoxTitle>
                 <TypographyCharity variant="body1">
-                  {charityItem.title}
+                  {charityItem.giftTitle}
                 </TypographyCharity>
-                <Typography variant="body2">Новый</Typography>
+                <Typography variant="body2">
+                  {charityItem.booked ? "Забронировано" : "Доступно"}
+                </Typography>
               </BoxTitle>
               <BoxDate>
                 <Typography variant="body2">
                   {charityItem.description}
                 </Typography>
-                {/* <Meatballs data={meatballsData} /> */}
+                <Meatballs data={menuData} />
               </BoxDate>
             </ProductCard>
           </Grid>
@@ -120,7 +125,5 @@ const BoxTitle = styled(Box)(() => ({
   justifyContent: "space-between",
   width: "100%",
 }));
-
-
 
 export default CharitySection;

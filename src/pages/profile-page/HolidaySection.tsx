@@ -24,13 +24,13 @@ const HolidaySection: React.FC<HolidaySectionProps> = ({
         {holidays.map((holiday) => (
           <Grid item xs={12} sm={6} md={4} key={holiday.id}>
             <ProductCard>
-              <ProductImage src={holiday.imageUrl} alt={holiday.title} />
+              <ProductImage src={holiday.image} alt={holiday.title} />
               <TypographyHoliday variant="body1">
                 {holiday.title}
               </TypographyHoliday>
 
               <TypographyDate variant="body2">
-                {holiday.description}
+                {holiday.dateOfHoliday}
               </TypographyDate>
             </ProductCard>
           </Grid>
