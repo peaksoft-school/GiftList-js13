@@ -121,18 +121,33 @@ export const holidays: Holiday[] = [
   },
 ];
 
+// export const profileInfo = {
+//   image: aida,
+//   country: "Bishkek",
+//   shoesSize: "36",
+//   name: "Алия Каримова",
+//   floor: "Женский",
+//   birthday: "12.04.1990",
+//   email: "alik@gmail.com",
+//   phoneNumber: "+79051234567",
+//   hobbies: "Танцы, иностранные языки, готовка",
+//   child: "Против спиртных напитков",
+//   registrationDate: "15.01.2020",
+//   money: "12",
+//   important: "Против спиртных напитков",
+// };
+
+
+
 export const profileInfo = {
-  name: "Алия Каримова",
-  city: "Bishkek",
-  floor: "Женский",
-  birthday: "12.04.1990",
-  email: "alik@gmail.com",
-  phoneNumber: "+79051234567",
-  hobbies: "Танцы, иностранные языки, готовка",
-  child: "Против спиртных напитков",
-  registrationDate: "15.01.2020",
-  profilePictureUrl: aida,
-  money: "12",
-  shoeSize: "36",
-  important: "Против спиртных напитков",
+  image: aida, 
+  country: "Bishkek",
+  clothingSize: "S",
+  shoesSize: "THIRTY_SIX", 
+  peculiarity: "Против спиртных напитков",
+  hobby: "Танцы, иностранные языки, готовка",
+  linkToVK: "https://vk.com/yourprofile",
+  linkToFacebook: "https://facebook.com/yourprofile",
+  linkToInstagram: "https://instagram.com/yourprofile",
+  linkToTelegram: "https://t.me/yourprofile",
 };
