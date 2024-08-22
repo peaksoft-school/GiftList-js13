@@ -4,11 +4,11 @@ import kurbanAit from "../../../assets/images/kurban-ait.png";
 import kadyrTun from "../../../assets/images/kadyr-tun.png";
 import aida from "../../../assets/images/aida.png";
 
-export interface Gift {
+export interface Wish {
   id: number;
   giftTitle: string;
+  image: string;
   description: string;
-  imageUrl: string;
   giftLink: string;
   holidayTitle: string;
   dateHoliday: string;
@@ -17,38 +17,57 @@ export interface Gift {
 
 export interface Holiday {
   id: number;
-  title: string;
   image: string;
+  title: string;
   dateOfHoliday: string;
 }
 
 export interface Charity {
   id: number;
-  giftTitle: string;
-  description: string;
-  imageUrl: string;
-  giftLink?: string; // Поле может быть пустым
-  holidayTitle?: string; // Поле может быть пустым
-  dateHoliday?: string; // Поле может быть пустым
-  booked?: boolean; // Поле может быть пустым
+  image: string;
+  giftName: string;
+  statusGift: string;
+  createdAt: string;
+  isBooked: boolean;
 }
 
-export const wish: Gift[] = [
+export interface UserProfile {
+  id: number;
+  image: string;
+  fullName: string;
+  linkToVK: string;
+  linkToFacebook: string;
+  linkToInstagram: string;
+  linkToTelegram: string;
+  country: string;
+  email: string;
+  dateOfBirth: string;
+  phoneNumber: string;
+  hobby: string;
+  peculiarity: string;
+  clothingSize: string;
+  shoesSize: string;
+  wishList: Wish[];
+  holidays: Holiday[];
+  charities: Charity[];
+}
+
+export const wish: Wish[] = [
   {
     id: 1,
     giftTitle: "Название подарка 1",
     description: "Интересная книга",
-    imageUrl: desiredBook,
+    image: desiredBook,
     giftLink: "https://example.com/products/book1",
     holidayTitle: "День рождения",
     dateHoliday: "2024-08-17",
-    booked: true,
+    booked: false,
   },
   {
     id: 2,
     giftTitle: "Название подарка 2",
     description: "Электронный гаджет",
-    imageUrl: desiredBook,
+    image: desiredBook,
     giftLink: "https://example.com/products/gadget2",
     holidayTitle: "Новый год",
     dateHoliday: "2024-12-31",
@@ -58,47 +77,40 @@ export const wish: Gift[] = [
     id: 3,
     giftTitle: "Название подарка 3",
     description: "Модная одежда",
-    imageUrl: desiredBook,
+    image: desiredBook,
     giftLink: "https://example.com/products/clothing3",
     holidayTitle: "8 марта",
     dateHoliday: "2024-03-08",
-    booked: true,
+    booked: false,
   },
 ];
 
 export const charity: Charity[] = [
   {
     id: 1,
-    giftTitle: "Название подарка 1",
-    description: "12.04.2022",
-    imageUrl: desiredBook,
-    giftLink: '', 
-    holidayTitle: '', 
-    dateHoliday: '', 
-    booked: false, 
+    giftName: "Название подарка 1",
+    statusGift: "Принят",
+    createdAt: "12.04.2022",
+    image: desiredBook,
+    isBooked: false,
   },
   {
     id: 2,
-    giftTitle: "Название подарка 2", 
-    description: "15.05.2022",
-    imageUrl: desiredBook,
-    giftLink: '', 
-    holidayTitle: '', 
-    dateHoliday: '', 
-    booked: false, 
+    giftName: "Название подарка 2",
+    statusGift: "Принят",
+    createdAt: "15.05.2022",
+    image: desiredBook,
+    isBooked: false,
   },
   {
     id: 3,
-    giftTitle: "Название подарка 3", 
-    description: "20.06.2022",
-    imageUrl: desiredBook,
-    giftLink: '', 
-    holidayTitle: '', 
-    dateHoliday: '',
-    booked: false, 
+    giftName: "Название подарка 3",
+    statusGift: "Принят",
+    createdAt: "20.06.2022",
+    image: desiredBook,
+    isBooked: false,
   },
 ];
-
 
 export const holidays: Holiday[] = [
   {
@@ -121,33 +133,23 @@ export const holidays: Holiday[] = [
   },
 ];
 
-// export const profileInfo = {
-//   image: aida,
-//   country: "Bishkek",
-//   shoesSize: "36",
-//   name: "Алия Каримова",
-//   floor: "Женский",
-//   birthday: "12.04.1990",
-//   email: "alik@gmail.com",
-//   phoneNumber: "+79051234567",
-//   hobbies: "Танцы, иностранные языки, готовка",
-//   child: "Против спиртных напитков",
-//   registrationDate: "15.01.2020",
-//   money: "12",
-//   important: "Против спиртных напитков",
-// };
-
-
-
-export const profileInfo = {
-  image: aida, 
+export const profileInfo: UserProfile = {
+  id: 1,
+  image: aida,
+  fullName: 'Аида Каримова',
   country: "Bishkek",
+  email: 'Aika1998@gmail.com',
+  dateOfBirth: '12.04.1998',
+  phoneNumber: '+9967052364',
   clothingSize: "S",
-  shoesSize: "THIRTY_SIX", 
+  shoesSize: "40",
   peculiarity: "Против спиртных напитков",
   hobby: "Танцы, иностранные языки, готовка",
   linkToVK: "https://vk.com/yourprofile",
   linkToFacebook: "https://facebook.com/yourprofile",
   linkToInstagram: "https://instagram.com/yourprofile",
   linkToTelegram: "https://t.me/yourprofile",
+  wishList: [],
+  holidays: [],
+  charities: [],
 };

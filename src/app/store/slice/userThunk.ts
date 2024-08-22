@@ -1,14 +1,20 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  Wish,
+  Holiday,
+  Charity,
+  UserProfile,
+} from "../../../shared/lib/types/userProfile";
 import { axiosInstance } from "../../config/axiosInstance";
-import { Gift, Holiday, Charity } from "../../../shared/lib/types/userProfile";
+
 
 export const getAllWishes = createAsyncThunk<
-  Gift[],
+  Wish[],
   void,
   { rejectValue: { message: string; code?: string } }
 >("user/getAllWishes", async (_, { rejectWithValue }) => {
   try {
-    const response = await axiosInstance.get<Gift[]>("/api/wish/getAll");
+    const response = await axiosInstance.get<Wish[]>("/api/wish/getAll");
     console.log(response);
     return response.data;
   } catch (error: any) {
@@ -20,7 +26,6 @@ export const getAllWishes = createAsyncThunk<
     return rejectWithValue(serializableError);
   }
 });
-
 
 export const getAllHolidays = createAsyncThunk<
   Holiday[],
@@ -40,7 +45,6 @@ export const getAllHolidays = createAsyncThunk<
   }
 });
 
-
 export const getAllCharities = createAsyncThunk<
   Charity[],
   void,
@@ -48,7 +52,27 @@ export const getAllCharities = createAsyncThunk<
 >("user/getAllCharities", async (_, { rejectWithValue }) => {
   try {
     const response = await axiosInstance.get<Charity[]>("/api/charity/getAll");
-    console.log(response);
+    // console.log(response);
+    return response.data;
+  } catch (error: any) {
+    const serializableError = {
+      message: error.message,
+      code: error.code,
+    };
+    console.error(serializableError);
+    return rejectWithValue(serializableError);
+  }
+});
+
+export const getProfileById = createAsyncThunk<
+  UserProfile,
+  number, 
+  { rejectValue: { message: string; code?: string } }
+>("user/getProfileById", async (id, { rejectWithValue }) => {
+  try {
+    const response = await axiosInstance.get<UserProfile>(
+      `/api/friends/getFriendProfile/${id}`
+    );
     return response.data;
   } catch (error: any) {
     const serializableError = {

@@ -1,20 +1,12 @@
-import { Box, Grid, styled, Typography } from "@mui/material";
 import { FC } from "react";
+import { Box, Grid, styled, Typography } from "@mui/material";
 import Meatballs from "../../shared/UI/Meatballs";
+import { Wish } from "../../shared/lib/types/userProfile";
 
-interface Gift {
-  id: number;
-  giftTitle: string;
-  description: string;
-  imageUrl: string;
-  giftLink: string;
-  holidayTitle: string;
-  dateHoliday: string;
-  booked: boolean;
-}
+
 
 interface GiftSectionProps {
-  wish: Gift[];
+  wish: Wish[];
   handleShowAll: () => void;
   showAll: boolean;
 }
@@ -51,19 +43,19 @@ const WishSection: FC<GiftSectionProps> = ({
         {wish.map((item) => (
           <Grid item xs={12} sm={6} md={4} key={item.id}>
             <ProductCard>
-              <ProductImage src={item.imageUrl} alt={item.giftTitle} />
+              <ProductImage src={item.image} alt={item.giftTitle} />
               <ProductInfo>
                 <TypographyTitle variant="body1">
                   {item.giftTitle}
                 </TypographyTitle>
-                <Typography variant="body2">{item.description}</Typography>
+                <Typography variant="body2">{item.dateHoliday}</Typography>
               </ProductInfo>
               <ProductDetails>
-                <Typography variant="body2">{item.dateHoliday}</Typography>
+                <Typography variant="body2">{item.giftTitle}</Typography>
                 <BoxMeat>
                   <BoxTypografyWait>
                     <Typography variant="body1">
-                      {item.booked ? "Забронировано" : "Свободно"}
+                      {item.booked ? "Забронировано" : "В ожидании"}
                     </Typography>
                   </BoxTypografyWait>
                   <BoxData>
@@ -84,9 +76,10 @@ const Section = styled(Box)(() => ({
 }));
 
 const BoxWish = styled(Box)(()=>({
-  display:'flex',
-  justifyContent:'space-between',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
   alignItems:'center',
+  gap:'10px',
 }))
 
 const ProductsHeader = styled(Box)(() => ({

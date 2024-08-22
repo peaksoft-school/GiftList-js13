@@ -1,8 +1,8 @@
 import { Box, Grid, styled, Typography } from "@mui/material";
-import { holidays } from "../../shared/lib/types/userProfile";
+import { Holiday } from "../../shared/lib/types/userProfile";
 
 interface HolidaySectionProps {
-  holidays: typeof holidays;
+  holidays: Holiday[];
   handleShowAll: () => void;
   showAll: boolean;
 }
@@ -45,9 +45,10 @@ const Section = styled(Box)(() => ({
 }));
 
 const BoxHoliday = styled(Box)(() => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  alignItems:'center',
+  gap:'10px',
 }));
 
 const ProductsHeader = styled(Box)(() => ({

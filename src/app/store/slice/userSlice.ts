@@ -1,19 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllWishes, getAllHolidays, getAllCharities } from "./userThunk";
-import { Gift, Holiday, Charity } from "../../../shared/lib/types/userProfile";
+import {
+  getAllWishes,
+  getAllHolidays,
+  getAllCharities,
+  getProfileById,
+} from "./userThunk";
+import {
+  Gift,
+  Holiday,
+  Charity,
+  UserProfile,
+} from "../../../shared/lib/types/userProfile";
 
 export interface UserState {
-  wishes: Gift[];
+  wish: Gift[];
   holidays: Holiday[];
   charities: Charity[];
+  profile: UserProfile | null;
   isLoading: boolean;
   error: string | null;
 }
 
 const initialState: UserState = {
-  wishes: [],
+  wish: [],
   holidays: [],
   charities: [],
+  profile: null,
   isLoading: true,
   error: null,
 };
@@ -29,12 +41,14 @@ export const userSlice = createSlice({
         state.error = null;
       })
       .addCase(getAllWishes.fulfilled, (state, action) => {
-        state.wishes = action.payload;
+        state.wish = action.payload;
         state.isLoading = false;
       })
       .addCase(getAllWishes.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload ? action.payload.message : "Something went wrong";
+        state.error = action.payload
+          ? action.payload.message
+          : "Something went wrong";
       })
 
       .addCase(getAllHolidays.pending, (state) => {
@@ -47,7 +61,9 @@ export const userSlice = createSlice({
       })
       .addCase(getAllHolidays.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload ? action.payload.message : "Something went wrong";
+        state.error = action.payload
+          ? action.payload.message
+          : "Something went wrong";
       })
 
       .addCase(getAllCharities.pending, (state) => {
@@ -60,7 +76,24 @@ export const userSlice = createSlice({
       })
       .addCase(getAllCharities.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload ? action.payload.message : "Something went wrong";
+        state.error = action.payload
+          ? action.payload.message
+          : "Something went wrong";
+      })
+      //
+      .addCase(getProfileById.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getProfileById.fulfilled, (state, action) => {
+        state.profile = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getProfileById.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload
+          ? action.payload.message
+          : "Что-то пошло не так";
       });
   },
 });

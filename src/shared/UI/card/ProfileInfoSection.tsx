@@ -1,97 +1,89 @@
+
+
+
+
+
 // import { FC } from "react";
 // import { Box, Typography, styled } from "@mui/material";
+// import { UserProfile } from "../../lib/types/userProfile";
 
-// interface ProfileInfo {
-//   city: string;
-//   email: string;
-//   hobbies: string;
-//   money: string;
-//   birthday: string;
-//   phoneNumber: string;
-//   important: string;
-//   shoeSize: string;
-// }
-
-// const ProfileInfoSection: FC<{ profileInfo: ProfileInfo }> = ({
+// const ProfileInfoSection: FC<{ profileInfo: UserProfile }> = ({
 //   profileInfo,
 // }) => (
 //   <InfoSectionContainer>
 //     <BoxRef>
-//       <Box>
+//       <div>
 //         <StyledInfo variant="subtitle1">Основная информация</StyledInfo>
-//         <Box>
-//           <BoxData>
-//             <TypografyTitle variant="body2" paragraph>
-//               Город:
-//             </TypografyTitle>
-//             <TypografyTitleInfo variant="body2">
-//               {profileInfo.city}
-//             </TypografyTitleInfo>
-//           </BoxData>
-//           <BoxData>
-//             <TypografyTitle variant="body2" paragraph>
-//               Email:
-//             </TypografyTitle>
-//             <TypografyTitleInfo variant="body2">
-//               {profileInfo.email}
-//             </TypografyTitleInfo>
-//           </BoxData>
-//           <StyledInfo variant="subtitle1">Интересы, хобби:</StyledInfo>
-//           <BoxData>
-//             <TypografyTitle variant="body2" paragraph>
-//               Интересы, хобби:
-//             </TypografyTitle>
-//             <TypografyTitleInfo variant="body2">
-//               {profileInfo.hobbies}
-//             </TypografyTitleInfo>
-//           </BoxData>
-//           <StyledInfo variant="subtitle1">Доп. информация</StyledInfo>
-//           <BoxData>
-//             <TypografyTitle variant="body2" paragraph>
-//               Размер одежды:
-//             </TypografyTitle>
-//             <TypografyTitleInfo variant="body2">
-//               {profileInfo.money}
-//             </TypografyTitleInfo>
-//           </BoxData>
-//         </Box>
-//       </Box>
-//       <Box>
-//         <Box>
-//           <BoxData>
-//             <TypografyTitle variant="body2" paragraph>
-//               Дата рождения:
-//             </TypografyTitle>
-//             <TypografyTitleInfo variant="body2">
-//               {profileInfo.birthday}
-//             </TypografyTitleInfo>
-//           </BoxData>
-//           <BoxData>
-//             <TypografyTitle variant="body2" paragraph>
-//               Номер телефона:
-//             </TypografyTitle>
-//             <TypografyTitleInfo variant="body2">
-//               {profileInfo.phoneNumber}
-//             </TypografyTitleInfo>
-//           </BoxData>
-//           <BoxData>
-//             <TypografyTitle variant="body2" paragraph>
-//               Важно знать:
-//             </TypografyTitle>
-//             <TypografyTitleInfo variant="body2">
-//               {profileInfo.important}
-//             </TypografyTitleInfo>
-//           </BoxData>
-//           <BoxData>
-//             <TypografyTitle variant="body2" paragraph>
-//               Размер обуви:
-//             </TypografyTitle>
-//             <TypografyTitleInfo variant="body2">
-//               {profileInfo.shoeSize}
-//             </TypografyTitleInfo>
-//           </BoxData>
-//         </Box>
-//       </Box>
+//         <BoxData>
+//           <TypografyTitle variant="body2" paragraph>
+//             Город:
+//           </TypografyTitle>
+//           <TypografyTitleInfo variant="body2">
+//             {profileInfo.country}
+//           </TypografyTitleInfo>
+//         </BoxData>
+//         <BoxData>
+//           <TypografyTitle variant="body2" paragraph>
+//             Email:
+//           </TypografyTitle>
+//           <TypografyTitleInfo variant="body2">
+//             {profileInfo.email}
+//           </TypografyTitleInfo>
+//         </BoxData>
+//         <StyledInfo variant="subtitle1">Интересы, хобби:</StyledInfo>
+//         <BoxData>
+//           <TypografyTitle variant="body2" paragraph>
+//             Интересы, хобби:
+//           </TypografyTitle>
+//           <TypografyTitleInfo variant="body2">
+//             {profileInfo.hobby}
+//           </TypografyTitleInfo>
+//         </BoxData>
+//         <StyledInfo variant="subtitle1">Доп. информация</StyledInfo>
+//         <BoxData>
+//           <TypografyTitle variant="body2" paragraph>
+//             Размер одежды:
+//           </TypografyTitle>
+//           <TypografyTitleInfo variant="body2">
+//             {profileInfo.shoesSize}
+//           </TypografyTitleInfo>
+//         </BoxData>
+//       </div>
+
+//       <div>
+//         <BoxData>
+//           <TypografyTitle variant="body2" paragraph>
+//             Дата рождения:
+//           </TypografyTitle>
+//           <TypografyTitleInfo variant="body2">
+//             {profileInfo.dateOfBirth}
+//           </TypografyTitleInfo>
+//         </BoxData>
+//         <BoxData>
+//           <TypografyTitle variant="body2" paragraph>
+//             Номер телефона:
+//           </TypografyTitle>
+//           <TypografyTitleInfo variant="body2">
+//             {profileInfo.phoneNumber}
+//           </TypografyTitleInfo>
+//         </BoxData>
+//         <BoxData>
+//           <TypografyTitle variant="body2" paragraph>
+//             Важно знать:
+//           </TypografyTitle>
+//           <TypografyTitleInfo variant="body2">
+//             {profileInfo.peculiarity}
+//           </TypografyTitleInfo>
+//         </BoxData>
+//         <BoxData>
+//           <TypografyTitle variant="body2" paragraph>
+//             Размер обуви:
+//           </TypografyTitle>
+//           <TypografyTitleInfo variant="body2">
+//             {profileInfo.clothingSize}
+//           </TypografyTitleInfo>
+//         </BoxData>
+//       </div>
 //     </BoxRef>
 //   </InfoSectionContainer>
 // );
@@ -106,7 +98,7 @@
 // const BoxRef = styled(Box)(() => ({
 //   display: "flex",
 //   justifyContent: "space-around",
-//   alignItems: 'center',
+//   // alignItems: 'center',
 //   width: "100%",
 // }));
 
@@ -146,120 +138,95 @@
 
 
 
+
 import { FC } from "react";
 import { Box, Typography, styled } from "@mui/material";
+import { UserProfile } from "../../lib/types/userProfile";
 
-interface ProfileInfo {
-  image: string;
-  country: string;
-  clothingSize: string;
-  shoesSize: string;
-  peculiarity: string;
-  hobby: string;
-  linkToVK: string;
-  linkToFacebook: string;
-  linkToInstagram: string;
-  linkToTelegram: string;
-}
-
-const ProfileInfoSection: FC<{ profileInfo: ProfileInfo }> = ({
+const ProfileInfoSection: FC<{ profileInfo: UserProfile }> = ({
   profileInfo,
 }) => (
   <InfoSectionContainer>
     <BoxRef>
-      <Box>
+      <div>
         <StyledInfo variant="subtitle1">Основная информация</StyledInfo>
-        <Box>
-          <BoxData>
-            <TypografyTitle variant="body2" paragraph>
-              Страна:
-            </TypografyTitle>
-            <TypografyTitleInfo variant="body2">
-              {profileInfo.country}
-            </TypografyTitleInfo>
-          </BoxData>
-          <BoxData>
-            <TypografyTitle variant="body2" paragraph>
-              Размер одежды:
-            </TypografyTitle>
-            <TypografyTitleInfo variant="body2">
-              {profileInfo.clothingSize}
-            </TypografyTitleInfo>
-          </BoxData>
-          <BoxData>
-            <TypografyTitle variant="body2" paragraph>
-              Размер обуви:
-            </TypografyTitle>
-            <TypografyTitleInfo variant="body2">
-              {profileInfo.shoesSize}
-            </TypografyTitleInfo>
-          </BoxData>
-          <BoxData>
-            <TypografyTitle variant="body2" paragraph>
-              Особенность:
-            </TypografyTitle>
-            <TypografyTitleInfo variant="body2">
-              {profileInfo.peculiarity}
-            </TypografyTitleInfo>
-          </BoxData>
-          <StyledInfo variant="subtitle1">Интересы и соцсети</StyledInfo>
-          <BoxData>
-            <TypografyTitle variant="body2" paragraph>
-              Хобби:
-            </TypografyTitle>
-            <TypografyTitleInfo variant="body2">
-              {profileInfo.hobby}
-            </TypografyTitleInfo>
-          </BoxData>
-          <BoxData>
-            <TypografyTitle variant="body2" paragraph>
-              ВКонтакте:
-            </TypografyTitle>
-            <TypografyTitleInfo variant="body2">
-              <a href={profileInfo.linkToVK} target="_blank" rel="noopener noreferrer">
-                {profileInfo.linkToVK}
-              </a>
-            </TypografyTitleInfo>
-          </BoxData>
-          <BoxData>
-            <TypografyTitle variant="body2" paragraph>
-              Facebook:
-            </TypografyTitle>
-            <TypografyTitleInfo variant="body2">
-              <a href={profileInfo.linkToFacebook} target="_blank" rel="noopener noreferrer">
-                {profileInfo.linkToFacebook}
-              </a>
-            </TypografyTitleInfo>
-          </BoxData>
-          <BoxData>
-            <TypografyTitle variant="body2" paragraph>
-              Instagram:
-            </TypografyTitle>
-            <TypografyTitleInfo variant="body2">
-              <a href={profileInfo.linkToInstagram} target="_blank" rel="noopener noreferrer">
-                {profileInfo.linkToInstagram}
-              </a>
-            </TypografyTitleInfo>
-          </BoxData>
-          <BoxData>
-            <TypografyTitle variant="body2" paragraph>
-              Telegram:
-            </TypografyTitle>
-            <TypografyTitleInfo variant="body2">
-              <a href={profileInfo.linkToTelegram} target="_blank" rel="noopener noreferrer">
-                {profileInfo.linkToTelegram}
-              </a>
-            </TypografyTitleInfo>
-          </BoxData>
-        </Box>
-      </Box>
+        <BoxData>
+          <TypografyTitle variant="body2" paragraph>
+            Город:
+          </TypografyTitle>
+          <TypografyTitleInfo variant="body2">
+            {profileInfo.country}
+          </TypografyTitleInfo>
+        </BoxData>
+        <BoxData>
+          <TypografyTitle variant="body2" paragraph>
+            Email:
+          </TypografyTitle>
+          <TypografyTitleInfo variant="body2">
+            {profileInfo.email}
+          </TypografyTitleInfo>
+        </BoxData>
+        <StyledInfo variant="subtitle1">Интересы, хобби:</StyledInfo>
+        <BoxData>
+          <TypografyTitle variant="body2" paragraph>
+            Интересы, хобби:
+          </TypografyTitle>
+          <TypografyTitleInfo variant="body2">
+            {profileInfo.hobby}
+          </TypografyTitleInfo>
+        </BoxData>
+        <StyledInfo variant="subtitle1">Доп. информация</StyledInfo>
+        <BoxData>
+          <TypografyTitle variant="body2" paragraph>
+            Размер одежды:
+          </TypografyTitle>
+          <TypografyTitleInfo variant="body2">
+            {profileInfo.clothingSize}
+          </TypografyTitleInfo>
+        </BoxData>
+      </div>
+
+      <div>
+        <BoxData>
+          <TypografyTitle variant="body2" paragraph>
+            Дата рождения:
+          </TypografyTitle>
+          <TypografyTitleInfo variant="body2">
+            {profileInfo.dateOfBirth}
+          </TypografyTitleInfo>
+        </BoxData>
+        <BoxData>
+          <TypografyTitle variant="body2" paragraph>
+            Номер телефона:
+          </TypografyTitle>
+          <TypografyTitleInfo variant="body2">
+            {profileInfo.phoneNumber}
+          </TypografyTitleInfo>
+        </BoxData>
+        <BoxData>
+          <TypografyTitle variant="body2" paragraph>
+            Важно знать:
+          </TypografyTitle>
+          <TypografyTitleInfo variant="body2">
+            {profileInfo.peculiarity}
+          </TypografyTitleInfo>
+        </BoxData>
+        <BoxData>
+          <TypografyTitle variant="body2" paragraph>
+            Размер обуви:
+          </TypografyTitle>
+          <TypografyTitleInfo variant="body2">
+            {profileInfo.shoesSize}
+          </TypografyTitleInfo>
+        </BoxData>
+      </div>
     </BoxRef>
   </InfoSectionContainer>
 );
 
 const InfoSectionContainer = styled(Box)(() => ({
   display: "flex",
-  justifyContent: "space-around",
+  justifyContent:'space-around',
   width: "100%",
   paddingTop: "50px",
 }));
@@ -267,7 +234,6 @@ const InfoSectionContainer = styled(Box)(() => ({
 const BoxRef = styled(Box)(() => ({
   display: "flex",
   justifyContent: "space-around",
-  alignItems: 'center',
   width: "100%",
 }));
 
@@ -301,5 +267,3 @@ const TypografyTitleInfo = styled(Typography)(() => ({
 }));
 
 export default ProfileInfoSection;
-
-

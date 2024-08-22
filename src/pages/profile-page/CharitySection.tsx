@@ -40,22 +40,25 @@ const CharitySection: React.FC<CharitySectionProps> = ({
           <Grid item xs={12} sm={6} md={4} key={charityItem.id}>
             <ProductCard>
               <ProductImage
-                src={charityItem.imageUrl}
-                alt={charityItem.giftTitle}
+                src={charityItem.image}
+                alt={charityItem.giftName}
               />
               <BoxTitle>
                 <TypographyCharity variant="body1">
-                  {charityItem.giftTitle}
+                  {charityItem.giftName}
                 </TypographyCharity>
                 <Typography variant="body2">
-                  {charityItem.booked ? "Забронировано" : "Доступно"}
+                  {charityItem.isBooked ? "Забронировано" : "Доступно"}
                 </Typography>
               </BoxTitle>
               <BoxDate>
-                <Typography variant="body2">
-                  {charityItem.description}
-                </Typography>
-                <Meatballs data={menuData} />
+                <Typography variant="body2">{charityItem.createdAt}</Typography>
+                <BoxBooked>
+                  <TypographyBooked variant="body1">
+                    {charityItem.isBooked ? "Забронировано" : "В ожидании"}
+                  </TypographyBooked>
+                  <Meatballs data={menuData} />
+                </BoxBooked>
               </BoxDate>
             </ProductCard>
           </Grid>
@@ -70,9 +73,10 @@ const Section = styled(Box)(() => ({
 }));
 
 const BoxCharity = styled(Box)(() => ({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
+  display: 'grid',
+  gridTemplateColumns: 'repeat(3, 1fr)',
+  alignItems:'center',
+  gap:'10px',
 }));
 
 const ProductsHeader = styled(Box)(() => ({
@@ -124,6 +128,17 @@ const BoxDate = styled(Box)(() => ({
   alignItems: "center",
   width: "100%",
 }));
+const BoxBooked=styled(Box)(()=>({
+  display:'flex',
+  alignItems:'center',
+}))
+
+const TypographyBooked=styled(Typography)(()=>({
+  marginRight:'10px',
+  marginBottom:'10px',
+
+  
+}))
 
 const BoxTitle = styled(Box)(() => ({
   display: "flex",
