@@ -1,5 +1,19 @@
-import { FC } from "react";
+// import { FC } from "react";
+// import AppRouter from "./router/AppRouter";
 
-const App: FC = () => <h1>GIFT LIST_13</h1>;
+// const App: FC = () => <AppRouter />;
+
+// export default App;
+
+import { FC } from "react";
+import AppRouter from "./router/AppRouter";
+import Users from "../shared/UI/card/Users";
+
+const App: FC = () => (
+  <>
+    <AppRouter />
+    <Users />
+  </>
+);
 
 export default App;
