@@ -6,7 +6,7 @@ import {
   UserProfile,
 } from "../../../shared/lib/types/userProfile";
 import { axiosInstance } from "../../config/axiosInstance";
-
+import { Friend } from "../../../shared/lib/types/CardType";
 
 export const getAllWishes = createAsyncThunk<
   Wish[],
@@ -66,7 +66,7 @@ export const getAllCharities = createAsyncThunk<
 
 export const getProfileById = createAsyncThunk<
   UserProfile,
-  number, 
+  number,
   { rejectValue: { message: string; code?: string } }
 >("user/getProfileById", async (id, { rejectWithValue }) => {
   try {
@@ -83,3 +83,23 @@ export const getProfileById = createAsyncThunk<
     return rejectWithValue(serializableError);
   }
 });
+
+// MyFriends
+
+
+export const getAllMyFriends = createAsyncThunk<
+  Friend[],
+  void,
+  { rejectValue: string }
+>(
+  "user/getAllMyFriends",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get("/api/friends/getAllMyFriends");
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return rejectWithValue("Не удалось загрузить список друзей");
+    }
+  }
+);

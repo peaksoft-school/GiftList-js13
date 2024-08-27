@@ -4,6 +4,7 @@ import {
   getAllHolidays,
   getAllCharities,
   getProfileById,
+  getAllMyFriends,
 } from "./userThunk";
 import {
   Gift,
@@ -11,12 +12,14 @@ import {
   Charity,
   UserProfile,
 } from "../../../shared/lib/types/userProfile";
+import { Friend } from "../../../shared/lib/types/CardType";
 
 export interface UserState {
   wish: Gift[];
   holidays: Holiday[];
   charities: Charity[];
   profile: UserProfile | null;
+  friends:Friend[] | null;
   isLoading: boolean;
   error: string | null;
 }
@@ -26,6 +29,7 @@ const initialState: UserState = {
   holidays: [],
   charities: [],
   profile: null,
+  friends:null,
   isLoading: true,
   error: null,
 };
@@ -94,6 +98,21 @@ export const userSlice = createSlice({
         state.error = action.payload
           ? action.payload.message
           : "Что-то пошло не так";
+      })
+      //MyFriends
+      .addCase(getAllMyFriends.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getAllMyFriends.fulfilled, (state, action) => {
+        state.friends = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getAllMyFriends.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload
+          ? action.payload
+          : "Не удалось загрузить список друзей";
       });
   },
 });
