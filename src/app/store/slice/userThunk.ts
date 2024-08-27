@@ -6,7 +6,7 @@ import {
   UserProfile,
 } from "../../../shared/lib/types/userProfile";
 import { axiosInstance } from "../../config/axiosInstance";
-
+import { Users } from "../../../shared/lib/types/users";
 
 export const getAllWishes = createAsyncThunk<
   Wish[],
@@ -66,7 +66,7 @@ export const getAllCharities = createAsyncThunk<
 
 export const getProfileById = createAsyncThunk<
   UserProfile,
-  number, 
+  number,
   { rejectValue: { message: string; code?: string } }
 >("user/getProfileById", async (id, { rejectWithValue }) => {
   try {
@@ -74,6 +74,7 @@ export const getProfileById = createAsyncThunk<
       `/api/friends/getFriendProfile/${id}`
     );
     return response.data;
+    
   } catch (error: any) {
     const serializableError = {
       message: error.message,
@@ -81,5 +82,23 @@ export const getProfileById = createAsyncThunk<
     };
     console.error(serializableError);
     return rejectWithValue(serializableError);
+  }
+});
+
+
+// userAdmin
+
+export const getUsersAdmin = createAsyncThunk<
+  Users[],
+  void,
+  { rejectValue: string }
+>("users/getUsersAdmin", async (_, { rejectWithValue }) => {
+  try {
+    const response = await axiosInstance.get<Users[]>("/api/friends");
+    return response.data;
+  } catch (err) {
+    const error = err as any;
+    return rejectWithValue(error.response?.data || "errorr");
+    
   }
 });

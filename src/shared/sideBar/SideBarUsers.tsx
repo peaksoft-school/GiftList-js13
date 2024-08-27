@@ -1,4 +1,4 @@
-import { Drawer, List, ListItem, ListItemIcon, ListItemText, styled, Typography, Box } from "@mui/material";
+import { Drawer, List, ListItem, ListItemIcon, ListItemText, styled, Typography } from "@mui/material";
 import { useState } from "react";
 import { allUsers } from "../../features/lib/constants";
 
