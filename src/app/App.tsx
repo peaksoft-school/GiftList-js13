@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-const App: FC = () => <h1>GIFT LIST_13</h1>;
+const App: FC = () => <>GIFT LIST_13</>;
 
 export default App;
 
