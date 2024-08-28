@@ -1,7 +1,7 @@
 import { useState, MouseEvent, FC } from "react";
 import { Box, Button, Menu, MenuItem } from "@mui/material";
-import styled from "styled-components";
 import { MeatballsType } from "../lib/types/MeatballType";
+import { styled } from "@mui/system";
 
 const Meatballs: FC<MeatballsType> = ({ data }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -12,14 +12,14 @@ const Meatballs: FC<MeatballsType> = ({ data }) => {
   const handleClose = () => setAnchorEl(null);
 
   return (
-    <Box>
-      <Button
+    <Box1>
+      <StyledButton
         aria-controls="simple-menu"
         aria-haspopup="true"
         onClick={handleClick}
       >
         <img src="src/assets/icon/threeDots.svg" alt="menu icon" />
-      </Button>
+      </StyledButton>
       <Menu
         id="simple-menu"
         anchorEl={anchorEl}
@@ -34,13 +34,21 @@ const Meatballs: FC<MeatballsType> = ({ data }) => {
           </MenuItem>
         ))}
       </Menu>
-    </Box>
+    </Box1>
   );
 };
 
 export default Meatballs;
 
-const ImgStyled = styled.img`
+const Box1 = styled(Box)(()=>({
+  padding:'0',
+  margin:'0',
+}))
+const StyledButton = styled(Button)(() => ({
+  minWidth: 'auto',
+  padding: '0',
+}));
+const ImgStyled = styled("img")`
   width: 20px;
   height: 20px;
   margin: 5px 10px 5px 5px;
