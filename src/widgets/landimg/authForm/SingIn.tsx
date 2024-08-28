@@ -1,13 +1,18 @@
 import { FC, useState } from "react";
 import { useDispatch } from "react-redux";
-// import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Input } from "../../../shared/UI/input/Input";
 import { Button } from "../../../shared/UI/button/Button";
 import { Box, styled } from "@mui/material";
 import Checkbox from "../../../shared/UI/chekbox/Checkbox";
-import { authSingIn } from "../../../app/store/authSlice/authThunk";
+import {
+  authSingIn,
+  googleAuthFirbase,
+} from "../../../app/store/authSlice/authThunk";
 import { AppDispatch } from "../../../app/store/store";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../../../app/config/firebase";
 
 interface SignUpFormData {
   email: string;
@@ -15,7 +20,7 @@ interface SignUpFormData {
 }
 
 const SignIn: FC = () => {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const {
     register,
@@ -25,17 +30,32 @@ const SignIn: FC = () => {
   } = useForm<SignUpFormData>();
 
   const onSubmit: SubmitHandler<SignUpFormData> = async (data) => {
-    const resultAction = await dispatch(authSingIn({ newDate: data }));
+    const resultAction = await dispatch(
+      authSingIn({ newDate: data, navigate })
+    );
 
     if (authSingIn.fulfilled.match(resultAction)) {
       reset();
-      // navigate("/success");
     }
   };
 
   const [eyeChange, setEyeChange] = useState(true);
   const handleEye = () => {
     setEyeChange((e) => !e);
+  };
+
+  const authGoogleWithSignUp = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((data) => {
+        if (data.user) {
+          data.user.getIdToken().then((token) => {
+            dispatch(googleAuthFirbase({ tokenId: token, navigate }));
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -108,21 +128,26 @@ const SignIn: FC = () => {
           Войти
         </Button>
 
-        <a href="" style={{ marginBottom: "20px" }}>
+        <Link to="/forgotPassword" style={{ marginBottom: "20px" }}>
           Забыли пароль?
-        </a>
+        </Link>
 
         <p>или</p>
 
-        <GoogleButton type="button" variant="outlined" size="large">
+        <GoogleButton
+          type="button"
+          variant="outlined"
+          size="large"
+          onClick={authGoogleWithSignUp}
+        >
           <GoogleIconContainer>
             <GoogleIcon src="src/assets/icon/google.svg" />
           </GoogleIconContainer>
-          Зарегистрироваться с Google
+          Продолжить с Google
         </GoogleButton>
 
         <p>
-          Нет аккаунта? <a href="/signUn">Зарегистрироваться</a>
+          Нет аккаунта? <Link to="/singUp">Зарегистрироваться</Link>
         </p>
       </FooterConteiner>
     </StyledForm>

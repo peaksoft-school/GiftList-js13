@@ -1,18 +1,14 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useDispatch } from "react-redux";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { Input } from "../../../shared/UI/input/Input";
 import { Button } from "../../../shared/UI/button/Button";
-import { Box, styled } from "@mui/material";
-import {
-  authForgotPassword,
-  authSignUp,
-} from "../../../app/store/authSlice/authThunk";
+import { Box, styled, Typography } from "@mui/material";
+import { authForgotPassword } from "../../../app/store/authSlice/authThunk";
 import { AppDispatch } from "../../../app/store/store";
+import { SubmitHandler, useForm } from "react-hook-form";
 
-interface SignUpFormData {
-  password: string;
-  repeatPassword: string;
+interface TypeEmail {
+  email: string;
 }
 
 const ForgotPassword: FC = () => {
@@ -22,23 +18,14 @@ const ForgotPassword: FC = () => {
     handleSubmit,
     formState: { errors },
     reset,
-    watch,
-  } = useForm<SignUpFormData>();
+  } = useForm<TypeEmail>();
 
-  const [eyeChange, setEyeChange] = useState(true);
-  const [repeatEyeChange, setRepeatEyeChange] = useState(true);
-  const handleEye = () => {
-    setEyeChange((e) => !e);
-  };
+  const onSubmit: SubmitHandler<TypeEmail> = async (data) => {
+    const resultAction = await dispatch(
+      authForgotPassword({ email: data.email })
+    );
 
-  const repeathandleEye = () => {
-    setRepeatEyeChange((e) => !e);
-  };
-
-  const onSubmit: SubmitHandler<SignUpFormData> = async (data) => {
-    const resultAction = await dispatch(authForgotPassword({ newDate: data }));
-
-    if (authSignUp.fulfilled.match(resultAction)) {
+    if (authForgotPassword.fulfilled.match(resultAction)) {
       reset();
     }
   };
@@ -46,7 +33,7 @@ const ForgotPassword: FC = () => {
   return (
     <StyledForm onSubmit={handleSubmit(onSubmit)}>
       <Header>
-        <h4 style={{ fontSize: "28px" }}>Смена пароля</h4>
+        <h4 style={{ fontSize: "28px" }}>Забыли пароль?</h4>
 
         <StyledButton>
           <img
@@ -57,64 +44,42 @@ const ForgotPassword: FC = () => {
         </StyledButton>
       </Header>
 
+      <Typography
+        sx={{ color: "grey", fontSize: "20px", marginBottom: "20px" }}
+      >
+        Вам будет отправлена ссылка для сброса пароля
+      </Typography>
+
       <Box sx={{ marginBottom: "32px" }}>
         <Input
-          placeholder="Введите новый пароль"
-          type={eyeChange ? "password" : "text"}
-          helperText={errors.password?.message}
-          icon={
-            eyeChange
-              ? "src/assets/icon/eyeSlash.svg"
-              : "src/assets/icon/eye.svg"
-          }
-          onClickEye={handleEye}
-          autoComplete="new-password"
-          error={!!errors.password}
-          {...register("password", {
-            required: "Пароль обязателен",
-            minLength: {
-              value: 8,
-              message: "Пароль должен содержать минимум 8 символов",
-            },
+          type="email"
+          placeholder="Введите ваш Email"
+          autoComplete="email"
+          helperText={errors.email?.message}
+          error={!!errors.email}
+          {...register("email", {
+            required: "Email обязателен",
             pattern: {
-              value:
-                /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-              message:
-                "Пароль должен содержать минимум одну заглавную букву, одну цифру и один специальный символ",
+              value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+              message: "Некорректный формат email",
             },
-          })}
-        />
-
-        <Input
-          placeholder="Повторите пароль"
-          type={repeatEyeChange ? "password" : "text"}
-          helperText={errors.repeatPassword?.message}
-          icon={
-            repeatEyeChange
-              ? "src/assets/icon/eyeSlash.svg"
-              : "src/assets/icon/eye.svg"
-          }
-          onClickEye={repeathandleEye}
-          autoComplete="new-password"
-          error={!!errors.repeatPassword}
-          {...register("repeatPassword", {
-            required: "Повторите пароль",
-            validate: (value) =>
-              value === watch("password") || "Пароли не совпадают",
           })}
         />
       </Box>
 
-      <FooterContainer>
+      <FooterConteiner>
         <Button
           type="submit"
           variant="contained"
           size="large"
           sx={{ marginBottom: "20px" }}
         >
-          Подтвердить
+          Отправить
         </Button>
-      </FooterContainer>
+        <StyledCancelButton type="reset" variant="outlined" size="large">
+          Отмена
+        </StyledCancelButton>
+      </FooterConteiner>
     </StyledForm>
   );
 };
@@ -123,7 +88,7 @@ export default ForgotPassword;
 
 const StyledForm = styled("form")(() => ({
   width: "546px",
-  margin: "20px auto",
+  margin: "50px auto",
   boxShadow: "1px 1px 5px 1px rgba(0, 0, 0, 0.15)",
   padding: " 24px 32px",
   borderRadius: "10px",
@@ -152,8 +117,24 @@ const StyledButton = styled(Button)(() => ({
   },
 }));
 
-const FooterContainer = styled(Box)(() => ({
+const FooterConteiner = styled(Box)(() => ({
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+}));
+
+const StyledCancelButton = styled(Button)(() => ({
+  marginBottom: "20px",
+  border: "none",
+  color: "grey",
+  "&:hover": {
+    backgroundColor: "white",
+    color: "grey",
+    border: "none",
+  },
+  "&:active": {
+    backgroundColor: "white",
+    color: "grey",
+    border: "none",
+  },
 }));

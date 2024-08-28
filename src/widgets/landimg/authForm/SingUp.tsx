@@ -4,9 +4,15 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { Input } from "../../../shared/UI/input/Input";
 import { Button } from "../../../shared/UI/button/Button";
 import { Box, styled } from "@mui/material";
-import { authSignUp, BASE_URL } from "../../../app/store/authSlice/authThunk";
+import { signInWithPopup } from "firebase/auth";
+import {
+  authSignUp,
+  googleAuthFirbase,
+} from "../../../app/store/authSlice/authThunk";
 import { AppDispatch } from "../../../app/store/store";
 import Checkbox from "../../../shared/UI/chekbox/Checkbox";
+import { auth, googleProvider } from "../../../app/config/firebase";
+import { Link, useNavigate } from "react-router-dom";
 
 interface SignUpFormData {
   firstName: string;
@@ -18,6 +24,7 @@ interface SignUpFormData {
 
 const SignUp: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -37,20 +44,31 @@ const SignUp: FC = () => {
   };
 
   const onSubmit: SubmitHandler<SignUpFormData> = async (data) => {
-    const resultAction = await dispatch(authSignUp({ newDate: data }));
+    const { firstName, lastName, email, password } = data;
+    const resultAction = await dispatch(
+      authSignUp({
+        newDate: { firstName, lastName, email, password },
+        navigate,
+      })
+    );
 
     if (authSignUp.fulfilled.match(resultAction)) {
       reset();
-      // navigate("/success");
     }
   };
 
-  const handleGoogleSignUp = async () => {
-    try {
-      window.location.href = `${BASE_URL}/auth/google`;
-    } catch (error) {
-      console.error("Не удалось зарегистрироваться через Google:", error);
-    }
+  const authGoogleWithSignUp = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((data) => {
+        if (data.user) {
+          data.user.getIdToken().then((token) => {
+            dispatch(googleAuthFirbase({ tokenId: token, navigate }));
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -162,7 +180,7 @@ const SignUp: FC = () => {
           type="button"
           variant="outlined"
           size="large"
-          onClick={handleGoogleSignUp}
+          onClick={authGoogleWithSignUp}
         >
           <GoogleIconContainer>
             <GoogleIcon src="src/assets/icon/google.svg" alt="Google Icon" />
@@ -171,7 +189,7 @@ const SignUp: FC = () => {
         </GoogleButton>
 
         <p>
-          У вас уже есть аккаунт? <a href="/signIn">Войти</a>
+          У вас уже есть аккаунт? <Link to="/singIn">Войти</Link>
         </p>
       </FooterContainer>
     </StyledForm>

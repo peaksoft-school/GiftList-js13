@@ -1,53 +1,93 @@
 import { FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "../../shared/layouts/Landing";
-import User from "../../shared/layouts/User";
-import Administrator from "../../shared/layouts/Administrator";
 import PrivateRoutes from "./PrivateRoutes";
-import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
+import { useAppSelector } from "../hooks/customHooks";
+import { Roles, ROUTES } from "../utils/routes/routes";
 import { userRoutes } from "./userRouter";
-import { adminRoutes } from "./adminRoutes";
+import { adminRoutes } from "./AdminRoutes";
+import AdminLayout from "../../shared/layouts/Administrator";
+import UserLayout from "../../shared/layouts/User";
+import Landing from "../../shared/layouts/Landing";
+import Spinner from "../../shared/UI/Spiner";
+import SignUp from "../../widgets/landimg/authForm/SingUp";
+import SignIn from "../../widgets/landimg/authForm/SingIn";
+import ForgotPassword from "../../widgets/landimg/authForm/ForgotPassword";
+import ChangePassword from "../../widgets/landimg/authForm/ChangePassword";
 
 const AppRouter: FC = () => {
-  const { isAuth, role } = useSelector((state: RootState) => state.auth);
-
+  const { isAuth, isLoading } = useAppSelector(
+    (state: RootState) => state.auth
+  );
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: ROUTES.GUEST.index,
       element: (
-        <>
-          <Landing />
-        </>
+        <PrivateRoutes
+          component={
+            <>
+              {isLoading && <Spinner />}
+              <Landing />
+            </>
+          }
+          isAuth={!isAuth}
+          roles={Roles.GUEST}
+          fallbackPath={(ROUTES.USER.index, ROUTES.ADMIN.index)}
+        />
       ),
     },
 
     {
-      path: "/user",
+      path: ROUTES.USER.index,
       element: (
         <PrivateRoutes
-          component={<User />}
+          component={
+            <>
+              {isLoading && <Spinner />}
+              <UserLayout />
+            </>
+          }
           isAuth={isAuth}
-          role={role}
-          isAllowed={["USER"]}
-          fallbackPath="/"
+          roles={Roles.USER}
+          fallbackPath={ROUTES.ADMIN.index}
         />
       ),
       children: userRoutes,
     },
 
     {
-      path: "/admin",
+      path: ROUTES.ADMIN.index,
       element: (
         <PrivateRoutes
-          component={<Administrator />}
+          component={
+            <>
+              {isLoading && <Spinner />}
+              <AdminLayout />
+            </>
+          }
           isAuth={isAuth}
-          role={role}
-          isAllowed={["ADMIN"]}
-          fallbackPath="/"
+          roles={Roles.ADMIN}
+          fallbackPath={ROUTES.USER.index}
         />
       ),
       children: adminRoutes,
+    },
+
+    {
+      path: "singUp",
+      element: <SignUp />,
+    },
+    {
+      path: "singIn",
+      element: <SignIn />,
+    },
+    {
+      path: "forgotPassword",
+      element: <ForgotPassword />,
+    },
+    {
+      path: "changePassword",
+      element: <ChangePassword />,
     },
 
     {

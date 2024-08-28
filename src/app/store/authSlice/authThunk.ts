@@ -1,39 +1,48 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-
-export const BASE_URL = "https://956e80c00395cec2.mokky.dev";
-
-interface AuthPayload {
-  newDate: {
-    firstName?: string;
-    lastName?: string;
-    email?: string;
-    password: string;
-    repeatPassword?: string;
-  };
-  // navigate: (path: string) => void;
-}
+import { axiosInstance } from "../../config/axiosInstance";
+import {
+  TypeChangePassword,
+  TypeEmail,
+  TypeGoogleAuth,
+  TypeNewDate,
+} from "../../lib/type/TypeAuth";
 
 export const authSignUp = createAsyncThunk(
-  "auth/postAuth",
-  async ({ newDate }: AuthPayload, { rejectWithValue }) => {
-    console.log(newDate);
+  "auth/postAuthUp",
+  async ({ newDate, navigate }: TypeNewDate, { rejectWithValue }) => {
     try {
-      await axios.post(`${BASE_URL}/users`, newDate);
-
-      // navigate("/signIn");
+      const { data } = await axiosInstance.post(`/api/auth/signUp`, newDate);
+      navigate("/");
+      return data;
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
   }
 );
 
-export const authSingIn = createAsyncThunk(
-  "authIn/postauthIn",
-  async ({ newDate }: AuthPayload, { rejectWithValue }) => {
+export const googleAuthFirbase = createAsyncThunk(
+  "auth/googleAuthFirbase",
+  async ({ tokenId, navigate }: TypeGoogleAuth, { rejectWithValue }) => {
     try {
-      await axios.post(`${BASE_URL}/auth`, newDate);
-      // navigate("/homePage");
+      const { data } = await axiosInstance.post(
+        `/api/auth/google?tokenId=${tokenId}`
+      );
+
+      navigate("/");
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const authSingIn = createAsyncThunk(
+  "authIn/postAuthIn",
+  async ({ newDate, navigate }: TypeNewDate, { rejectWithValue }) => {
+    try {
+      const { data } = await axiosInstance.post(`/api/auth/signIn`, newDate);
+      navigate("/");
+      return data;
     } catch (error: any) {
       return rejectWithValue(error.message);
     }
@@ -41,13 +50,26 @@ export const authSingIn = createAsyncThunk(
 );
 
 export const authForgotPassword = createAsyncThunk(
-  "authIn/postauthIn",
-  async ({ newDate }: AuthPayload, { rejectWithValue }) => {
+  "authForgotPassword/postAuthForgotPassword",
+  async ({ email }: TypeEmail, { rejectWithValue }) => {
     try {
-      console.log(newDate);
+      await axiosInstance.post(
+        `/api/forgotPassword/sendResetEmail?email=${email}`
+      );
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
-      // await axios.post(`${BASE_URL}/auth`, newDate);
-      // navigate("/homePage");
+export const authChangePassword = createAsyncThunk(
+  "authChangePassword/postauthChangePassword",
+  async ({ newDate }: TypeChangePassword, { rejectWithValue }) => {
+    try {
+      await axiosInstance.post(
+        `/api/forgotPassword/updateToNewPassword`,
+        newDate
+      );
     } catch (error: any) {
       return rejectWithValue(error.message);
     }

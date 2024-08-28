@@ -6,6 +6,9 @@ const BASE_URL = import.meta.env.VITE_GIFTLIST_URL;
 
 export const axiosInstance = axios.create({
   baseURL: BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
 let store: Store<RootState, Action>;
