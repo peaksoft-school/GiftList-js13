@@ -1,7 +1,6 @@
 import { FC } from "react";
+import NewsLetters from "../shared/newsLetters/NewsLetters";
 
-const App:FC = () => {
-  return <>GIFT_LIST</>;
-};
+const App:FC = () => <><NewsLetters/></>
 
 export default App;

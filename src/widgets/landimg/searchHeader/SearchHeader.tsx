@@ -85,11 +85,8 @@ const StyleContainer = styled(Box)({
 	marginLeft: "300px",
 	marginTop: "10px",
 	display: "flex",
-<<<<<<< HEAD
-=======
 	alignItems:'center',
 	margin: "20px",
->>>>>>> development
 });
 
 const StyleSelect = styled("img")({
