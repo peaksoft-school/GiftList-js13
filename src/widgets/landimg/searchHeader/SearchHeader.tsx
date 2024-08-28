@@ -85,6 +85,11 @@ const StyleContainer = styled(Box)({
 	marginLeft: "300px",
 	marginTop: "10px",
 	display: "flex",
+<<<<<<< HEAD
+=======
+	alignItems:'center',
+	margin: "20px",
+>>>>>>> development
 });
 
 const StyleSelect = styled("img")({
@@ -94,14 +99,15 @@ const StyleSelect = styled("img")({
 
 const StyleProfile = styled(Box)({
 	display: "flex",
-	gap: "10px",
+	alignItems:'center',
+	justifyContent:'center',
 	padding: "20px",
 	marginTop: "-10px",
 	width: "35%",
 });
 
 const ProfileAccount = styled(Box)({
-	display: "inline-flex",
+	display: "flex",
 	alignItems: "center",
 	cursor: "pointer",
 });

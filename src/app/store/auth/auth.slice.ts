@@ -38,13 +38,17 @@ export const authSlice = createSlice({
     builder.addCase(logoutHandler.fulfilled, () => {
       return getInitialState();
     });
-    builder.addCase(signIn.fulfilled, (state, aciton) => {
-      state.email = aciton.payload.email;
-      state.firstName = aciton.payload.firstName;
-      state.lastName = aciton.payload.lastName;
-      state.role = aciton.payload.role;
-      state.token = aciton.payload.token;
+    builder.addCase(signIn.fulfilled, (state, action) => {
+      state.email = action.payload.email;
+      state.firstName = action.payload.firstName;
+      state.lastName = action.payload.lastName;
+      state.role = action.payload.role;
+      state.token = action.payload.token;
       state.isAuth = true;
+    });
+    builder.addCase(signIn.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.error.message || "Failed to sign in";
     });
   },
 });
