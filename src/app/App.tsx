@@ -1,6 +1,6 @@
 import { FC } from "react";
-import NewsLetters from "../shared/newsLetters/NewsLetters";
+import AppRouter from "./router/AppRouter";
 
-const App:FC = () => <><NewsLetters/></>
+const App: FC = () => <AppRouter />;
 
 export default App;

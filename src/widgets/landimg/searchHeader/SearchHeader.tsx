@@ -63,48 +63,47 @@ const SearchHeader: FC = () => {
 
 export default SearchHeader;
 
-const UserName = styled("p")({
+const UserName = styled('p')(() => ({
 	padding: "5px",
 	color: "#020202",
 	fontSize: "16px",
 	fontWeight: "400",
 	lineHeight: "21.79px",
 	cursor: "pointer",
-});
+}));
+
 const StyledLogouts = styled(MenuItem)(() => ({
 	display: "flex",
 	gap: "10px",
 	cursor: "pointer",
 }));
 
-const StyleAccount = styled("img")({
+const StyleAccount = styled('img')(() => ({
 	cursor: "pointer",
-});
+}));
 
-const StyleContainer = styled(Box)({
-	marginLeft: "300px",
-	marginTop: "10px",
+const StyleContainer = styled(Box)(() => ({
+	width: '1086px',
 	display: "flex",
-	alignItems:'center',
-	margin: "20px",
-});
+	alignItems: 'center',
+}));
 
-const StyleSelect = styled("img")({
+const StyleSelect = styled('img')(() => ({
 	cursor: "pointer",
 	fontSize: "5px",
-});
+}));
 
-const StyleProfile = styled(Box)({
+const StyleProfile = styled(Box)(() => ({
 	display: "flex",
-	alignItems:'center',
-	justifyContent:'center',
-	padding: "20px",
+	alignItems: 'center',
+	justifyContent: 'center',
 	marginTop: "-10px",
-	width: "35%",
-});
+}));
 
-const ProfileAccount = styled(Box)({
+const ProfileAccount = styled(Box)(() => ({
+	width: '180px',
+	height: '45px',
 	display: "flex",
 	alignItems: "center",
 	cursor: "pointer",
-});
+}));
