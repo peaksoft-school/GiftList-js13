@@ -1,8 +1,8 @@
+import { FC, useEffect, useState } from "react";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Button } from "../UI/button/Button";
 import SendEmailModal from "./NewLettersModal";
-import { useEffect, useState } from "react";
 import SideBar from "../sideBar/SideBar";
 import SearchHeader from "../../widgets/landimg/searchHeader/SearchHeader";
 import mail from "../../assets/icon/mail.svg";
@@ -12,20 +12,16 @@ import { AppDispatch, RootState } from "../../app/store/store";
 import { Newsletter } from "../lib/types/newsLetters";
 import avatar from "../../assets/images/rectangle.png";
 
-const NewsLetters: React.FC = () => {
+const NewsLetters: FC = () => {
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
   const { newsletters, loading, error } = useSelector(
     (state: RootState) => state.newsletter
   );
 
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
+  const handleOpenModal = () => setOpenModal(true);
 
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
+  const handleCloseModal = () => setOpenModal(false);
 
   useEffect(() => {
     dispatch(fetchNewLetters());
@@ -37,26 +33,34 @@ const NewsLetters: React.FC = () => {
   return (
     <StyledContainer>
       <SideBar />
+
       <ContentWrapper>
         <SearchHeader />
+
         <StyleddNewLetter>
           <StyledLetters>Рассылка</StyledLetters>
+
           <StyledMailButton variant="contained" onClick={handleOpenModal}>
             <MailIcon src={mail} alt="mail icon" />
+
             <StyledTextMail>Отправить рассылку</StyledTextMail>
           </StyledMailButton>
         </StyleddNewLetter>
+
         <StyledCards>
           {newsletters.map((newsletter: Newsletter, index: number) => (
             <StyledCard key={index}>
               <StyledImage src={avatar} alt={`newsletter-${index}`} />
+
               <StyledTypography variant="body1">
                 {newsletter.title}
               </StyledTypography>
+
               <StyledDate>{newsletter.createDate}</StyledDate>
             </StyledCard>
           ))}
         </StyledCards>
+
         <SendEmailModal open={openModal} onClose={handleCloseModal} />
       </ContentWrapper>
     </StyledContainer>
