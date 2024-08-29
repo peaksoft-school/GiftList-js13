@@ -20,7 +20,7 @@ axiosInstance.interceptors.request.use(
     // const { token } = store.getState().auth;
 
     const token =
-      "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTcyNDkxMDM3NiwiZXhwIjoxNzI0OTE3NTc2fQ.RjuGB8mZtWSeseUiRdYzkTTzkvBDciSygdxWr6D-WHAkJH2G7cpTfh0w4W-lnEDo4kRd8pEA2m2i77CcSwETNw";
+      "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTcyNDk0NDA4OCwiZXhwIjoxNzI0OTUxMjg4fQ.cWxo1g59ga_rP2t9HeQN5AQxlZcjyqdWcIoCle3vbUNQQwGE5LixOFjSGQtcdCsS_9i2psPKLpzz2wEEU49W-A";
 
     if (token) {
       updatedConfig.headers.Authorization = `Bearer ${token}`;

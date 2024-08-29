@@ -10,12 +10,14 @@ import { fetchNewLetters } from "../../app/store/mailing/mailingThunk";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../app/store/store";
 import { Newsletter } from "../lib/types/newsLetters";
-import avatar from '../../assets/images/rectangle.png'
+import avatar from "../../assets/images/rectangle.png";
 
 const NewsLetters: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
   const dispatch = useDispatch<AppDispatch>();
-  const { newsletters, loading, error } = useSelector((state: RootState) => state.newsletter);
+  const { newsletters, loading, error } = useSelector(
+    (state: RootState) => state.newsletter
+  );
 
   const handleOpenModal = () => {
     setOpenModal(true);
@@ -119,7 +121,7 @@ const StyledCards = styled(Box)({
 });
 
 const StyledCard = styled(Box)({
-	cursor:'pointer',
+  cursor: "pointer",
   padding: "20px",
   borderRadius: "10px",
   backgroundColor: "#FFFFFF",
@@ -128,12 +130,13 @@ const StyledCard = styled(Box)({
   border: "2px solid #B0C4DE",
   margin: "10px",
 
-	'&:hover':{
-		backgroundColor: "#faf2f2", 
-    boxShadow: "0px 6px 12px rgba(217, 217, 217, 0.318)", 
+  "&:hover": {
+    backgroundColor: "#faf2f2",
+    boxShadow: "0px 6px 12px rgba(217, 217, 217, 0.318)",
     borderColor: "#A9B2C3",
-		transition: "background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease",
-	}
+    transition:
+      "background-color 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease",
+  },
 });
 
 const StyledImage = styled("img")({
