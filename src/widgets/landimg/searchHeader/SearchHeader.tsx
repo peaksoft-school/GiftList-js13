@@ -85,8 +85,14 @@ const StyleAccount = styled('img')(() => ({
 const StyleContainer = styled(Box)(() => ({
 	width: '1086px',
 	display: "flex",
+<<<<<<< HEAD
 	alignItems: 'center',
 }));
+=======
+	alignItems:'center',
+	margin: "20px",
+});
+>>>>>>> 22473e27d294d1e220ca530ca2d9a05fe234da15
 
 const StyleSelect = styled('img')(() => ({
 	cursor: "pointer",
