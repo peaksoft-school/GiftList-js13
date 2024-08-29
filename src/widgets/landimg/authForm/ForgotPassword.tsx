@@ -6,12 +6,14 @@ import { Box, styled, Typography } from "@mui/material";
 import { authForgotPassword } from "../../../app/store/authSlice/authThunk";
 import { AppDispatch } from "../../../app/store/store";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 interface TypeEmail {
   email: string;
 }
 
 const ForgotPassword: FC = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const {
     register,
@@ -35,7 +37,7 @@ const ForgotPassword: FC = () => {
       <Header>
         <h4 style={{ fontSize: "28px" }}>Забыли пароль?</h4>
 
-        <StyledButton>
+        <StyledButton onClick={() => navigate(-1)}>
           <img
             style={{ width: "28px" }}
             src="src/assets/icon/closeForm.svg"
@@ -76,7 +78,12 @@ const ForgotPassword: FC = () => {
         >
           Отправить
         </Button>
-        <StyledCancelButton type="reset" variant="outlined" size="large">
+        <StyledCancelButton
+          type="reset"
+          variant="outlined"
+          size="large"
+          onClick={() => navigate(-1)}
+        >
           Отмена
         </StyledCancelButton>
       </FooterConteiner>

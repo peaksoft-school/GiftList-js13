@@ -63,7 +63,7 @@ const SignIn: FC = () => {
       <Header>
         <h4 style={{ fontSize: "28px" }}>Вход</h4>
 
-        <StyledButton>
+        <StyledButton onClick={() => navigate("/")}>
           <img
             style={{ width: "28px" }}
             src="src/assets/icon/closeForm.svg"

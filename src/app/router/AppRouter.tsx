@@ -5,7 +5,6 @@ import { RootState } from "../store/store";
 import { useAppSelector } from "../hooks/customHooks";
 import { Roles, ROUTES } from "../utils/routes/routes";
 import { userRoutes } from "./userRouter";
-import { adminRoutes } from "./AdminRoutes";
 import AdminLayout from "../../shared/layouts/Administrator";
 import UserLayout from "../../shared/layouts/User";
 import Landing from "../../shared/layouts/Landing";
@@ -14,6 +13,7 @@ import SignUp from "../../widgets/landimg/authForm/SingUp";
 import SignIn from "../../widgets/landimg/authForm/SingIn";
 import ForgotPassword from "../../widgets/landimg/authForm/ForgotPassword";
 import ChangePassword from "../../widgets/landimg/authForm/ChangePassword";
+import { adminRoutes } from "./adminRoutes";
 
 const AppRouter: FC = () => {
   const { isAuth, isLoading } = useAppSelector(
