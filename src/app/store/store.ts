@@ -2,9 +2,13 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { authSlice } from "./authSlice/authSlice";
+import { userSlice } from "./slice/userSlice";
+import { newsletterSlice } from "./mailing/mailingSlice";
 
 const rootReducer = combineReducers({
   [authSlice.name]: authSlice.reducer,
+  [userSlice.name]: userSlice.reducer,
+  [newsletterSlice.name]: newsletterSlice.reducer,
 });
 
 const persistConfig = {
