@@ -1,15 +1,17 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useEffect } from "react";
 import { Box, Typography, Grid } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Meatballs from "../Meatballs";
-import SideBarUsers from "../../sideBar/SideBarUsers";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../app/store/store";
-import { getUsersAdmin } from "../../../app/store/slice/userThunk";
+import {
+  blockUser,
+  deleteUser,
+  getUsersAdmin,
+} from "../../../app/store/slice/userThunk";
 import avatar from "../../../assets/images/avatar.png";
-import SearchHeader from "../../../widgets/landimg/searchHeader/SearchHeader";
 
-const userData = [
+const meatballsArr = [
   {
     id: 1,
     title: "заблокировать",
@@ -25,68 +27,62 @@ const userData = [
 const Users: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { users } = useSelector((state: RootState) => state.user);
-  const [selectedUser, setSelectedUser] = useState<string | null>(null);
+
+  const handleClick = (key: number, cardId: number) => {
+    switch (key) {
+      case 1:
+        dispatch(blockUser({ cardId }));
+        return key;
+
+      case 2:
+        dispatch(deleteUser({ cardId }));
+        return key;
+
+      default:
+        return key;
+    }
+  };
 
   useEffect(() => {
-    if (selectedUser === "Пользователи") {
-      dispatch(getUsersAdmin());
-    }
-  }, [dispatch, selectedUser]);
+    dispatch(getUsersAdmin());
+  }, [dispatch]);
 
   return (
-    <Wrapper>
-      <SideBarUsers onSelectUser={setSelectedUser} />
-      <MainContent>
-        <SearchHeader />
-        {selectedUser === "Пользователи" && (
-          <BoxContent>
-            <BoxTitle>
-              <Typography variant="h6">Пользователи</Typography>
-            </BoxTitle>
-            <GridContainer container spacing={2}>
-              {users.map((user) => (
-                <Grid key={user.id} item>
-                  <UserCard>
-                    <UserCardHeader />
-                    <UserImage src={avatar} alt={user.fullName} />
-                    <UserInfo>
-                      <TypographyName variant="body1">
-                        {user.fullName}
-                      </TypographyName>
-                      <TypographyWish variant="body2">
-                        {user.countOfWish}
-                      </TypographyWish>
-                      <TypographyTitle>желаемых подарков</TypographyTitle>
-                    </UserInfo>
-                    <BoxMeatballs>
-                      <Meatballs data={userData} />
-                    </BoxMeatballs>
-                  </UserCard>
-                </Grid>
-              ))}
-            </GridContainer>
-          </BoxContent>
-        )}
-      </MainContent>
-    </Wrapper>
+    <BoxContent>
+      <BoxTitle>
+        <Typography variant="h6">Пользователи</Typography>
+      </BoxTitle>
+      <GridContainer container spacing={2}>
+        {users.map((user) => (
+          <Grid key={user.id} item>
+            <UserCard>
+              <UserCardHeader />
+              <UserImage src={avatar} alt={user.fullName} />
+              <UserInfo>
+                <TypographyName variant="body1">{user.fullName}</TypographyName>
+                <TypographyWish variant="body2">
+                  {user.countOfWish}
+                </TypographyWish>
+                <TypographyTitle>желаемых подарков</TypographyTitle>
+              </UserInfo>
+              <BoxMeatballs>
+                <Meatballs
+                  data={meatballsArr}
+                  onClick={handleClick}
+                  cardId={user.id}
+                />
+              </BoxMeatballs>
+            </UserCard>
+          </Grid>
+        ))}
+      </GridContainer>
+    </BoxContent>
   );
 };
 
 export default Users;
 
-const Wrapper = styled(Box)(() => ({
-  display: "flex",
-  height: "100vh",
-}));
-
-const MainContent = styled(Box)(() => ({
-  flexGrow: 1,
-  display: "flex",
-  flexDirection: "column",
-}));
-
 const BoxContent = styled(Box)(() => ({
-  flexGrow: 1,
   width: "100%",
   maxWidth: "1086px",
   margin: "0 auto",
@@ -97,17 +93,14 @@ const BoxTitle = styled(Box)(() => ({
 }));
 
 const GridContainer = styled(Grid)(() => ({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(4, 1fr)',
-  gap: '5px', 
+  display: "grid",
+  gridTemplateColumns: "repeat(4, 1fr)",
+  gap: "5px",
 }));
-
-
 
 const UserCard = styled(Box)(() => ({
   cursor: "pointer",
   width: "230px",
-  height: "290px",
   backgroundColor: "#fff",
   borderRadius: "8px",
   padding: "10px",
@@ -160,6 +153,11 @@ const TypographyName = styled(Typography)(() => ({
   fontWeight: 600,
   lineHeight: "20px",
   letterSpacing: "0.02em",
+  width: "200px",
+  textWrap: "nowrap",
+  overflow: "hidden",
+  textOverflow: "ellipsis",
+  margin: "0 auto",
 }));
 
 const TypographyWish = styled(Typography)(() => ({
@@ -172,6 +170,8 @@ const TypographyTitle = styled(Typography)(() => ({
   color: "rgba(96, 96, 96, 1)",
   fontSize: "14px",
   fontWeight: 500,
+  width: "140px",
+  margin: "0 auto",
 }));
 
 const BoxMeatballs = styled(Box)(() => ({

@@ -36,3 +36,8 @@ export const users: Users[] = [
     countOfWish: 12,
   },
 ];
+
+export type ResponseDeleteUser = {
+  httpStatus: string;
+  message: string;
+};
