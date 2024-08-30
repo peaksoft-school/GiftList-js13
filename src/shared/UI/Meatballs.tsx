@@ -3,13 +3,21 @@ import { Box, Button, Menu, MenuItem } from "@mui/material";
 import { MeatballsType } from "../lib/types/MeatballType";
 import { styled } from "@mui/system";
 
-const Meatballs: FC<MeatballsType> = ({ data }) => {
+const Meatballs: FC<MeatballsType> = ({ data, onClick, cardId }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) =>
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
+  };
 
   const handleClose = () => setAnchorEl(null);
+
+  const meatClick = (id: number) => {
+    if (cardId) {
+      onClick(id, cardId);
+    }
+    handleClose();
+  };
 
   return (
     <Box1>
@@ -27,8 +35,8 @@ const Meatballs: FC<MeatballsType> = ({ data }) => {
         open={Boolean(anchorEl)}
         onClose={handleClose}
       >
-        {data.map(({ id, icon, title, onClick }) => (
-          <MenuItem key={id} onClick={onClick || handleClose}>
+        {data.map(({ id, icon, title }) => (
+          <MenuItem key={id} onClick={() => meatClick(id)}>
             <ImgStyled src={icon} alt={title} />
             {title}
           </MenuItem>
@@ -40,13 +48,13 @@ const Meatballs: FC<MeatballsType> = ({ data }) => {
 
 export default Meatballs;
 
-const Box1 = styled(Box)(()=>({
-  padding:'0',
-  margin:'0',
-}))
+const Box1 = styled(Box)(() => ({
+  padding: "0",
+  margin: "0",
+}));
 const StyledButton = styled(Button)(() => ({
-  minWidth: 'auto',
-  padding: '0',
+  minWidth: "auto",
+  padding: "0",
 }));
 const ImgStyled = styled("img")`
   width: 20px;

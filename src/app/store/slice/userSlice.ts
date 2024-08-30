@@ -4,6 +4,7 @@ import {
   getAllHolidays,
   getAllCharities,
   getProfileById,
+  getUsersAdmin,
 } from "./userThunk";
 import {
   Gift,
@@ -11,13 +12,16 @@ import {
   Charity,
   UserProfile,
 } from "../../../shared/lib/types/userProfile";
+import { Users } from "../../../shared/lib/types/users";
 
 export interface UserState {
-  wish: Gift[];
+    wish: Gift[];
   holidays: Holiday[];
   charities: Charity[];
+  users: Users[];
   profile: UserProfile | null;
   isLoading: boolean;
+  isLoadingUsers: boolean;
   error: string | null;
 }
 
@@ -26,7 +30,9 @@ const initialState: UserState = {
   holidays: [],
   charities: [],
   profile: null,
+  users: [],
   isLoading: true,
+  isLoadingUsers: false,
   error: null,
 };
 
@@ -46,9 +52,7 @@ export const userSlice = createSlice({
       })
       .addCase(getAllWishes.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload
-          ? action.payload.message
-          : "Something went wrong";
+        state.error = action.payload ? action.payload : "Something went wrong";
       })
 
       .addCase(getAllHolidays.pending, (state) => {
@@ -61,9 +65,7 @@ export const userSlice = createSlice({
       })
       .addCase(getAllHolidays.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload
-          ? action.payload.message
-          : "Something went wrong";
+        state.error = action.payload ? action.payload : "Something went wrong";
       })
 
       .addCase(getAllCharities.pending, (state) => {
@@ -76,9 +78,7 @@ export const userSlice = createSlice({
       })
       .addCase(getAllCharities.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload
-          ? action.payload.message
-          : "Something went wrong";
+        state.error = action.payload ? action.payload : "Something went wrong";
       })
       //
       .addCase(getProfileById.pending, (state) => {
@@ -91,9 +91,19 @@ export const userSlice = createSlice({
       })
       .addCase(getProfileById.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload
-          ? action.payload.message
-          : "Что-то пошло не так";
+        state.error = action.payload ? action.payload : "Something went wrong";
+      })
+      .addCase(getUsersAdmin.pending, (state) => {
+        state.isLoadingUsers = true;
+        state.error = null;
+      })
+      .addCase(getUsersAdmin.fulfilled, (state, action) => {
+        state.users = action.payload;
+        state.isLoadingUsers = false;
+      })
+      .addCase(getUsersAdmin.rejected, (state, action) => {
+        state.isLoadingUsers = false;
+        state.error = action.payload ? action.payload : "Что-то пошло не так";
       });
   },
 });
