@@ -1,8 +1,3 @@
-
-
-
-
-
 // import { FC } from "react";
 // import { Box, Typography, styled } from "@mui/material";
 // import { UserProfile } from "../../lib/types/userProfile";
@@ -133,12 +128,6 @@
 
 // export default ProfileInfoSection;
 
-
-
-
-
-
-
 import { FC } from "react";
 import { Box, Typography, styled } from "@mui/material";
 import { UserProfile } from "../../lib/types/userProfile";
@@ -226,7 +215,7 @@ const ProfileInfoSection: FC<{ profileInfo: UserProfile }> = ({
 
 const InfoSectionContainer = styled(Box)(() => ({
   display: "flex",
-  justifyContent:'space-around',
+  justifyContent: "space-around",
   width: "100%",
   paddingTop: "50px",
 }));

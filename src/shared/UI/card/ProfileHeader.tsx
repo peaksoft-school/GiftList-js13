@@ -77,11 +77,6 @@
 
 // export default ProfileHeader;
 
-
-
-
-
-
 import { FC } from "react";
 import { Box, Typography, styled } from "@mui/material";
 import { Button } from "../button/Button";

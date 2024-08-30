@@ -1,5 +1,10 @@
 import { FC } from "react";
+import AppRouter from "./router/AppRouter";
 
-const App: FC = () => <h1>GIFT LIST_13</h1>;
+const App: FC = () => (
+  <>
+    <AppRouter />
+  </>
+);
 
 export default App;

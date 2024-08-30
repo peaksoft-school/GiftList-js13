@@ -26,14 +26,23 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ data }) => {
         const isLast = index === truncatedPathnames.length - 1;
 
         return isLast ? (
-          <Typography color="text.primary" key={to}>
+          <Typography
+            color="text.primary"
+            key={to}
+            style={{
+              fontWeight: "700",
+            }}
+          >
             {findLabel(value)}
           </Typography>
         ) : (
           <Link
             to={to}
             key={to}
-            style={{ textDecoration: "none", color: "inherit" }}
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+            }}
           >
             {findLabel(value)}
           </Link>

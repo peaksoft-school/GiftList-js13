@@ -87,7 +87,7 @@ const UserProfilePage: FC = () => {
 };
 
 const BoxContainer = styled(Box)(() => ({
-  display: "flex",
+  // display: "flex",
   width: "1090px",
 }));
 
@@ -101,9 +101,9 @@ const BoxHeader = styled(Box)(() => ({
   display: "flex",
   padding: "20px",
   // justifyContent:'space-around',
-  backgroundColor:'#fbf5f5df',
-  border:'1px solid #f1d5d5df',
-  borderRadius:'5px',
+  backgroundColor: "#fbf5f5df",
+  border: "1px solid #f1d5d5df",
+  borderRadius: "5px",
 }));
 
 const BoxProfileSection = styled(Box)(() => ({

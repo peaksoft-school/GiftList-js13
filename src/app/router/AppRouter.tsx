@@ -1,25 +1,27 @@
 import { FC } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Landing from "../../shared/layouts/Landing";
+// import Landing from "../../shared/layouts/Landing";
 import User from "../../shared/layouts/User";
-import Administrator from "../../shared/layouts/Administrator";
+// import Administrator from "../../shared/layouts/Administrator";
 import PrivateRoutes from "./PrivateRoutes";
 import { useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { userRoutes } from "./userRouter";
 import { adminRoutes } from "./adminRoutes";
+import AdminLayout from "../../shared/layouts/Landing";
 
 const AppRouter: FC = () => {
-  const { isAuth, role } = useSelector((state: RootState) => state.auth);
+  const { isAuth } = useSelector((state: RootState) => state.auth);
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
         <>
-          <Landing />
+          <AdminLayout />
         </>
       ),
+      children: adminRoutes,
     },
 
     {
@@ -28,27 +30,26 @@ const AppRouter: FC = () => {
         <PrivateRoutes
           component={<User />}
           isAuth={isAuth}
-          role={role}
-          isAllowed={["USER"]}
+          roles=""
           fallbackPath="/"
         />
       ),
       children: userRoutes,
     },
 
-    {
-      path: "/admin",
-      element: (
-        <PrivateRoutes
-          component={<Administrator />}
-          isAuth={isAuth}
-          role={role}
-          isAllowed={["ADMIN"]}
-          fallbackPath="/"
-        />
-      ),
-      children: adminRoutes,
-    },
+    // {
+    //   path: "/admin",
+    //   element: (
+    //     <PrivateRoutes
+    //       component={<Administrator />}
+    //       isAuth={isAuth}
+    //       role={role}
+    //       isAllowed={["ADMIN"]}
+    //       fallbackPath="/"
+    //     />
+    //   ),
+    //   children: adminRoutes,
+    // },
 
     {
       path: "*",
