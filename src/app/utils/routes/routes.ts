@@ -1,16 +1,19 @@
-export const routes = {
+export const ROUTES = {
   GUEST: {
     index: "/",
-    signIn: "sign-in",
   },
 
   USER: {
     index: "/user",
-    profile: "profile",
   },
 
   ADMIN: {
     index: "/admin",
-    users: "users",
   },
+};
+
+export const Roles = {
+  GUEST: "GUEST",
+  USER: "USER",
+  ADMIN: "ADMIN",
 };
