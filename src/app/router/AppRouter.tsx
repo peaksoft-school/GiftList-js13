@@ -32,7 +32,7 @@ const AppRouter: FC = () => {
           }
           isAuth={!isAuth}
           roles={Roles.GUEST}
-          fallbackPath={(ROUTES.USER.index, ROUTES.ADMIN.index)}
+          fallbackPath={ROUTES.ADMIN.index}
         />
       ),
     },
@@ -49,7 +49,7 @@ const AppRouter: FC = () => {
           }
           isAuth={isAuth}
           roles={Roles.USER}
-          fallbackPath={ROUTES.ADMIN.index}
+          fallbackPath={ROUTES.GUEST.index}
         />
       ),
       children: userRoutes,

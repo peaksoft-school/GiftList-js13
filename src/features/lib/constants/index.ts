@@ -4,22 +4,21 @@ import bookedIcon from "../../../assets/icon/Booked.svg";
 import myholidaysIcon from "../../../assets/icon/Myholidays.svg";
 import charityIcon from "../../../assets/icon/Charity.svg";
 import friendsIcon from "../../../assets/icon/Friends.svg";
-//
-import complain from "../../../assets/icon/complain.svg";
-import newsLetter from "../../../assets/icon/newsLetter.svg";
+import mailingIcon from "../../../assets/icon/mailingIcon.svg";
+import complaintsIcon from "../../../assets/icon/complaintsIcon.svg";
 
 export const menuItems = [
-	{ icon: lentaIcon, text: "Лента" },
-	{ icon: friendsIcon, text: "Друзья" },
-	{ icon: wishListIcon, text: "Список желаний" },
-	{ icon: bookedIcon, text: "Забронированные" },
-	{ icon: myholidaysIcon, text: "Мои праздники" },
-	{ icon: charityIcon, text: "Благотворительность" },
+  { icon: lentaIcon, text: "Лента", navigate: "lenta" },
+  { icon: friendsIcon, text: "Друзья", navigate: "friends" },
+  { icon: wishListIcon, text: "Список желаний", navigate: "wishList" },
+  { icon: bookedIcon, text: "Забронированные", navigate: "booket" },
+  { icon: myholidaysIcon, text: "Мои праздники", navigate: "myHolidays" },
+  { icon: charityIcon, text: "Благотворительность", navigate: "charity" },
 ];
 
-export const allUsers = [
-  { icon: friendsIcon, text: "Пользователи" },
-  { icon: charityIcon, text: "Благотворительность" },
-  { icon: complain, text: "Жалобы" },
-  { icon: newsLetter, text: "Рассылка" },
+export const menuItemsAdmin = [
+  { icon: friendsIcon, text: "Пользователи", navigate: "users" },
+  { icon: charityIcon, text: "Благотворительность", navigate: "charity" },
+  { icon: complaintsIcon, text: "Жалобы", navigate: "complaits" },
+  { icon: mailingIcon, text: "Рассылка", navigate: "mailing" },
 ];
