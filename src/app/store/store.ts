@@ -4,11 +4,13 @@ import { persistReducer, persistStore } from "redux-persist";
 import { authSlice } from "./authSlice/authSlice";
 import { userSlice } from "./slice/userSlice";
 import { newsletterSlice } from "./mailing/mailingSlice";
+import { complaitsSlice } from "./complaits/complaitsSlice";
 
 const rootReducer = combineReducers({
   [authSlice.name]: authSlice.reducer,
   [userSlice.name]: userSlice.reducer,
   [newsletterSlice.name]: newsletterSlice.reducer,
+  [complaitsSlice.name]: complaitsSlice.reducer,
 });
 
 const persistConfig = {

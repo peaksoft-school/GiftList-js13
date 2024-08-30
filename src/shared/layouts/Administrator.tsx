@@ -61,7 +61,7 @@ const BreadcrumbsWrapper = styled.div`
 `;
 
 const Pages = styled.div`
-  margin-top: 170px;
+  margin-top: 180px;
   padding: 0 20px;
   overflow-y: auto;
   height: calc(100vh - 100px);
