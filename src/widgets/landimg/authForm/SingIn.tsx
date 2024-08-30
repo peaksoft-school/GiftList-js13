@@ -203,15 +203,11 @@ const GoogleButton = styled(Button)(() => ({
 }));
 
 const GoogleIconContainer = styled(Box)(() => ({
-  backgroundColor: "black",
-  borderRadius: "50%",
-  width: "28px",
   height: "28px",
   marginRight: "20px",
 }));
 
 const GoogleIcon = styled("img")(() => ({
-  backgroundColor: "black",
-  width: "14px",
+  width: "28px",
   borderRadius: "50%",
 }));

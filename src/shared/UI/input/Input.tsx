@@ -60,7 +60,7 @@ export const Input = forwardRef(
           error={error}
           {...rest}
           InputProps={{
-            startAdornment: (
+            startAdornment: startIcon && (
               <InputAdornment position="start">
                 <img src={startIcon} alt="search icon" />
               </InputAdornment>
