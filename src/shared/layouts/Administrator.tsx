@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { Outlet } from "react-router-dom";
 import SideBar from "../sideBar/SideBar";
-import SearchHeader from "../../widgets/landimg/searchHeader/SearchHeader";
 import { menuItemsAdmin } from "../../features/lib/constants";
 import styled from "styled-components";
 import Breadcrumbs from "../breadcrumbs/Breadcrumbs";
 import { DataAdminBreadcrumbs } from "../../app/router/adminRoutes";
+import SearchHeader from "../../widgets/landimg/searchHeader/SearchHeader";
 
 const AdminLayout: FC = () => (
   <Container>

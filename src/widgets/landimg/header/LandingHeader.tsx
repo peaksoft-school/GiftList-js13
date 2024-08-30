@@ -48,11 +48,11 @@ const LandingHeader = () => {
             </SmalText>
 
             <ButtonContainer>
-              <MyButton onClick={() => navigate("singIn")} fullWidth>
+              <MyButton onClick={() => navigate("/singIn")} fullWidth>
                 Войти
               </MyButton>
               <MyButton
-                onClick={() => navigate("singUp")}
+                onClick={() => navigate("/singUp")}
                 fullWidth
                 variant="outlined"
               >

@@ -74,20 +74,40 @@ const AppRouter: FC = () => {
     },
 
     {
-      path: "singUp",
-      element: <SignUp />,
+      path: "/singUp",
+      element: (
+        <>
+          {isLoading && <Spinner />}
+          <SignUp />
+        </>
+      ),
     },
     {
-      path: "singIn",
-      element: <SignIn />,
+      path: "/singIn",
+      element: (
+        <>
+          {isLoading && <Spinner />}
+          <SignIn />
+        </>
+      ),
     },
     {
-      path: "forgotPassword",
-      element: <ForgotPassword />,
+      path: "/forgotPassword",
+      element: (
+        <>
+          {isLoading && <Spinner />}
+          <ForgotPassword />
+        </>
+      ),
     },
     {
-      path: "changePassword",
-      element: <ChangePassword />,
+      path: "/changePassword",
+      element: (
+        <>
+          {isLoading && <Spinner />}
+          <ChangePassword />
+        </>
+      ),
     },
 
     {

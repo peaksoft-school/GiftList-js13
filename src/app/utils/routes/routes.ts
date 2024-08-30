@@ -1,10 +1,10 @@
 export const ROUTES = {
   GUEST: {
-    index: "/",
+    index: "/guest",
   },
 
   USER: {
-    index: "/user",
+    index: "/",
   },
 
   ADMIN: {

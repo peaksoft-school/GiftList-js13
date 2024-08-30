@@ -10,7 +10,9 @@ const Landing: FC = () => {
     <>
       <LandingHeader />
 
-      <Button onClick={() => navigate("changePassword")}>changePassword</Button>
+      <Button onClick={() => navigate("/changePassword")}>
+        changePassword
+      </Button>
     </>
   );
 };

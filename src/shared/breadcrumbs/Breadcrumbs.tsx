@@ -8,7 +8,9 @@ interface BreadcrumbsProps {
 
 const Breadcrumbs: FC<BreadcrumbsProps> = ({ data }) => {
   const location = useLocation();
-  const pathnames = location.pathname.split("/").filter((x) => x);
+  const pathnames = location.pathname
+    .split("/")
+    .filter((x) => x && x !== "admin");
 
   const truncatedPathnames = pathnames.slice(-2);
 
@@ -26,7 +28,11 @@ const Breadcrumbs: FC<BreadcrumbsProps> = ({ data }) => {
         const isLast = index === truncatedPathnames.length - 1;
 
         return isLast ? (
-          <Typography color="text.primary" key={to}>
+          <Typography
+            color="text.primary"
+            key={to}
+            style={{ fontWeight: "600" }}
+          >
             {findLabel(value)}
           </Typography>
         ) : (

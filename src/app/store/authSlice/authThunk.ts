@@ -16,7 +16,7 @@ export const authSignUp = createAsyncThunk(
         `/api/auth/signUp`,
         newDate
       );
-      navigate("/");
+      navigate(-1);
       return data;
     } catch (error: any) {
       return rejectWithValue(error.message);
@@ -32,7 +32,7 @@ export const googleAuthFirbase = createAsyncThunk(
         `/api/auth/google?tokenId=${tokenId}`
       );
 
-      navigate("/");
+      navigate(-1);
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -48,7 +48,9 @@ export const authSingIn = createAsyncThunk(
         `/api/auth/signIn`,
         newDate
       );
-      navigate("/user");
+      console.log("newDate", data);
+
+      navigate(-1);
       return data;
     } catch (error: any) {
       return rejectWithValue(error.message);

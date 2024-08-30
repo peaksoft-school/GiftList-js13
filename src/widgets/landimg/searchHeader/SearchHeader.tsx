@@ -1,6 +1,5 @@
 import { FC, useState, MouseEvent } from "react";
 import { Box, styled, Menu, MenuItem } from "@mui/material";
-import Notifications from "../../../shared/notifications/Notifications";
 import { Input } from "../../../shared/UI/input/Input";
 
 const SearchHeader: FC = () => {
@@ -17,13 +16,17 @@ const SearchHeader: FC = () => {
   return (
     <StyleContainer>
       <Input placeholder="Поиск" startIcon="src/assets/icon/serchIcon.svg" />
+      <StyleAccount
+        src="src/assets/icon/bell.svg"
+        alt="bell"
+        sx={{ marginLeft: "20px" }}
+      />
       <StyleProfile>
-        <Notifications menuItems={[]} />
         <ProfileAccount onClick={handleClick}>
           <StyleAccount src="src/assets/icon/profiles.svg" alt="profile icon" />
           <UserName>Naruto Uzumaki</UserName>
           <StyleSelect
-            src="src/assets/icon/Chevrons Icon.svg"
+            src="src/assets/icon/chevronsIcon.svg"
             alt="dropdown icon"
           />
         </ProfileAccount>
@@ -83,7 +86,6 @@ const StyleProfile = styled(Box)({
   alignItems: "center",
   justifyContent: "center",
   padding: "20px",
-  marginTop: "-10px",
   width: "35%",
 });
 
