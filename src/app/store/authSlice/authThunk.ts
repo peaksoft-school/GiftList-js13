@@ -6,12 +6,16 @@ import {
   TypeGoogleAuth,
   TypeNewDate,
 } from "../../lib/type/TypeAuth";
+import { AuthResponse } from "../../../shared/lib/types/authResponse";
 
 export const authSignUp = createAsyncThunk(
   "auth/postAuthUp",
   async ({ newDate, navigate }: TypeNewDate, { rejectWithValue }) => {
     try {
-      const { data } = await axiosInstance.post(`/api/auth/signUp`, newDate);
+      const { data } = await axiosInstance.post<AuthResponse>(
+        `/api/auth/signUp`,
+        newDate
+      );
       navigate("/");
       return data;
     } catch (error: any) {
@@ -40,8 +44,11 @@ export const authSingIn = createAsyncThunk(
   "authIn/postAuthIn",
   async ({ newDate, navigate }: TypeNewDate, { rejectWithValue }) => {
     try {
-      const { data } = await axiosInstance.post(`/api/auth/signIn`, newDate);
-      navigate("/");
+      const { data } = await axiosInstance.post<AuthResponse>(
+        `/api/auth/signIn`,
+        newDate
+      );
+      navigate("/user");
       return data;
     } catch (error: any) {
       return rejectWithValue(error.message);

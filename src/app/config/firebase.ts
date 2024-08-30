@@ -7,7 +7,7 @@ const firebaseConfig = {
   projectId: "giftlist-649f3",
   storageBucket: "giftlist-649f3.appspot.com",
   messagingSenderId: "595676511133",
-  appId: "1:595676511133: web: 53d45f141da56a974b0d74",
+  appId: "1:595676511133:web:53d45f141da56a974b0d74",
   measurementId: "G-LK5CD5H512",
 };
 

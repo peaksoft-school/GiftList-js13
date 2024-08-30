@@ -22,6 +22,8 @@ interface SignUpFormData {
 const SignIn: FC = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
+  const [eyeChange, setEyeChange] = useState(true);
+
   const {
     register,
     handleSubmit,
@@ -39,7 +41,6 @@ const SignIn: FC = () => {
     }
   };
 
-  const [eyeChange, setEyeChange] = useState(true);
   const handleEye = () => {
     setEyeChange((e) => !e);
   };
@@ -105,12 +106,6 @@ const SignIn: FC = () => {
             minLength: {
               value: 8,
               message: "Пароль должен содержать минимум 8 символов",
-            },
-            pattern: {
-              value:
-                /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-              message:
-                "Пароль должен содержать минимум одну заглавную букву, одну цифру и один специальный символ",
             },
           })}
         />

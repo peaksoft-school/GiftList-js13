@@ -1,3 +1,5 @@
+import { NavigateFunction } from "react-router-dom";
+
 export type TypeEmail = {
   email: string;
 };
@@ -9,7 +11,7 @@ export type TypeNewDate = {
     email: string;
     password: string;
   };
-  navigate: (path: string) => void;
+  navigate: NavigateFunction;
 };
 
 export type TypeChangePassword = {
@@ -22,5 +24,5 @@ export type TypeChangePassword = {
 
 export type TypeGoogleAuth = {
   tokenId?: string;
-  navigate: (path: string) => void;
+  navigate: NavigateFunction;
 };
