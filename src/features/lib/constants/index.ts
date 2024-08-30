@@ -9,12 +9,12 @@ import complain from "../../../assets/icon/complain.svg";
 import newsLetter from "../../../assets/icon/newsLetter.svg";
 
 export const menuItems = [
-  { icon: lentaIcon, text: "Лента" },
-  { icon: friendsIcon, text: "Друзья" },
-  { icon: wishListIcon, text: "Список желаний" },
-  { icon: bookedIcon, text: "Забронированные" },
-  { icon: myholidaysIcon, text: "Мои праздники" },
-  { icon: charityIcon, text: "Благотворительность" },
+	{ icon: lentaIcon, text: "Лента" },
+	{ icon: friendsIcon, text: "Друзья" },
+	{ icon: wishListIcon, text: "Список желаний" },
+	{ icon: bookedIcon, text: "Забронированные" },
+	{ icon: myholidaysIcon, text: "Мои праздники" },
+	{ icon: charityIcon, text: "Благотворительность" },
 ];
 
 export const allUsers = [
