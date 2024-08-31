@@ -4,7 +4,7 @@ import {
   getAllHolidays,
   getAllCharities,
   getProfileById,
-  getAllMyFriends,
+  getUsersAdmin,
 } from "./userThunk";
 import {
   Gift,
@@ -12,15 +12,17 @@ import {
   Charity,
   UserProfile,
 } from "../../../shared/lib/types/userProfile";
-import { Friend } from "../../../shared/lib/types/CardType";
+import { Users } from "../../../shared/lib/types/users";
 
 export interface UserState {
-  wish: Gift[];
+    wish: Gift[];
   holidays: Holiday[];
   charities: Charity[];
+  users: Users[];
   profile: UserProfile | null;
   friends:Friend[] | null;
   isLoading: boolean;
+  isLoadingUsers: boolean;
   error: string | null;
 }
 
@@ -29,8 +31,9 @@ const initialState: UserState = {
   holidays: [],
   charities: [],
   profile: null,
-  friends:null,
+  users: [],
   isLoading: true,
+  isLoadingUsers: false,
   error: null,
 };
 
@@ -50,9 +53,7 @@ export const userSlice = createSlice({
       })
       .addCase(getAllWishes.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload
-          ? action.payload.message
-          : "Something went wrong";
+        state.error = action.payload ? action.payload : "Something went wrong";
       })
 
       .addCase(getAllHolidays.pending, (state) => {
@@ -65,9 +66,7 @@ export const userSlice = createSlice({
       })
       .addCase(getAllHolidays.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload
-          ? action.payload.message
-          : "Something went wrong";
+        state.error = action.payload ? action.payload : "Something went wrong";
       })
 
       .addCase(getAllCharities.pending, (state) => {
@@ -80,9 +79,7 @@ export const userSlice = createSlice({
       })
       .addCase(getAllCharities.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload
-          ? action.payload.message
-          : "Something went wrong";
+        state.error = action.payload ? action.payload : "Something went wrong";
       })
       //
       .addCase(getProfileById.pending, (state) => {
@@ -95,24 +92,19 @@ export const userSlice = createSlice({
       })
       .addCase(getProfileById.rejected, (state, action) => {
         state.isLoading = false;
-        state.error = action.payload
-          ? action.payload.message
-          : "Что-то пошло не так";
+        state.error = action.payload ? action.payload : "Something went wrong";
       })
-      //MyFriends
-      .addCase(getAllMyFriends.pending, (state) => {
-        state.isLoading = true;
+      .addCase(getUsersAdmin.pending, (state) => {
+        state.isLoadingUsers = true;
         state.error = null;
       })
-      .addCase(getAllMyFriends.fulfilled, (state, action) => {
-        state.friends = action.payload;
-        state.isLoading = false;
+      .addCase(getUsersAdmin.fulfilled, (state, action) => {
+        state.users = action.payload;
+        state.isLoadingUsers = false;
       })
-      .addCase(getAllMyFriends.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload
-          ? action.payload
-          : "Не удалось загрузить список друзей";
+      .addCase(getUsersAdmin.rejected, (state, action) => {
+        state.isLoadingUsers = false;
+        state.error = action.payload ? action.payload : "Что-то пошло не так";
       });
   },
 });

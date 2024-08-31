@@ -15,6 +15,7 @@ type InputProps = Omit<TextFieldProps, "variant"> & {
   icon?: string;
   error?: boolean;
   helperText?: string;
+  startIcon?: string;
 };
 
 export const Input = forwardRef(
@@ -29,6 +30,7 @@ export const Input = forwardRef(
       helperText,
       error = false,
       onClickEye,
+      startIcon,
       ...rest
     } = props;
 
@@ -36,6 +38,7 @@ export const Input = forwardRef(
       <div
         style={{
           fontFamily: "sans-serif",
+          width: "100%",
         }}
       >
         <label
@@ -57,6 +60,11 @@ export const Input = forwardRef(
           error={error}
           {...rest}
           InputProps={{
+            startAdornment: startIcon && (
+              <InputAdornment position="start">
+                <img src={startIcon} alt="search icon" />
+              </InputAdornment>
+            ),
             endAdornment: (
               <InputAdornment position="end">
                 {error && (

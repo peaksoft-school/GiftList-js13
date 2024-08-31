@@ -1,22 +1,22 @@
 import {
-  Button as MuiButton,
-  ButtonProps as MuiButtonProps,
+	Button as MuiButton,
+	ButtonProps as MuiButtonProps,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import React from "react";
 
 interface CustomButtonProps extends Omit<MuiButtonProps, "variant"> {
-  variant?: "text" | "contained" | "outlined";
-  children: React.ReactNode;
+	variant?: "text" | "contained" | "outlined";
+	children: React.ReactNode;
 }
 
 export const Button: React.FC<CustomButtonProps> = ({
-  type,
-  variant = "text",
-  onClick,
-  children,
-  disabled,
-  ...rest
+	type,
+	variant = "text",
+	onClick,
+	children,
+	disabled,
+	...rest
 }) => {
   return (
     <StyledButton
@@ -33,7 +33,7 @@ export const Button: React.FC<CustomButtonProps> = ({
 };
 
 const StyledButton = styled(MuiButton)<{
-  variant?: CustomButtonProps["variant"];
+	variant?: CustomButtonProps["variant"];
 }>(({ variant }) => ({
   borderRadius: "10px",
   textTransform: "none",

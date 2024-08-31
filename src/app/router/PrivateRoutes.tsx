@@ -1,18 +1,23 @@
 import { Navigate } from "react-router-dom";
 import { PropsType } from "../lib/type/TypePrivatRouter";
+import { useAppSelector } from "../hooks/customHooks";
 
 const PrivateRoutes = ({
   component,
   isAuth,
-  role,
+  roles,
   fallbackPath,
-  isAllowed,
 }: PropsType) => {
-  if (isAuth && isAllowed.includes(role)) {
+  const { role } = useAppSelector((state) => state.auth);
+  const isAllowed = roles === role;
+
+  console.log("role", role, "roles", roles);
+
+  if (isAuth && isAllowed) {
     return component;
   }
 
-  return <Navigate to={fallbackPath} />;
+  return <Navigate to={fallbackPath} replace />;
 };
 
 export default PrivateRoutes;

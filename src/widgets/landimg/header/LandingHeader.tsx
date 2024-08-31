@@ -1,65 +1,70 @@
-import facebook from "../../assets/icon/facebook.svg";
-import vkontakte from "../../assets/icon/vkontakte.svg";
-import instagram from "../../assets/icon/instagram.svg";
-import foto1 from "../../assets/foto/lendingHeader1foto.jpg";
-import foto2 from "../../assets/foto/lendingHeader2foto.jpg";
-import arrow from "../../assets/icon/arrowLending.svg";
+import { Button } from "../../../shared/UI/button/Button";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/system";
-import { Button } from "../../shared/UI/button/Button";
+import { useNavigate } from "react-router-dom";
 
-const LandingHeader = () => (
-  <HeaderContainer>
-    <Container>
-      <Header>
-        <Typography variant="body1">О проекте</Typography>
-        <HeaderName variant="h1">GIFT LIST</HeaderName>
-        <HeaderBl variant="body1">Благотворительность</HeaderBl>
-      </Header>
+const LandingHeader = () => {
+  const navigate = useNavigate();
 
-      <Main>
-        <Box>
-          <Icon src={facebook} alt="facebook" />
-          <Icon src={vkontakte} alt="VK" />
-          <Icon src={instagram} alt="Instagram" />
-        </Box>
+  return (
+    <HeaderContainer>
+      <Container>
+        <Header>
+          <Typography variant="body1">О проекте</Typography>
+          <HeaderName variant="h1">GIFT LIST</HeaderName>
+          <HeaderBl variant="body1">Благотворительность</HeaderBl>
+        </Header>
 
-        <Box>
-          <BorImg />
-          <Img src={foto1} alt="foto1" />
-        </Box>
+        <Main>
+          <Box>
+            <Icon src="src/assets/icon/facebook.svg" alt="facebook" />
+            <Icon src="src/assets/icon/vkontakte.svg" alt="VK" />
+            <Icon src="src/assets/icon/instagramm.svg" alt="Instagram" />
+          </Box>
 
-        <Box>
-          <BorImgTwo />
-          <ImgTwo src={foto2} alt="foto2" />
-        </Box>
+          <Box>
+            <BorImg />
+            <Img src="src/assets/foto/lendingHeader1foto.jpg" alt="foto1" />
+          </Box>
 
-        <ListDiv>
-          <Typography variant="body1">
-            <ArrowStyled src={arrow} />
-            Листайте вниз
-          </Typography>
-        </ListDiv>
+          <Box>
+            <BorImgTwo />
+            <ImgTwo src="src/assets/foto/lendingHeader2foto.jpg" alt="foto2" />
+          </Box>
 
-        <Descript>
-          <DescriptStyled variant="body1">
-            Социальная сеть нового поколения
-          </DescriptStyled>
-          <SmalText>
-            Всегда подскажет, что подарить близким и осуществит твои желания{" "}
-          </SmalText>
+          <ListDiv>
+            <Typography variant="body1">
+              <ArrowStyled src="src/assets/icon/arrowLending.svg" />
+              Листайте вниз
+            </Typography>
+          </ListDiv>
 
-          <ButtonContainer>
-            <MyButton fullWidth>Войти</MyButton>
-            <MyButton fullWidth variant="outlined">
-              Регистрация
-            </MyButton>
-          </ButtonContainer>
-        </Descript>
-      </Main>
-    </Container>
-  </HeaderContainer>
-);
+          <Descript>
+            <DescriptStyled variant="body1">
+              Социальная сеть нового поколения
+            </DescriptStyled>
+            <SmalText>
+              Всегда подскажет, что подарить близким и осуществит твои желания{" "}
+            </SmalText>
+
+            <ButtonContainer>
+              <MyButton onClick={() => navigate("/singIn")} fullWidth>
+                Войти
+              </MyButton>
+              <MyButton
+                onClick={() => navigate("/singUp")}
+                fullWidth
+                variant="outlined"
+              >
+                Регистрация
+              </MyButton>
+            </ButtonContainer>
+          </Descript>
+        </Main>
+      </Container>
+    </HeaderContainer>
+  );
+};
 
 export default LandingHeader;
 

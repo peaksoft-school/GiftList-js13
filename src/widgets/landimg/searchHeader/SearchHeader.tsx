@@ -1,116 +1,97 @@
 import { FC, useState, MouseEvent } from "react";
-import {
-	Box,
-	InputAdornment,
-	styled,
-	TextField,
-	Menu,
-	MenuItem,
-} from "@mui/material";
-import Notifications from "../../../shared/notifications/Notifications";
+import { Box, styled, Menu, MenuItem } from "@mui/material";
+import { Input } from "../../../shared/UI/input/Input";
 
 const SearchHeader: FC = () => {
-	const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
-	const handleClick = (event: MouseEvent<HTMLElement>) => {
-		setAnchorEl(event.currentTarget);
-	};
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-	const handleClose = () => {
-		setAnchorEl(null);
-	};
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-	return (
-		<StyleContainer>
-			<StyledTextField
-				fullWidth
-				placeholder="Поиск"
-				InputProps={{
-					startAdornment: (
-						<InputAdornment position="start">
-							<img src="src/assets/icon/serchIcon.svg" alt="search icon" />
-						</InputAdornment>
-					),
-				}}
-			/>
-			<StyleProfile>
-				<Notifications menuItems={[]} />
-				<ProfileAccount onClick={handleClick}>
-					<StyleAccount src="src/assets/icon/profiles.svg" alt="profile icon" />
-					<UserName>Naruto Uzumaki</UserName>
-					<StyleSelect
-						src="src/assets/icon/Chevrons Icon.svg"
-						alt="dropdown icon"
-					/>
-				</ProfileAccount>
-				<Menu
-					anchorEl={anchorEl}
-					open={Boolean(anchorEl)}
-					onClose={handleClose}>
-					<StyledLogouts onClick={handleClose}>
-						<img src="src/assets/icon/profileLogouts.svg" alt="profiles" />
-						Профиль
-					</StyledLogouts>
-					<StyledLogouts onClick={handleClose}>
-						<img src="src/assets/icon/logout.svg" alt="profiles" />
-						Выход
-					</StyledLogouts>
-				</Menu>
-			</StyleProfile>
-		</StyleContainer>
-	);
+  return (
+    <StyleContainer>
+      <Input placeholder="Поиск" startIcon="src/assets/icon/serchIcon.svg" />
+      <StyleAccount
+        src="src/assets/icon/bell.svg"
+        alt="bell"
+        sx={{ marginLeft: "20px" }}
+      />
+      <StyleProfile>
+        <ProfileAccount onClick={handleClick}>
+          <StyleAccount src="src/assets/icon/profiles.svg" alt="profile icon" />
+          <UserName>Naruto Uzumaki</UserName>
+          <StyleSelect
+            src="src/assets/icon/chevronsIcon.svg"
+            alt="dropdown icon"
+          />
+        </ProfileAccount>
+        <Menu
+          anchorEl={anchorEl}
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <StyledLogouts onClick={handleClose}>
+            <img src="src/assets/icon/profileLogouts.svg" alt="profiles" />
+            Профиль
+          </StyledLogouts>
+          <StyledLogouts onClick={handleClose}>
+            <img src="src/assets/icon/logout.svg" alt="profiles" />
+            Выход
+          </StyledLogouts>
+        </Menu>
+      </StyleProfile>
+    </StyleContainer>
+  );
 };
 
 export default SearchHeader;
 
 const UserName = styled("p")({
-	padding: "5px",
-	color: "#020202",
-	fontSize: "16px",
-	fontWeight: "400",
-	lineHeight: "21.79px",
-	cursor: "pointer",
+  padding: "5px",
+  color: "#020202",
+  fontSize: "16px",
+  fontWeight: "400",
+  lineHeight: "21.79px",
+  cursor: "pointer",
 });
 const StyledLogouts = styled(MenuItem)(() => ({
-	display: "flex",
-	gap: "10px",
-	cursor: "pointer",
+  display: "flex",
+  gap: "10px",
+  cursor: "pointer",
 }));
 
 const StyleAccount = styled("img")({
-	cursor: "pointer",
+  cursor: "pointer",
 });
 
 const StyleContainer = styled(Box)({
-	display: "flex",
-	alignItems:'center',
-	margin: "20px",
+  display: "flex",
+  alignItems: "center",
+  padding: "20px",
+  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.15)",
 });
 
 const StyleSelect = styled("img")({
-	cursor: "pointer",
-	fontSize: "5px",
+  cursor: "pointer",
+  fontSize: "5px",
 });
 
 const StyleProfile = styled(Box)({
-	display: "flex",
-	alignItems:'center',
-	justifyContent:'center',
-	padding: "20px",
-	marginTop: "-10px",
-	width: "35%",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "20px",
+  width: "35%",
 });
 
 const ProfileAccount = styled(Box)({
-	display: "flex",
-	alignItems: "center",
-	cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  cursor: "pointer",
 });
 
-const StyledTextField = styled(TextField)({
-  width: "821px",
-  height: "40px",
-  "& .MuiInputBase-root": {
-    height: "100%", 
-  },
-});

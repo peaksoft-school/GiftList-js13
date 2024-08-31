@@ -6,81 +6,163 @@ import {
   UserProfile,
 } from "../../../shared/lib/types/userProfile";
 import { axiosInstance } from "../../config/axiosInstance";
-import { Friend } from "../../../shared/lib/types/CardType";
+import { Users } from "../../../shared/lib/types/users";
+
+interface ErrorResponse {
+  response?: {
+    data: {
+      exceptionMessage: string;
+    };
+  };
+  message?: string;
+}
 
 export const getAllWishes = createAsyncThunk<
   Wish[],
   void,
-  { rejectValue: { message: string; code?: string } }
+  { rejectValue: string }
 >("user/getAllWishes", async (_, { rejectWithValue }) => {
   try {
     const response = await axiosInstance.get<Wish[]>("/api/wish/getAll");
     console.log(response);
     return response.data;
-  } catch (error: any) {
-    const serializableError = {
-      message: error.message,
-      code: error.code,
-    };
-    console.error(serializableError);
-    return rejectWithValue(serializableError);
+  } catch (error) {
+    const err = error as ErrorResponse;
+
+    const errorMessage =
+      err?.response?.data?.exceptionMessage ||
+      err.message ||
+      "Something went wrong";
+
+    return rejectWithValue(errorMessage);
   }
 });
 
 export const getAllHolidays = createAsyncThunk<
   Holiday[],
   void,
-  { rejectValue: { message: string } }
+  { rejectValue: string }
 >("user/getAllHolidays", async (_, { rejectWithValue }) => {
   try {
     const response = await axiosInstance.get<Holiday[]>("/api/holiday/getAll");
     console.log("Holiday API response:", response.data);
     return response.data;
-  } catch (error: any) {
-    const serializableError = {
-      message: error.message,
-    };
-    console.error(serializableError);
-    return rejectWithValue(serializableError);
+  } catch (error) {
+    const err = error as ErrorResponse;
+
+    const errorMessage =
+      err?.response?.data?.exceptionMessage ||
+      err.message ||
+      "Something went wrong";
+
+    return rejectWithValue(errorMessage);
   }
 });
 
 export const getAllCharities = createAsyncThunk<
   Charity[],
   void,
-  { rejectValue: { message: string; code?: string } }
+  { rejectValue: string }
 >("user/getAllCharities", async (_, { rejectWithValue }) => {
   try {
     const response = await axiosInstance.get<Charity[]>("/api/charity/getAll");
     // console.log(response);
     return response.data;
-  } catch (error: any) {
-    const serializableError = {
-      message: error.message,
-      code: error.code,
-    };
-    console.error(serializableError);
-    return rejectWithValue(serializableError);
+  } catch (error) {
+    const err = error as ErrorResponse;
+
+    const errorMessage =
+      err?.response?.data?.exceptionMessage ||
+      err.message ||
+      "Something went wrong";
+
+    return rejectWithValue(errorMessage);
   }
 });
 
 export const getProfileById = createAsyncThunk<
   UserProfile,
   number,
-  { rejectValue: { message: string; code?: string } }
+  { rejectValue: string }
 >("user/getProfileById", async (id, { rejectWithValue }) => {
   try {
     const response = await axiosInstance.get<UserProfile>(
       `/api/friends/getFriendProfile/${id}`
     );
     return response.data;
-  } catch (error: any) {
-    const serializableError = {
-      message: error.message,
-      code: error.code,
-    };
-    console.error(serializableError);
-    return rejectWithValue(serializableError);
+  } catch (error) {
+    const err = error as ErrorResponse;
+
+    const errorMessage =
+      err?.response?.data?.exceptionMessage ||
+      err.message ||
+      "Something went wrong";
+
+    return rejectWithValue(errorMessage);
+  }
+});
+
+// userAdmin
+
+export const getUsersAdmin = createAsyncThunk<
+  Users[],
+  void,
+  { rejectValue: string }
+>("users/getUsersAdmin", async (_, { rejectWithValue }) => {
+  try {
+    const response = await axiosInstance.get<Users[]>("/api/friends");
+    return response.data;
+  } catch (error) {
+    const err = error as ErrorResponse;
+
+    const errorMessage =
+      err?.response?.data?.exceptionMessage ||
+      err.message ||
+      "Something went wrong";
+
+    return rejectWithValue(errorMessage);
+  }
+});
+
+export const deleteUser = createAsyncThunk<
+  undefined,
+  { cardId: number },
+  { rejectValue: string }
+>("users/deleteUser", async ({ cardId }, { rejectWithValue, dispatch }) => {
+  try {
+    await axiosInstance.delete(`/api/admin/deleteUser/${cardId}`);
+
+    dispatch(getUsersAdmin());
+  } catch (error) {
+    const err = error as ErrorResponse;
+
+    const errorMessage =
+      err?.response?.data?.exceptionMessage ||
+      err.message ||
+      "Something went wrong";
+
+    return rejectWithValue(errorMessage);
+  }
+});
+
+export const blockUser = createAsyncThunk<
+  undefined,
+  { cardId: number },
+  { rejectValue: string }
+>("users/blockUser", async ({ cardId }, { rejectWithValue, dispatch }) => {
+  try {
+    await axiosInstance.patch(`/api/admin/userBlock${cardId}`);
+
+    dispatch(getUsersAdmin());
+  } catch (error) {
+    const err = error as ErrorResponse;
+
+    const errorMessage =
+      err?.response?.data?.exceptionMessage ||
+      err.message ||
+      "Something went wrong";
+
+    return rejectWithValue(errorMessage);
   }
 });
 
