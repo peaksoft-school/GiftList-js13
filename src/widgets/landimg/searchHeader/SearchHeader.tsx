@@ -4,6 +4,7 @@ import { Input } from "../../../shared/UI/input/Input";
 import bell from "../../../assets/icon/bell.svg";
 import profile from "../../../assets/icon/profiles.svg";
 import searchIcon from "../../../assets/icon/serchIcon.svg";
+import chevronsIcon from "../../../assets/icon/chevronsIcon.svg";
 
 const SearchHeader: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -25,7 +26,7 @@ const SearchHeader: FC = () => {
           <StyleAccount src={profile} alt="profile icon" />
           <UserName>Naruto Uzumaki</UserName>
           <StyleSelect
-            src="src/assets/icon/chevronsIcon.svg"
+            src={chevronsIcon}
             alt="dropdown icon"
           />
         </ProfileAccount>
