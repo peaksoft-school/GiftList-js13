@@ -9,7 +9,7 @@ import {
   deleteUser,
   getUsersAdmin,
 } from "../../../app/store/slice/userThunk";
-import avatar from "../../../assets/images/avatar.png";
+import avatarImage from "../../../assets/images/avatarImage.jpg";
 
 const meatballsArr = [
   {
@@ -57,7 +57,7 @@ const Users: FC = () => {
           <Grid key={user.id} item>
             <UserCard>
               <UserCardHeader />
-              <UserImage src={avatar} alt={user.fullName} />
+              <UserImage src={avatarImage} alt={user.fullName} />
               <UserInfo>
                 <TypographyName variant="body1">{user.fullName}</TypographyName>
                 <TypographyWish variant="body2">

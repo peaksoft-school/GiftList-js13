@@ -1,6 +1,9 @@
 import { FC, useState, MouseEvent } from "react";
 import { Box, styled, Menu, MenuItem } from "@mui/material";
 import { Input } from "../../../shared/UI/input/Input";
+import bell from "../../../assets/icon/bell.svg";
+import profile from "../../../assets/icon/profiles.svg";
+import searchIcon from "../../../assets/icon/serchIcon.svg";
 
 const SearchHeader: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -15,15 +18,11 @@ const SearchHeader: FC = () => {
 
   return (
     <StyleContainer>
-      <Input placeholder="Поиск" startIcon="src/assets/icon/serchIcon.svg" />
-      <StyleAccount
-        src="src/assets/icon/bell.svg"
-        alt="bell"
-        sx={{ marginLeft: "20px" }}
-      />
+      <Input placeholder="Поиск" startIcon={searchIcon} />
+      <StyleAccount src={bell} alt="bell" sx={{ marginLeft: "20px" }} />
       <StyleProfile>
         <ProfileAccount onClick={handleClick}>
-          <StyleAccount src="src/assets/icon/profiles.svg" alt="profile icon" />
+          <StyleAccount src={profile} alt="profile icon" />
           <UserName>Naruto Uzumaki</UserName>
           <StyleSelect
             src="src/assets/icon/chevronsIcon.svg"

@@ -7,6 +7,7 @@ import {
 } from "../../../shared/lib/types/userProfile";
 import { axiosInstance } from "../../config/axiosInstance";
 import { Users } from "../../../shared/lib/types/users";
+import { Friend } from "../../../shared/lib/types/CardType";
 
 interface ErrorResponse {
   response?: {
