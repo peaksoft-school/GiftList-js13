@@ -1,6 +1,14 @@
 import { FC, useState, MouseEvent } from "react";
 import { Box, styled, Menu, MenuItem } from "@mui/material";
 import { Input } from "../../../shared/UI/input/Input";
+import serchIcon from "../../../assets/icon/serchIcon.svg";
+import {
+  BellIcon,
+  ChevronsIcon,
+  LogoutIcon,
+  ProfileLogoutsIcon,
+  ProfilesIcon,
+} from "../../../assets/icon";
 
 const SearchHeader: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -15,20 +23,13 @@ const SearchHeader: FC = () => {
 
   return (
     <StyleContainer>
-      <Input placeholder="Поиск" startIcon="src/assets/icon/serchIcon.svg" />
-      <StyleAccount
-        src="src/assets/icon/bell.svg"
-        alt="bell"
-        sx={{ marginLeft: "20px" }}
-      />
+      <Input placeholder="Поиск" startIcon={serchIcon} />
+      <StyleAccount src={BellIcon} alt="bell" sx={{ marginLeft: "20px" }} />
       <StyleProfile>
         <ProfileAccount onClick={handleClick}>
-          <StyleAccount src="src/assets/icon/profiles.svg" alt="profile icon" />
+          <StyleAccount src={ProfilesIcon} alt="profile icon" />
           <UserName>Naruto Uzumaki</UserName>
-          <StyleSelect
-            src="src/assets/icon/chevronsIcon.svg"
-            alt="dropdown icon"
-          />
+          <StyleSelect src={ChevronsIcon} alt="dropdown icon" />
         </ProfileAccount>
         <Menu
           anchorEl={anchorEl}
@@ -36,11 +37,11 @@ const SearchHeader: FC = () => {
           onClose={handleClose}
         >
           <StyledLogouts onClick={handleClose}>
-            <img src="src/assets/icon/profileLogouts.svg" alt="profiles" />
+            <img src={ProfileLogoutsIcon} alt="profiles" />
             Профиль
           </StyledLogouts>
           <StyledLogouts onClick={handleClose}>
-            <img src="src/assets/icon/logout.svg" alt="profiles" />
+            <img src={LogoutIcon} alt="profiles" />
             Выход
           </StyledLogouts>
         </Menu>
