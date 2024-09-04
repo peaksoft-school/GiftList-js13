@@ -9,6 +9,8 @@ import {
   ProfileLogoutsIcon,
   ProfilesIcon,
 } from "../../../assets/icon";
+import { persistConfig } from "../../../app/store/store";
+import { purgeStoredState } from "redux-persist";
 
 const SearchHeader: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -18,7 +20,9 @@ const SearchHeader: FC = () => {
   };
 
   const handleClose = () => {
+    purgeStoredState(persistConfig);
     setAnchorEl(null);
+    window.location.reload();
   };
 
   return (

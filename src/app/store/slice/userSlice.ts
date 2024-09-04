@@ -7,7 +7,7 @@ import {
   getUsersAdmin,
 } from "./userThunk";
 import {
-  Gift,
+  Wish,
   Holiday,
   Charity,
   UserProfile,
@@ -15,7 +15,7 @@ import {
 import { Users } from "../../../shared/lib/types/users";
 
 export interface UserState {
-    wish: Gift[];
+  wish: Wish[];
   holidays: Holiday[];
   charities: Charity[];
   users: Users[];
