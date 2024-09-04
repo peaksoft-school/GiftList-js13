@@ -50,7 +50,7 @@ const Users: FC = () => {
   return (
     <BoxContent>
       <BoxTitle>
-        <Typography variant="h6">Пользователи</Typography>
+        {/* <Typography variant="h6">Пользователи</Typography> */}
       </BoxTitle>
       <GridContainer container spacing={2}>
         {users.map((user) => (

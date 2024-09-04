@@ -20,9 +20,9 @@ export const injectStore = (_store: Store<RootState, Action>) => {
 axiosInstance.interceptors.request.use(
   function (config) {
     const updatedConfig = { ...config };
-    // const { token } = store.getState().auth;
+    const { token } = store.getState().auth;
 
-    const token ="eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTcyNTI1MDE0OCwiZXhwIjoxNzI1MjU3MzQ4fQ.8vBTzJ0ACfIcyg550hGjhYjXQ3GfaUdOfM1_oVOULGMxdHEKeqLp3rtfxs7aYgvZhgBSz7QOsGwSzW5Lwif5Mg";
+    // const token ="eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Inppa2lyZGlub3ZhQGdtYWlsLmNvbSIsInJvbGUiOiJVU0VSIiwiaWF0IjoxNzI1NDIyNjI1LCJleHAiOjE3MjU0Mjk4MjV9.LFXiqPskaq8eeba03La6mya2MIz0z9khjdBMR4LCtSYS765ET8lydJ-eGvjxOJCfP1WKyXIIpJPVDElo0bLPOw";
 
       
 
