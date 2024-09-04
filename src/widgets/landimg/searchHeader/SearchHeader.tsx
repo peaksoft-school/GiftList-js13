@@ -1,10 +1,14 @@
 import { FC, useState, MouseEvent } from "react";
 import { Box, styled, Menu, MenuItem } from "@mui/material";
 import { Input } from "../../../shared/UI/input/Input";
-import bell from "../../../assets/icon/bell.svg";
-import profile from "../../../assets/icon/profiles.svg";
-import searchIcon from "../../../assets/icon/serchIcon.svg";
-import chevronsIcon from "../../../assets/icon/chevronsIcon.svg";
+import serchIcon from "../../../assets/icon/serchIcon.svg";
+import {
+  BellIcon,
+  ChevronsIcon,
+  LogoutIcon,
+  ProfileLogoutsIcon,
+  ProfilesIcon,
+} from "../../../assets/icon";
 
 const SearchHeader: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -19,16 +23,13 @@ const SearchHeader: FC = () => {
 
   return (
     <StyleContainer>
-      <Input placeholder="Поиск" startIcon={searchIcon} />
-      <StyleAccount src={bell} alt="bell" sx={{ marginLeft: "20px" }} />
+      <Input placeholder="Поиск" startIcon={serchIcon} />
+      <StyleAccount src={BellIcon} alt="bell" sx={{ marginLeft: "20px" }} />
       <StyleProfile>
         <ProfileAccount onClick={handleClick}>
-          <StyleAccount src={profile} alt="profile icon" />
+          <StyleAccount src={ProfilesIcon} alt="profile icon" />
           <UserName>Naruto Uzumaki</UserName>
-          <StyleSelect
-            src={chevronsIcon}
-            alt="dropdown icon"
-          />
+          <StyleSelect src={ChevronsIcon} alt="dropdown icon" />
         </ProfileAccount>
         <Menu
           anchorEl={anchorEl}
@@ -36,11 +37,11 @@ const SearchHeader: FC = () => {
           onClose={handleClose}
         >
           <StyledLogouts onClick={handleClose}>
-            <img src="src/assets/icon/profileLogouts.svg" alt="profiles" />
+            <img src={ProfileLogoutsIcon} alt="profiles" />
             Профиль
           </StyledLogouts>
           <StyledLogouts onClick={handleClose}>
-            <img src="src/assets/icon/logout.svg" alt="profiles" />
+            <img src={LogoutIcon} alt="profiles" />
             Выход
           </StyledLogouts>
         </Menu>

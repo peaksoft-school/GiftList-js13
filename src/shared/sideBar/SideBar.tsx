@@ -7,23 +7,34 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { menuItems } from "../../features/lib/constants";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const SideBar = ({ data = menuItems }) => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <StyledDrawer>
       <Title variant="h6">GIFT LIST</Title>
       <List style={{ padding: "10px" }}>
-        {data.map((item, id) => (
-          <StyledListItem key={id} onClick={() => navigate(item.navigate)}>
-            <ListItemIcon>
-              <img src={item.icon} alt={item.text} width={24} height={24} />
-            </ListItemIcon>
-            <StyledListItemText primary={item.text} />
-          </StyledListItem>
-        ))}
+        {data.map((item, id) => {
+          const isActive = location.pathname
+            .split("/")
+            .some((path) => path === item.navigate.split("/").pop());
+
+          return (
+            <StyledListItem
+              key={id}
+              onClick={() => navigate(item.navigate)}
+              active={isActive}
+            >
+              <ListItemIcon>
+                <img src={item.icon} alt={item.text} width={24} height={24} />
+              </ListItemIcon>
+              <StyledListItemText primary={item.text} />
+            </StyledListItem>
+          );
+        })}
       </List>
     </StyledDrawer>
   );
@@ -39,21 +50,21 @@ const StyledDrawer = styled("div")({
   color: "#fff",
 });
 
-const StyledListItem = styled(Button)({
+const StyledListItem = styled(Button, {
+  shouldForwardProp: (prop) => prop !== "active",
+})<{ active: boolean }>(({ active }) => ({
   width: "100%",
   textTransform: "none",
   cursor: "pointer",
   borderRadius: "10px",
   color: "#fff",
   textAlign: "left",
+  backgroundColor: active ? "rgba(232, 220, 220, 0.15)" : "",
   "&:hover": {
     backgroundColor: "rgba(232, 220, 220, 0.1)",
     transition: "background-color 0.3s ease-in-out",
-    "&:hover:not(:focus)": {
-      backgroundColor: "rgba(211, 211, 208, 0.3)",
-    },
   },
-});
+}));
 
 const StyledListItemText = styled(ListItemText)({
   fontSize: "calc(1em + 4vw)",
