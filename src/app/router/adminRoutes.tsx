@@ -1,15 +1,16 @@
 import { Navigate, RouteObject } from "react-router-dom";
-import UsersPages from "../../pages/adminPages/users/UsersPages";
+// import UsersPages from "../../pages/adminPages/users/UsersPages";
 import CharityPages from "../../pages/adminPages/charity/CharityPages";
 import ComplaitsPages from "../../pages/adminPages/complaints/ComplaitsPages";
 import MailingPages from "../../pages/adminPages/mailing/MailingPages";
 import UserProfilePage from "../../pages/UserProfilePage";
+import Users from "../../shared/UI/card/Users";
 
 export const adminRoutes: RouteObject[] = [
   { index: true, element: <Navigate to="users" /> },
   {
     path: "users",
-    element: <UsersPages />,
+    element: <Users />,
   },
 
   {
