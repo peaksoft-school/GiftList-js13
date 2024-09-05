@@ -8,7 +8,7 @@ import {
   getAllMyFriends,
 } from "./userThunk";
 import {
-  Gift,
+  Wish,
   Holiday,
   Charity,
   UserProfile,
@@ -17,7 +17,7 @@ import { Users } from "../../../shared/lib/types/users";
 import { Friend } from "../../../shared/lib/types/CardType";
 
 export interface UserState {
-  wish: Gift[];
+  wish: Wish[];
   holidays: Holiday[];
   charities: Charity[];
   users: Users[];

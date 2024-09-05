@@ -9,6 +9,8 @@ import {
   ProfileLogoutsIcon,
   ProfilesIcon,
 } from "../../../assets/icon";
+import { persistConfig } from "../../../app/store/store";
+import { purgeStoredState } from "redux-persist";
 
 const SearchHeader: FC = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -18,7 +20,9 @@ const SearchHeader: FC = () => {
   };
 
   const handleClose = () => {
+    purgeStoredState(persistConfig);
     setAnchorEl(null);
+    window.location.reload();
   };
 
   return (
@@ -31,11 +35,7 @@ const SearchHeader: FC = () => {
           <UserName>Naruto Uzumaki</UserName>
           <StyleSelect src={ChevronsIcon} alt="dropdown icon" />
         </ProfileAccount>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
+        <Menu anchorEl={anchorEl} open={Boolean(anchorEl)}>
           <StyledLogouts onClick={handleClose}>
             <img src={ProfileLogoutsIcon} alt="profiles" />
             Профиль

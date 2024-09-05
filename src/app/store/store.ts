@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
   [newsletterSlice.name]: newsletterSlice.reducer,
 });
 
-const persistConfig = {
+export const persistConfig = {
   key: "GIFT_LIST",
   storage,
 };
