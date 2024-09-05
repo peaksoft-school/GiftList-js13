@@ -15,3 +15,8 @@ export type UserData = {
   isLoading: boolean;
   error: null | string;
 };
+
+export type TypeComplaits = {
+  loading: boolean;
+  complaints: [];
+};

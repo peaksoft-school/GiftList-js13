@@ -4,7 +4,7 @@ import { Button } from "@mui/material";
 import threeDots from "../../assets/icon/threeDots.svg";
 import { CartMapProps } from "../lib/types/LentaCart";
 
-const CartMap: FC<CartMapProps> = ({ arrow, mapType }) => (
+const CartMap: FC<CartMapProps> = ({ arrow, mapType, red = false }) => (
   <>
     {arrow?.map(
       ({
@@ -18,7 +18,7 @@ const CartMap: FC<CartMapProps> = ({ arrow, mapType }) => (
         profileBlockFoto,
         profileBlockState,
       }) => (
-        <StyledContainer key={id}>
+        <StyledContainer key={id} $red={red}>
           {mapType === "list" && (
             <div>
               <StyledListFoto src={fotoPost} />
@@ -66,21 +66,23 @@ const CartMap: FC<CartMapProps> = ({ arrow, mapType }) => (
 
 export default CartMap;
 
-const StyledContainer = styled.div`
-  display: flex;
+const StyledContainer = styled.div<{ $red?: boolean }>`
+  display: grid;
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   padding: 20px;
+  max-width: 350px;
+  border-radius: 10px;
+  border: ${(props) => (props.$red ? "1px solid red" : "none")};
 `;
 
-const StyledContainerData = styled.div`
-  width: 320px;
-`;
+const StyledContainerData = styled.div``;
 
 const StyledAvaContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-size: 18px;
 `;
 
 const StyledAvaContainerTwo = styled.div`
@@ -88,7 +90,7 @@ const StyledAvaContainerTwo = styled.div`
   align-items: center;
   justify-content: space-between;
   color: #636c84;
-  font-size: 18px;
+  font-size: 16px;
 `;
 
 const StyledAva = styled.div`
@@ -105,7 +107,7 @@ const StyledListFoto = styled.img`
 `;
 
 const StyledCartFoto = styled.img`
-  width: 320px;
+  width: 305px;
   height: 157px;
   border-radius: 10px;
 `;
