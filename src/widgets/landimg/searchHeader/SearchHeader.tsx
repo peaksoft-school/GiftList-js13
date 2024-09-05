@@ -35,11 +35,7 @@ const SearchHeader: FC = () => {
           <UserName>Naruto Uzumaki</UserName>
           <StyleSelect src={ChevronsIcon} alt="dropdown icon" />
         </ProfileAccount>
-        <Menu
-          anchorEl={anchorEl}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
+        <Menu anchorEl={anchorEl} open={Boolean(anchorEl)}>
           <StyledLogouts onClick={handleClose}>
             <img src={ProfileLogoutsIcon} alt="profiles" />
             Профиль
