@@ -80,28 +80,6 @@ export const getAllCharities = createAsyncThunk<
   }
 });
 
-// export const getProfileById = createAsyncThunk<
-//   UserProfile,
-//   number,
-//   { rejectValue: string }
-// >("user/getProfileById", async (id, { rejectWithValue }) => {
-//   try {
-//     const response = await axiosInstance.get<UserProfile>(
-//       `/api/friends/getFriendProfile/${id}`
-//     );
-//     return response.data;
-//   } catch (error) {
-//     const err = error as ErrorResponse;
-
-//     const errorMessage =
-//       err?.response?.data?.exceptionMessage ||
-//       err.message ||
-//       "Something went wrong";
-
-//     return rejectWithValue(errorMessage);
-//   }
-// });
-
 
 export const getProfileById = createAsyncThunk<
   UserProfile,
