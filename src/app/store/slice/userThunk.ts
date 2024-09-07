@@ -7,6 +7,7 @@ import {
 } from "../../../shared/lib/types/userProfile";
 import { axiosInstance } from "../../config/axiosInstance";
 import { Users } from "../../../shared/lib/types/users";
+import { Friend } from "../../../shared/lib/types/CardType";
 
 interface ErrorResponse {
   response?: {
@@ -169,3 +170,23 @@ export const blockUser = createAsyncThunk<
     return rejectWithValue(errorMessage);
   }
 });
+
+// MyFriends
+
+
+export const getAllMyFriends = createAsyncThunk<
+  Friend[],
+  void,
+  { rejectValue: string }
+>(
+  "user/getAllMyFriends",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await axiosInstance.get("/api/friends/getAllMyFriends");
+      return response.data;
+    } catch (error) {
+      console.error(error);
+      return rejectWithValue("Не удалось загрузить список друзей");
+    }
+  }
+);

@@ -14,6 +14,7 @@ export const adminRoutes: RouteObject[] = [
   {
     path: "users/:id", 
     element: <UserProfilePage />,
+
   },
   {
     path: "charity",

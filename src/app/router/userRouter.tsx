@@ -1,10 +1,11 @@
 import { Navigate } from "react-router-dom";
 import Booket from "../../pages/userPages/booket/Booket";
 import Charity from "../../pages/userPages/charity/Charity";
-import Friends from "../../pages/userPages/friends/Friends";
+// import Friends from "../../pages/userPages/friends/Friends";
 import Lenta from "../../pages/userPages/lenta/Lenta";
 import MyHolidays from "../../pages/userPages/myHolidays/MyHolidays";
 import WishList from "../../pages/userPages/wishList/WishList";
+import { MyFriends } from "../../pages/MyFriends";
 
 export const userRoutes = [
   { index: true, element: <Navigate to="lenta" /> },
@@ -14,7 +15,8 @@ export const userRoutes = [
   },
   {
     path: "friends",
-    element: <Friends />,
+    // element: <Friends />,
+    element: <MyFriends />,
   },
   {
     path: "wishList",
