@@ -40,3 +40,5 @@ export { default as WishListIcon } from "./WishList.svg";
 export { default as ArrowToDown } from "./arrowToDown.svg";
 export { default as FacebookIcon } from "./facebook.svg";
 export { default as SearchIcon } from "./serchIcon.svg";
+export { default as BlockIcon } from "./block.svg";
+export { default as DeleteIcon } from "./delete.svg";

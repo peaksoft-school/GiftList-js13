@@ -10,23 +10,26 @@ import {
   getUsersAdmin,
 } from "../../../app/store/slice/userThunk";
 import avatar from "../../../assets/images/avatar.png";
+import { BlockIcon, DeleteIcon } from "../../../assets/icon";
+import { useNavigate } from "react-router-dom";
 
 const meatballsArr = [
   {
     id: 1,
     title: "заблокировать",
-    icon: "src/assets/icon/lock.svg",
+    icon: BlockIcon,
   },
   {
     id: 2,
     title: "удалить",
-    icon: "src/assets/icon/delete.svg",
+    icon: DeleteIcon,
   },
 ];
 
 const Users: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { users } = useSelector((state: RootState) => state.user);
+  const navigate = useNavigate();
 
   const handleClick = (key: number, cardId: number) => {
     switch (key) {
@@ -47,19 +50,29 @@ const Users: FC = () => {
     dispatch(getUsersAdmin());
   }, [dispatch]);
 
+  const handleUserClick = (name: string) => {
+    const encodedName = encodeURIComponent(name.trim().replace(/\s+/g, "_"));
+    navigate(`/admin/users/${encodedName}`);
+  };
   return (
     <BoxContent>
-      <BoxTitle>
-        <Typography variant="h6">Пользователи</Typography>
-      </BoxTitle>
       <GridContainer container spacing={2}>
         {users.map((user) => (
           <Grid key={user.id} item>
             <UserCard>
               <UserCardHeader />
-              <UserImage src={avatar} alt={user.fullName} />
+              <UserImage
+                src={avatar}
+                alt={user.fullName}
+                onClick={() => handleUserClick(user.fullName)}
+              />
               <UserInfo>
-                <TypographyName variant="body1">{user.fullName}</TypographyName>
+                <TypographyName
+                  variant="body1"
+                  onClick={() => handleUserClick(user.fullName)}
+                >
+                  {user.fullName}
+                </TypographyName>
                 <TypographyWish variant="body2">
                   {user.countOfWish}
                 </TypographyWish>
@@ -85,11 +98,7 @@ export default Users;
 const BoxContent = styled(Box)(() => ({
   width: "100%",
   maxWidth: "1086px",
-  margin: "0 auto",
-}));
-
-const BoxTitle = styled(Box)(() => ({
-  marginBottom: "20px",
+  marginTop: "10px",
 }));
 
 const GridContainer = styled(Grid)(() => ({

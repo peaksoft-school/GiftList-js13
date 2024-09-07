@@ -21,8 +21,11 @@ import {
   holidays,
   charity,
 } from "../shared/lib/types/userProfile";
+import { useParams } from "react-router-dom";
 
 const UserProfilePage: FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const decodedId = id ? decodeURIComponent(id) : "";
   const [showAllGifts, setShowAllGifts] = useState(false);
   const [showAllHolidays, setShowAllHolidays] = useState(false);
   const [showAllCharity, setShowAllCharity] = useState(false);
@@ -35,12 +38,13 @@ const UserProfilePage: FC = () => {
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
-    const id = 2;
-    dispatch(getAllWishes());
-    dispatch(getAllHolidays());
-    dispatch(getAllCharities());
-    dispatch(getProfileById(id));
-  }, [dispatch]);
+    if (decodedId) {
+      dispatch(getAllWishes());
+      dispatch(getAllHolidays());
+      dispatch(getAllCharities());
+      dispatch(getProfileById(Number(decodedId)));
+    }
+  }, [dispatch, decodedId]);
 
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
@@ -57,8 +61,8 @@ const UserProfilePage: FC = () => {
         <Box>
           <BoxHeader>
             <ProfileHeader
-              name={profileInfo.fullName}
-              profilePictureUrl={profileInfo.image}
+              name={profileInfo?.fullName || "Имя не указано"}
+              profilePictureUrl={profileInfo?.image || "путь к изображению"}
             />
             <BoxProfileSection>
               <ProfileInfoSection profileInfo={profileInfo} />
@@ -101,9 +105,9 @@ const BoxHeader = styled(Box)(() => ({
   display: "flex",
   padding: "20px",
   // justifyContent:'space-around',
-  backgroundColor:'#fbf5f5df',
-  border:'1px solid #f1d5d5df',
-  borderRadius:'5px',
+  backgroundColor: "#fbf5f5df",
+  border: "1px solid #f1d5d5df",
+  borderRadius: "5px",
 }));
 
 const BoxProfileSection = styled(Box)(() => ({
