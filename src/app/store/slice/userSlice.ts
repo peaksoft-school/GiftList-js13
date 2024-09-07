@@ -5,6 +5,7 @@ import {
   getAllCharities,
   getProfileById,
   getUsersAdmin,
+  getAllMyFriends,
 } from "./userThunk";
 import {
   Wish,
@@ -13,6 +14,7 @@ import {
   UserProfile,
 } from "../../../shared/lib/types/userProfile";
 import { Users } from "../../../shared/lib/types/users";
+import { Friend } from "../../../shared/lib/types/CardType";
 
 export interface UserState {
   wish: Wish[];
@@ -20,6 +22,7 @@ export interface UserState {
   charities: Charity[];
   users: Users[];
   profile: UserProfile | null;
+  friends: Friend[] | null;
   isLoading: boolean;
   isLoadingUsers: boolean;
   error: string | null;
@@ -30,6 +33,7 @@ const initialState: UserState = {
   holidays: [],
   charities: [],
   profile: null,
+  friends:[],
   users: [],
   isLoading: true,
   isLoadingUsers: false,
@@ -104,6 +108,18 @@ export const userSlice = createSlice({
       .addCase(getUsersAdmin.rejected, (state, action) => {
         state.isLoadingUsers = false;
         state.error = action.payload ? action.payload : "Что-то пошло не так";
+      })
+      .addCase(getAllMyFriends.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(getAllMyFriends.fulfilled, (state, action) => {
+        state.friends = action.payload;
+        state.isLoading = false;
+      })
+      .addCase(getAllMyFriends.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload ? action.payload : "Не удалось загрузить список друзей";
       });
   },
 });

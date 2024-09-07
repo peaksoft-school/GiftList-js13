@@ -13,6 +13,7 @@ import avatar from "../../../assets/images/avatar.png";
 import { BlockIcon, DeleteIcon } from "../../../assets/icon";
 import { useNavigate } from "react-router-dom";
 
+
 const meatballsArr = [
   {
     id: 1,
