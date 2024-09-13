@@ -1,8 +1,9 @@
 import { Box, Grid, styled, Typography } from "@mui/material";
 import { Charity } from "../../shared/lib/types/userProfile"; // Убедитесь, что этот путь правильный
 import Meatballs from "../../shared/UI/Meatballs";
-import avatar from '../../assets/images/charityImage.jpg'
+import avatar from "../../assets/images/charityImage.jpg";
 import { isValidUrl } from "../../app/utils/imageConditions/UrlValid";
+import { BlockIcon, DeleteIcon } from "../../assets/icon";
 
 interface CharitySectionProps {
   charity: Charity[];
@@ -12,14 +13,14 @@ interface CharitySectionProps {
 const menuData = [
   {
     id: 1,
-    icon: "src/assets/icon/edit.svg",
-    title: "Edit",
+    icon: BlockIcon,
+    title: "Заблокировать",
     onClick: () => console.log("Edit clicked"),
   },
   {
     id: 2,
-    icon: "src/assets/icon/delete.svg",
-    title: "Delete",
+    icon: DeleteIcon,
+    title: "Удалить",
     onClick: () => console.log("Delete clicked"),
   },
 ];
@@ -29,6 +30,15 @@ const CharitySection: React.FC<CharitySectionProps> = ({
   handleShowAll,
   showAll,
 }) => {
+  const handleMenuClick = (key: number): number => {
+    if (key === 1) {
+      console.log("Block");
+    } else if (key === 2) {
+      console.log("Delete");
+    }
+    return 0;
+  };
+
   return (
     <Section>
       <ProductsHeader>
@@ -42,7 +52,7 @@ const CharitySection: React.FC<CharitySectionProps> = ({
           <Grid item xs={12} sm={6} md={4} key={charityItem.id}>
             <ProductCard>
               <ProductImage
-                src={isValidUrl(charityItem.image)? charityItem.image : avatar}
+                src={isValidUrl(charityItem.image) ? charityItem.image : avatar}
                 alt={charityItem.giftName}
               />
               <BoxTitle>
@@ -59,7 +69,7 @@ const CharitySection: React.FC<CharitySectionProps> = ({
                   <TypographyBooked variant="body1">
                     {charityItem.isBooked ? "Забронировано" : "В ожидании"}
                   </TypographyBooked>
-                  <Meatballs data={menuData} />
+                  <Meatballs data={menuData} onClick={handleMenuClick} />
                 </BoxBooked>
               </BoxDate>
             </ProductCard>

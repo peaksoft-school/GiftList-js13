@@ -91,6 +91,7 @@ const ContentBox = styled(Box)(() => ({
 }));
 
 const BoxHeader = styled(Box)(() => ({
+  width:'100%',
   display: "flex",
   padding: "20px",
   backgroundColor: "#fbf5f5df",

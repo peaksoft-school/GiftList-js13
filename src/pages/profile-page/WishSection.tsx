@@ -3,9 +3,8 @@ import { Box, Grid, styled, Typography } from "@mui/material";
 import Meatballs from "../../shared/UI/Meatballs";
 import { Wish } from "../../shared/lib/types/userProfile";
 import { isValidUrl } from "../../app/utils/imageConditions/UrlValid";
-import avatar from '../../assets/images/presentImage.jpg'
-
-
+import avatar from "../../assets/images/presentImage.jpg";
+import { BlockIcon, DeleteIcon } from "../../assets/icon";
 
 interface GiftSectionProps {
   wish: Wish[];
@@ -16,14 +15,14 @@ interface GiftSectionProps {
 const menuData = [
   {
     id: 1,
-    icon: "src/assets/icon/edit.svg",
-    title: "Edit",
+    icon: BlockIcon,
+    title: "Заблокировать",
     onClick: () => console.log("Edit clicked"),
   },
   {
     id: 2,
-    icon: "src/assets/icon/delete.svg",
-    title: "Delete",
+    icon: DeleteIcon,
+    title: "Удалить",
     onClick: () => console.log("Delete clicked"),
   },
 ];
@@ -33,6 +32,15 @@ const WishSection: FC<GiftSectionProps> = ({
   handleShowAll,
   showAll,
 }) => {
+  const handleMenuClick = (key: number): number => {
+    if (key === 1) {
+      console.log("Block");
+    } else if (key === 2) {
+      console.log("Delete");
+    }
+    return 0; 
+  };
+
   return (
     <Section>
       <ProductsHeader>
@@ -45,7 +53,10 @@ const WishSection: FC<GiftSectionProps> = ({
         {wish.map((item) => (
           <Grid item xs={12} sm={6} md={4} key={item.id}>
             <ProductCard>
-              <ProductImage src={isValidUrl(item.image)? item.image : avatar} alt={item.giftTitle} />
+              <ProductImage
+                src={isValidUrl(item.image) ? item.image : avatar}
+                alt={item.giftTitle}
+              />
               <ProductInfo>
                 <TypographyTitle variant="body1">
                   {item.giftTitle}
@@ -61,7 +72,7 @@ const WishSection: FC<GiftSectionProps> = ({
                     </Typography>
                   </BoxTypografyWait>
                   <BoxData>
-                    <Meatballs data={menuData} />
+                    <Meatballs data={menuData} onClick={handleMenuClick} />
                   </BoxData>
                 </BoxMeat>
               </ProductDetails>
@@ -77,12 +88,12 @@ const Section = styled(Box)(() => ({
   marginBottom: "20px",
 }));
 
-const BoxWish = styled(Box)(()=>({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  alignItems:'center',
-  gap:'10px',
-}))
+const BoxWish = styled(Box)(() => ({
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  alignItems: "center",
+  gap: "10px",
+}));
 
 const ProductsHeader = styled(Box)(() => ({
   display: "flex",
@@ -157,8 +168,8 @@ const BoxMeat = styled(Box)(() => ({
   alignItems: "center",
 }));
 const BoxData = styled(Box)(() => ({
-  marginLeft:'10px',
-  marginTop:'8px',
+  marginLeft: "10px",
+  marginTop: "8px",
 }));
 
 export default WishSection;
