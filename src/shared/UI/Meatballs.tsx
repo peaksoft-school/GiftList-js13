@@ -2,7 +2,7 @@ import { useState, MouseEvent, FC } from "react";
 import { Box, Button, Menu, MenuItem } from "@mui/material";
 import { MeatballsType } from "../lib/types/MeatballType";
 import { styled } from "@mui/system";
-import threeDots from '../../assets/icon/threeDots.svg'
+import { ThreeDotsIcon } from "../../assets/icon";
 
 const Meatballs: FC<MeatballsType> = ({ data, onClick, cardId }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -27,7 +27,7 @@ const Meatballs: FC<MeatballsType> = ({ data, onClick, cardId }) => {
         aria-haspopup="true"
         onClick={handleClick}
       >
-        <img src={threeDots} alt="menu icon" />
+        <img src={ThreeDotsIcon} alt="menu icon" />
       </StyledButton>
       <Menu
         id="simple-menu"
@@ -56,6 +56,10 @@ const Box1 = styled(Box)(() => ({
 const StyledButton = styled(Button)(() => ({
   minWidth: "auto",
   padding: "0",
+
+  "&:hover": {
+    transform: "scale(1.2)",
+  },
 }));
 const ImgStyled = styled("img")`
   width: 20px;

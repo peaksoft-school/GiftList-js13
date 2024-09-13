@@ -72,6 +72,7 @@ const StyleAccount = styled("img")(() => ({
 }));
 
 const StyleContainer = styled(Box)(() => ({
+  width:'1190',
   display: "flex",
   alignItems: "center",
   padding: "20px",

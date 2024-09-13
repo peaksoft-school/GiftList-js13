@@ -1,37 +1,45 @@
 import { FC } from "react";
 import { Box, Typography, styled } from "@mui/material";
 import { Button } from "../button/Button";
-import instagram from "../../../assets/icon/profile-instagram.svg";
-import telegram from "../../../assets/icon/profile-telegram.svg";
-import vkontakte from "../../../assets/icon/profile-vk.svg";
-import { FacebookIcon } from "../../../assets/icon";
+// import instagram from "../../../assets/icon/profile-instagram.svg";
+// import telegram from "../../../assets/icon/profile-telegram.svg";
+// import vkontakte from "../../../assets/icon/profile-vk.svg";
+// import facebookIcon from "../../../assets/icon/profile-telegram.svg";
+import avatar from "../../../assets/images/avatar.png";
+import { isValidUrl } from "../../../app/utils/imageConditions/UrlValid";
+import { ProfileFacebookIcon, ProfileInstagrammIcon, ProfileTelegrammIcon, ProfileVkIcon } from "../../../assets/icon";
 
 const socialMediaIcons = [
-  { src: FacebookIcon, alt: "Facebook" },
-  { src: instagram, alt: "Instagram" },
-  { src: telegram, alt: "Telegram" },
-  { src: vkontakte, alt: "VK" },
+  { src: ProfileFacebookIcon, alt: "Facebook" },
+  { src: ProfileInstagrammIcon, alt: "Instagram" },
+  { src: ProfileTelegrammIcon, alt: "Telegram" },
+  { src: ProfileVkIcon, alt: "VK" },
 ];
 
 const ProfileHeader: FC<{ name: string; profilePictureUrl: string }> = ({
   name,
   profilePictureUrl,
-}) => (
-  <ProfileHeaderContainer>
-    <Box>
-      <ProfileImg src={profilePictureUrl} alt={name} />
-      <ProfileInfo>
-        <ProfileName variant="h5">{name}</ProfileName>
-        <ButtonProfile variant="contained">Добавить в друзья</ButtonProfile>
-        <Box display="flex" alignItems="center" marginTop="10px">
-          {socialMediaIcons.map((icon, index) => (
-            <ProfileIcons key={index} src={icon.src} alt={icon.alt} />
-          ))}
-        </Box>
-      </ProfileInfo>
-    </Box>
-  </ProfileHeaderContainer>
-);
+}) => {
+  return (
+    <ProfileHeaderContainer>
+      <Box>
+        <ProfileImg
+          src={isValidUrl(profilePictureUrl) ? profilePictureUrl : avatar}
+          alt={name}
+        />
+        <ProfileInfo>
+          <ProfileName variant="h5">{name}</ProfileName>
+          <ButtonProfile variant="contained">Добавить в друзья</ButtonProfile>
+          <Box display="flex" alignItems="center" marginTop="10px">
+            {socialMediaIcons.map((icon, index) => (
+              <ProfileIcons key={index} src={icon.src} alt={icon.alt} />
+            ))}
+          </Box>
+        </ProfileInfo>
+      </Box>
+    </ProfileHeaderContainer>
+  );
+};
 
 const ProfileHeaderContainer = styled(Box)(() => ({
   display: "flex",

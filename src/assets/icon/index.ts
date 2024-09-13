@@ -23,8 +23,12 @@ export { default as LoveIcon } from "./love.svg";
 export { default as MailingIcon } from "./mailingIcon.svg";
 export { default as MyHolidaysIcon } from "./Myholidays.svg";
 export { default as NextIcon } from "./next.svg";
+
 export { default as ProfileInstagrammIcon } from "./profile-instagram.svg";
-export { default as profileTelegrammIcon } from "./profile-telegram.svg";
+export { default as ProfileTelegrammIcon } from "./profile-telegram.svg";
+export { default as ProfileFacebookIcon } from "./profile-facebook.svg";
+export { default as ProfileVkIcon } from "./profile-vk.svg";
+
 export { default as ProfileVkLogoutIcon } from "./profile-vk.svg";
 export { default as ProfileLogoutsIcon } from "./ProfileLogouts.svg";
 export { default as ProfilesIcon } from "./profiles.svg";
@@ -40,3 +44,5 @@ export { default as WishListIcon } from "./WishList.svg";
 export { default as ArrowToDown } from "./arrowToDown.svg";
 export { default as FacebookIcon } from "./facebook.svg";
 export { default as SearchIcon } from "./serchIcon.svg";
+export { default as BlockIcon } from "./block.svg";
+export { default as DeleteIcon } from "./delete.svg";
