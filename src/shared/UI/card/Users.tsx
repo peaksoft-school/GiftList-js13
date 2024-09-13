@@ -13,7 +13,6 @@ import avatar from "../../../assets/images/avatar.png";
 import { BlockIcon, DeleteIcon } from "../../../assets/icon";
 import { useNavigate } from "react-router-dom";
 
-
 const meatballsArr = [
   {
     id: 1,
@@ -51,9 +50,8 @@ const Users: FC = () => {
     dispatch(getUsersAdmin());
   }, [dispatch]);
 
-  const handleUserClick = (name: string) => {
-    const encodedName = encodeURIComponent(name.trim().replace(/\s+/g, "_"));
-    navigate(`/admin/users/${encodedName}`);
+  const handleUserClick = (id: number) => {
+    navigate(`/admin/users/${id}`);
   };
   return (
     <BoxContent>
@@ -65,12 +63,12 @@ const Users: FC = () => {
               <UserImage
                 src={avatar}
                 alt={user.fullName}
-                onClick={() => handleUserClick(user.fullName)}
+                onClick={() => handleUserClick(user.id)}
               />
               <UserInfo>
                 <TypographyName
                   variant="body1"
-                  onClick={() => handleUserClick(user.fullName)}
+                  onClick={() => handleUserClick(user.id)}
                 >
                   {user.fullName}
                 </TypographyName>

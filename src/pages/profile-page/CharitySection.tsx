@@ -1,6 +1,8 @@
 import { Box, Grid, styled, Typography } from "@mui/material";
 import { Charity } from "../../shared/lib/types/userProfile"; // Убедитесь, что этот путь правильный
 import Meatballs from "../../shared/UI/Meatballs";
+import avatar from '../../assets/images/charityImage.jpg'
+import { isValidUrl } from "../../app/utils/imageConditions/UrlValid";
 
 interface CharitySectionProps {
   charity: Charity[];
@@ -40,7 +42,7 @@ const CharitySection: React.FC<CharitySectionProps> = ({
           <Grid item xs={12} sm={6} md={4} key={charityItem.id}>
             <ProductCard>
               <ProductImage
-                src={charityItem.image}
+                src={isValidUrl(charityItem.image)? charityItem.image : avatar}
                 alt={charityItem.giftName}
               />
               <BoxTitle>
@@ -73,10 +75,10 @@ const Section = styled(Box)(() => ({
 }));
 
 const BoxCharity = styled(Box)(() => ({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  alignItems:'center',
-  gap:'10px',
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  alignItems: "center",
+  gap: "10px",
 }));
 
 const ProductsHeader = styled(Box)(() => ({
@@ -107,12 +109,12 @@ const ProductCard = styled(Box)(() => ({
   boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
   padding: "10px",
   width: "350px",
-  height: "250px",
+  height: "300px",
 }));
 
 const ProductImage = styled("img")(() => ({
-  width: "100%",
-  height: "auto",
+  width: "320px",
+  height: "180px",
   borderRadius: "10px",
 }));
 
@@ -128,17 +130,15 @@ const BoxDate = styled(Box)(() => ({
   alignItems: "center",
   width: "100%",
 }));
-const BoxBooked=styled(Box)(()=>({
-  display:'flex',
-  alignItems:'center',
-}))
+const BoxBooked = styled(Box)(() => ({
+  display: "flex",
+  alignItems: "center",
+}));
 
-const TypographyBooked=styled(Typography)(()=>({
-  marginRight:'10px',
-  marginBottom:'10px',
-
-  
-}))
+const TypographyBooked = styled(Typography)(() => ({
+  marginRight: "10px",
+  marginBottom: "10px",
+}));
 
 const BoxTitle = styled(Box)(() => ({
   display: "flex",

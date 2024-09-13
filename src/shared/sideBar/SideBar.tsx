@@ -43,7 +43,7 @@ const SideBar = ({ data = menuItems }) => {
 export default SideBar;
 
 const StyledDrawer = styled("div")({
-  width: "310px",
+  width: "290px",
   height: "100vh",
   boxSizing: "border-box",
   background: "linear-gradient(0deg,#212569 0%,#6f35a4 100%)",

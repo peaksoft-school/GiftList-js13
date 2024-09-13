@@ -64,7 +64,7 @@ const TextContainer = styled(Box)(() => ({
 }));
 
 const Title = styled(Typography)(() => ({
-	fontSize: "2em",
+	fontSize: "2rem",
 	marginBottom: "20px",
 }));
 

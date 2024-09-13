@@ -1,11 +1,15 @@
 import { Box, Grid, styled, Typography } from "@mui/material";
 import { Holiday } from "../../shared/lib/types/userProfile";
+import avatar from "../../assets/images/holidaysImage.jpg";
+import { isValidUrl } from "../../app/utils/imageConditions/UrlValid";
 
 interface HolidaySectionProps {
   holidays: Holiday[];
   handleShowAll: () => void;
   showAll: boolean;
 }
+
+
 
 const HolidaySection: React.FC<HolidaySectionProps> = ({
   holidays,
@@ -24,7 +28,10 @@ const HolidaySection: React.FC<HolidaySectionProps> = ({
         {holidays.map((holiday) => (
           <Grid item xs={12} sm={6} md={4} key={holiday.id}>
             <ProductCard>
-              <ProductImage src={holiday.image} alt={holiday.title} />
+              <ProductImage
+                src={isValidUrl(holiday.image) ? holiday.image : avatar}
+                alt={holiday.title}
+              />
               <TypographyHoliday variant="body1">
                 {holiday.title}
               </TypographyHoliday>
@@ -45,10 +52,10 @@ const Section = styled(Box)(() => ({
 }));
 
 const BoxHoliday = styled(Box)(() => ({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(3, 1fr)',
-  alignItems:'center',
-  gap:'10px',
+  display: "grid",
+  gridTemplateColumns: "repeat(3, 1fr)",
+  alignItems: "center",
+  gap: "10px",
 }));
 
 const ProductsHeader = styled(Box)(() => ({
@@ -79,12 +86,12 @@ const ProductCard = styled(Box)(() => ({
   boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
   padding: "10px",
   width: "350px",
-  height: "250px",
+  height: "300px",
 }));
 
 const ProductImage = styled("img")(() => ({
-  width: "100%",
-  height: "auto",
+  width: "320px",
+  height: "180px",
   borderRadius: "10px",
 }));
 

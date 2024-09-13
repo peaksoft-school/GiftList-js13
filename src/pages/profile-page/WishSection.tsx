@@ -2,6 +2,8 @@ import { FC } from "react";
 import { Box, Grid, styled, Typography } from "@mui/material";
 import Meatballs from "../../shared/UI/Meatballs";
 import { Wish } from "../../shared/lib/types/userProfile";
+import { isValidUrl } from "../../app/utils/imageConditions/UrlValid";
+import avatar from '../../assets/images/presentImage.jpg'
 
 
 
@@ -43,7 +45,7 @@ const WishSection: FC<GiftSectionProps> = ({
         {wish.map((item) => (
           <Grid item xs={12} sm={6} md={4} key={item.id}>
             <ProductCard>
-              <ProductImage src={item.image} alt={item.giftTitle} />
+              <ProductImage src={isValidUrl(item.image)? item.image : avatar} alt={item.giftTitle} />
               <ProductInfo>
                 <TypographyTitle variant="body1">
                   {item.giftTitle}
@@ -115,12 +117,12 @@ const ProductCard = styled(Box)(() => ({
   boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
   padding: "10px",
   width: "350px",
-  height: "250px",
+  height: "300px",
 }));
 
 const ProductImage = styled("img")(() => ({
-  width: "100%",
-  height: "auto",
+  width: "320px",
+  height: "180px",
   borderRadius: "10px",
 }));
 
