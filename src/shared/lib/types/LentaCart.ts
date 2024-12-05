@@ -13,4 +13,5 @@ export type ArrowItem = {
 export type CartMapProps = {
   arrow: ArrowItem[];
   mapType: string;
+  red?: boolean;
 };
